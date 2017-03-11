@@ -119,11 +119,13 @@ sudo chown homeassistant:homeassistant /srv/homeassistant
 Become the new user
 ```
 sudo su -s /bin/bash homeassistant
-```When acting as the user "homeassistant" sudo is not needed. 
+```
+When acting as the user "homeassistant" sudo is not needed. 
 
 setup the new virtual environment 
 
-```virtualenv -p python3 /srv/homeassistant
+```
+virtualenv -p python3 /srv/homeassistant
 ```
 Activate the virtual environment
 ```
