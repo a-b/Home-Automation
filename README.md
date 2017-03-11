@@ -135,7 +135,8 @@ pip3 install --upgrade homeassistant
 run home assistant
 ```
 exit
-```(to logout from the user)
+```
+(to logout from the user)
 ```
 sudo -u homeassistant -H /srv/homeassistant/bin/hass
 ```
