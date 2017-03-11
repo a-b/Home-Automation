@@ -1,0 +1,8 @@
+alias: "turn off subwoofer after 22:00"
+trigger:
+  platform: time
+  after: "22:00:00"
+action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.subwoofer

@@ -1,0 +1,90 @@
+homeassistant:
+  name: Home
+  latitude: !secret latitude_home
+  longitude: !secret longitude_home
+  elevation: 33
+  unit_system: metric
+  time_zone: Europe/Stockholm
+  customize: !include customize.yaml
+
+http:
+  api_password: !secret api_password
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+
+####################################################
+#                                                  #
+#                     Includes                     #
+#                                                  #
+####################################################
+
+sensor: !include_dir_list sensors/
+switch: !include_dir_list switches/
+#media_player: !include_dir_list media_players/
+group: !include_dir_merge_named groups/
+zone: !include_dir_list zones/
+camera: !include_dir_list cameras/
+light: !include_dir_list lights/
+cover: !include_dir_list covers/
+automation: !include_dir_list automation/
+device_tracker: !include_dir_list device_trackers/
+shell_command: !include shell_commands/shell_commands.yaml
+script: !include_dir_list scripts/
+
+#### Not in use yet #####
+#scene: !include_dir_lists scenes/
+
+
+####################################################
+#                                                  #
+#                    Enable                        #
+#                                                  #
+####################################################
+updater:
+discovery:
+history:
+logbook:
+frontend:
+config:
+sun:
+logger:
+
+####################################################
+#                                                  #
+#                    Componenets                   #
+#                                                  #
+####################################################
+
+
+mqtt:
+  broker: !secret mqtt_broker
+  port: !secret mqtt_port
+  client_id: !secret mqtt_client_id
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+zwave:
+    usb_path: /dev/zwave
+
+rfxtrx:
+  device: /dev/rfxtrx
+
+#Notify
+notify:
+  platform: pushbullet
+  api_key: !secret pushbullet_password
+  name: Pushbullet
+
+#Telldus Live
+tellduslive:
+  public_key: !secret telldus_public_key
+  private_key: !secret telldus_private_key
+  token: !secret telldus_token
+  token_secret: !secret telldus_token_secret
+
+#HDMI CEC
+#hdmi_cec:
+#  devices:
+#    0: Projector
+#    1: Plex
+#    5: Onkyo Receiver

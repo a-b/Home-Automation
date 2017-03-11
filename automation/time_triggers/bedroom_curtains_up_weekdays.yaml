@@ -1,0 +1,16 @@
+alias: "bedroom curtains up after 07:00 on weekdays"
+trigger:
+  platform: time
+  after: '07:00:00'
+condition:
+- condition: time
+  weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+action:
+  - service: cover.open_cover
+    data:
+      entity_id: cover.bedroom_curtains

@@ -1,0 +1,12 @@
+  test_view:
+    name: test
+    view: yes
+    entities:
+      - input_boolean.notify_home
+      - sensor.kylskap_humidity
+      - sensor.kylskap_temperature
+      - switch.unused_modded_motion_sensor
+      - switch.unknown1
+      - switch.unknown2
+      - swtich.unknown3
+      - script.example_script

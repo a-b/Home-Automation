@@ -1,0 +1,14 @@
+  tracker_card:
+    name: Devices Status
+    entities:
+      - device_tracker.708bcda3b36
+      - device_tracker.a42bb0132439
+      - device_tracker.am335xoptmartikainense
+      - device_tracker.cc79cfe03ee6
+      - device_tracker.chromecastaudiomartikainense
+      - device_tracker.chromecastmartikainense
+      - device_tracker.eventghostmartikainense
+      - device_tracker.routerasuscom
+      - device_tracker.rtorrentmartikainense
+      - device_tracker.squeezeboxradiomartikainense
+      - device_tracker.vnasmartikainense

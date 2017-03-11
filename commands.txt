@@ -1,0 +1,51 @@
+https://home-assistant.io/components/hdmi_cec/
+
+echo scan | cec-client -s -d 1
+
+tvservice - off
+
+http://www.pedaltreter.at/jsan/lgtv/LG_Smart_TV_CEC_en.html
+
+"echo" on 0 "| Sudo cec-client -s -d 1 
+
+echo "standby 0" | sudo cec-client -s -d 1
+
+Get power-Status with CEC-Client:
+echo "pow 0" | sudo cec-client -s -d 1
+
+
+### Upgrading homeassistant https://home-assistant.io/docs/hassbian/upgrading/
+
+sudo apt-get update
+sudo apt-get -y upgrade
+
+sudo systemctl stop homeassistant@homeassistant.service
+sudo su -s /bin/bash homeassistant
+source /srv/homeassistant/bin/activate
+pip3 install --upgrade homeassistant
+exit
+sudo systemctl start homeassistant@homeassistant.service
+
+#upgrade hassbian-scripts
+
+cd /home/pi/hassbian-scripts
+git pull
+
+### Find USB
+
+ls /dev 
+
+
+## Openzwave control panel
+
+Make sure Home Assistant is not running! So stop that first
+Login to Raspberry Pi ssh pi@your_raspberry_pi_ip
+Change to the ozwcp directory cd /srv/homeassistant/src/open-zwave-control-panel/
+Launch the control panel sudo ./ozwcp -p 8888
+Open a web browser to http://192.168.1.4:8888
+Specify your zwave controller, for example /dev/ttyACM0 and hit initialize, dont check USB
+
+##Tasker
+Server:port: https://martikainen.se/api/services/switch/turn_on?api_password=***
+Data / file: {"entity_id":"switch.mancave"}
+Content type: application/json

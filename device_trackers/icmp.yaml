@@ -1,0 +1,5 @@
+platform: ping
+hosts:
+  transformer: 192.168.1.11
+  huawei: 192.168.1.12
+  rTorrent: 185.147.237.141

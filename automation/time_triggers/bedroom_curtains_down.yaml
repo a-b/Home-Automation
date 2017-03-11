@@ -1,0 +1,8 @@
+alias: "bedroom curtains down after 22:00"
+trigger:
+  platform: time
+  after: "22:00:00"
+action:
+  - service: cover.close_cover
+    data:
+      entity_id: cover.bedroom_curtains

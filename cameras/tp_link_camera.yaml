@@ -1,0 +1,5 @@
+platform: generic
+still_image_url: http://192.168.1.11:8080/stream/snapshot.jpg
+username: !secret tp_link_camera_username
+password: !secret tp_link_camera_password
+name: Parking

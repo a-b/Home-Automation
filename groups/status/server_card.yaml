@@ -1,0 +1,8 @@
+  server_card:
+    name: Server Status
+    entities:
+      - device_tracker.708bcda3b360
+      - sensor.server_temperature
+      - sensor.server_humidity
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_3_4
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_3_0

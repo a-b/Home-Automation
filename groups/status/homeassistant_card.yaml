@@ -1,0 +1,12 @@
+  homeassistant_card:
+    name: Home Assistant Status
+    entities:
+      - sensor.ha_release
+      - sensor.last_boot
+      - sensor.last_boot
+      - sensor.received_eth0
+      - sensor.sent_eth0
+      - sensor.cpu_use
+      - sensor.ram_use
+      - sensor.cpu_temperature
+

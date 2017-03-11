@@ -1,0 +1,8 @@
+alias: "Huwaei battery below 20"
+trigger:
+  platform: numeric_state
+  entity_id: sensor.huwaeibattery
+  below: 60
+action:
+  service: homeassistant.turn_on
+  entity_id: switch.huawei_charger

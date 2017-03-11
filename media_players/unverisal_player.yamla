@@ -1,0 +1,6 @@
+#https://home-assistant.io/components/media_player.universal/
+#platform: plex
+#name: Media Player
+#children:
+#  - media_player.vardagsrum
+#  - media_player.onkyo_receiver

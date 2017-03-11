@@ -1,0 +1,12 @@
+alias: "lights on in walk in closet when motion sensor triggers"
+trigger:
+  platform: state
+  entity_id: switch.walk_in_closet_motion_sensor
+  to: 'on'
+condition:
+  condition: state
+  entity_id: sun.sun
+  state: 'below_horizon'
+action:
+  service: homeassistant.turn_on
+  entity_id: switch.closet_spotlights

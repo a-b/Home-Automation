@@ -1,0 +1,5 @@
+  malin_card:
+    name: Malin
+    entities:
+      - device_tracker.malin_malin
+      - camera.malin_tracking

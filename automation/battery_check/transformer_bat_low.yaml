@@ -1,0 +1,8 @@
+alias: "Transformer battery below 20"
+trigger:
+  platform: numeric_state
+  entity_id: sensor.transformerbattery
+  below: 20
+action:
+  service: homeassistant.turn_on
+  entity_id: switch.transformer_charger

@@ -1,0 +1,6 @@
+  huwaei_card:
+    name: Huwaei
+    entities:
+      - device_tracker.huawei
+      - sensor.huwaeibattery
+      - switch.huawei_charger

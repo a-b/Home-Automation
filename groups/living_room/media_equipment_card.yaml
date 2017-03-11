@@ -1,0 +1,9 @@
+  media_equipment_card:
+    name: Media Equipment
+    entities:
+    - switch.hdmi_0
+    - switch.hdmi_1
+    - switch.hdmi_4
+    - switch.hdmi_5
+    - switch.buttkickers
+    - switch.subwoofer

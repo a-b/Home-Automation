@@ -1,0 +1,5 @@
+  mancave_card:
+    name: Man Cave
+    entities:
+      - sensor.mancave_temperature
+      - switch.mancave

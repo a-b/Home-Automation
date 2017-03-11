@@ -1,0 +1,12 @@
+platform: glances
+host: 192.168.1.7
+port: 61209
+name: Everything
+resources:
+  - 'disk_use_percent'
+  - 'disk_use'
+  - 'disk_free'
+  - 'memory_use_percent'
+  - 'memory_use'
+  - 'memory_free'
+  - 'processor_load'

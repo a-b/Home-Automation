@@ -1,0 +1,14 @@
+  status_room_view:
+    name: Status
+    view: yes
+    entities: 
+      - sensor.samsung_battery
+      - sensor.iphone_battery
+      - group.homeassistant_card
+      - group.tracker_card
+      - group.temperature_card
+      - group.server_card
+      - group.pc_card
+      - group.plex_card
+      - group.transformer_card
+      - group.huwaei_card

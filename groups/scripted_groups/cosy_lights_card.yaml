@@ -1,0 +1,9 @@
+  cosy_lights_card:
+    name: Cosy Lights
+    entities:
+      - switch.bedroom_window
+      - switch.closet_window
+      - switch.hallway_desk
+      - switch.kitchen_window
+      - switch.livingroom_window
+      - switch.tvbench

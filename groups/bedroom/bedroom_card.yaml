@@ -1,0 +1,6 @@
+  bedroom_card:
+    name: Sovrum
+    entities:
+    - sensor.sovrum_temperature
+    - switch.bedroom_window
+    - cover.bedroom_curtains

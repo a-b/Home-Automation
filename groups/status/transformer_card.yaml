@@ -1,0 +1,6 @@
+  transformer_card:
+    name: Transformer
+    entities:
+      - device_tracker.transformer
+      - sensor.transformerbattery
+      - switch.transformer_charger

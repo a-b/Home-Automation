@@ -1,0 +1,6 @@
+  hallway_card:
+    name: Hall
+    entities:
+      - switch.hallway_desk
+      - switch.hallway_roof
+      - switch.hallway_charger

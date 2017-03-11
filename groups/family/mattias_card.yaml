@@ -1,0 +1,5 @@
+  mattias_card:
+    name: Mattias
+    entities:
+      - device_tracker.phone_mattias
+      - camera.mattias_tracking

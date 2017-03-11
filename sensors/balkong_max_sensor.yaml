@@ -1,0 +1,5 @@
+platform: min_max
+entity_ids:
+  - sensor.balkong_temperature
+name: 'balkong_max'
+type: max

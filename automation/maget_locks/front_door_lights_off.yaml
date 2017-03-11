@@ -1,0 +1,10 @@
+alias: "Magnet sensor front door"
+trigger:
+  platform: state
+  entity_id: switch.front_door_magnet
+  to: 'off'
+  for:
+    minutes: 10
+action:
+  service: homeassistant.turn_off
+  entity_id: switch.hallway_roof

@@ -1,0 +1,126 @@
+ ## Fibaro Wall plug 2 Workstation ## 
+  sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_2_0:
+    friendly_name: PC total usage
+    entity_picture: /local/kwh.png
+  sensor.fibaro_system_fgwpef_wall_plug_gen5_power_2_4:
+    friendly_name: PC Power
+    entity_picture: /local/watt.png
+
+ ## Fibaro Wall plug 1 Server ## 
+  sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_3_0:
+    friendly_name: Server total Usage
+    entity_picture: /local/kwh.png
+  sensor.fibaro_system_fgwpef_wall_plug_gen5_power_3_4:
+    friendly_name: Server Power
+    entity_picture: /local/watt.png
+
+  device_tracker.phone_mattias:
+    friendly_name: Mattias
+    entity_picture: /local/mattias.JPG
+  device_tracker.malin_malin:
+    friendly_name: Malin
+    entity_picture: /local/malin.JPG
+
+  switch.buttkickers:
+    icon: mdi:speaker
+    assumed_state: false
+  switch.subwoofer:
+    icon: mdi:speaker
+    assumed_state: false
+
+#Light switches
+
+  switch.bedroom_window:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+  switch.closet_spotlights:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+  switch.closet_window:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+  switch.hallway_desk:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+  switch.hallway_roof:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+  switch.kitchen_bench:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+  switch.kitchen_window:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+  switch.livingroom_sofa:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+  switch.livingroom_window:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+  switch.tv_bench:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+  switch.tvbench:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+  switch.mancave:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+
+#Chargers
+
+  switch.huawei_charger:
+    icon: mdi:battery-charging-20
+    assumed_state: false
+  switch.transformer_charger:
+    icon: mdi:battery-charging-20
+    assumed_state: false
+
+# Motion Sensors
+
+  switch.kitchen_motion_sensor:
+    icon: mdi:bullseye
+  switch.unused_modded_motion_sensor:
+    icon: mdi:bullseye
+  switch.walk_in_closet_motion_sensor:
+    icon: mdibullseye
+
+# Temp sensors 
+
+  sensor.kylskap_temperature:
+    friendly_name: Kylskåp
+    icon: mdi:fridge
+  sensor.frys_temperature:
+    friendly_name: Frys
+    icon: mdi:fridge-filled
+  sensor.server_temperature:
+    friendly_name: Server
+    icon: mdi:server
+  sensor.balkong_temperature:
+    friendly_name: Ute Temp
+  sensor.vardagsrum_temperature:
+    friendly_name: Vardagsrum temperatur
+  sensor.sovrum_temperature:
+    friendly_name: Sovrum temperatur
+    icon: mdi:hotel
+  sensor.mancave_temperature:
+    friendly_name: ManCave temperatur
+  sensor.kok_temperature:
+    friendly_name: Kök temperatur
+  sensor.house_temperature_mean:
+    friendly_name: Inne Temp
+
+# Other
+
+  sensor.plex:
+    friendly_name: Plex status
+    entity_picture: /local/plex.png
+  sensor.plexserver_cpu_load:
+    friendly_name: CPU Load
+    unit_of_measurement: "%"
+  sensor.plexserver_disk_use_2:
+    friendly_name: Disk Usage
+  sensor.plexserver_ram_use:
+    friendly_name: Ram Usage
+  sensor.yr_symbol:
+    friendly_name: Väder
