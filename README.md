@@ -95,10 +95,12 @@ reconnect to your VM via Kitty and logon
 ```
 sudo apt-get update
 sudo apt-get install python-pip python3-dev
-``` Press Y + enter on the question to install
+``` 
+Press Y + enter on the question to install
 
 install the virtual environment
-```sudo pip install --upgrade virtualenv
+```
+sudo pip install --upgrade virtualenv
 ```
 Add a user for home assistant 
 ```
