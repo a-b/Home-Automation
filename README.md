@@ -79,13 +79,13 @@ cd /tmp/vmware-tools-distrib/
 ```
 
 Run this command to install VMware Tools:
-
-**sudo ./vmware-install.pl -d**
-
+```
+sudo ./vmware-install.pl -d
+```
 Run this command to reboot the virtual machine after the installation completes:
-
-**sudo reboot**
-
+```
+sudo reboot
+```
  Now is a good time to create a snapshot to have a fallback in case something goes wrong 
 
 # installting Virtual Environment ##
@@ -148,11 +148,11 @@ You will probably see some componenets popping up if you are running Plex media 
 # configure autostart  #
  https://home-assistant.io/docs/autostart/systemd/
 
-- go to /etc/systemd/system and create a new file for the systemd service
-
-**cd /etc/systemd/system**
-**sudo nano home-assistant@homeassistant.service**
-
+go to /etc/systemd/system and create a new file for the systemd service
+```
+cd /etc/systemd/system
+sudo nano home-assistant@homeassistant.service
+```
 copy the code below 
 ```
 [Unit]
@@ -170,78 +170,39 @@ ExecStart=/srv/homeassistant/bin/hass -c "/home/homeassistant/.homeassistant"
 [Install]
 WantedBy=multi-user.target
 ```
-- Press ctrl+O and then enter then ctrl+x
+Press ctrl+O and then enter then ctrl+x
 
 enable the new service
-
-**sudo systemctl --system daemon-reload**
-**sudo systemctl enable home-assistant@homeassistant**
-**sudo systemctl start home-assistant@homeassistant**
-
-- To check status of Home Assistans
-
-**sudo systemctl status home-assistant@homeassistant**
-
+```
+sudo systemctl --system daemon-reload
+sudo systemctl enable home-assistant@homeassistant
+sudo systemctl start home-assistant@homeassistant
+```
+To check status of Home Assistans
+```
+sudo systemctl status home-assistant@homeassistant
+```
 Reboot your system to see that autostart works
+```
+sudo reboot
+```
 
-**sudo reboot**
-
-## Make another snapshot! Just to be safe (mine called autostart working) ##
-
-## installing PYTHON-OPENZWAVE ## 
-
-**sudo apt-get install cython3 libudev-dev python3-sphinx python3-setuptools git**
-
-Logon and activate your virtual environment
-
-**sudo su -s /bin/bash homeassistant**
-**source /srv/homeassistant/bin/activate**
-
-- install cython 
-
-(homeassistant)$ **pip3 install --upgrade cython==0.24.1**
-
-install z-wave
-(homeassistant)$ **mkdir /srv/homeassistant/src**
-(homeassistant)$ **cd /srv/homeassistant/src**
-(homeassistant)$ **git clone https://github.com/OpenZWave/python-openzwave.git**
-(homeassistant)$ **cd python-openzwave**
-(homeassistant)$ **git checkout python3**
-(homeassistant)$ **PYTHON_EXEC=`which python3` make build**
-(homeassistant)$ **PYTHON_EXEC=`which python3` make install**
-
-logout from the virtual environment 
-
-**exit**
-**sudo reboot**
-- check that HA is running 
-- create another snapshot 
-
-## setting upp your own Message of the day ##
-(the information that shows when you logon 
-
-**sudo nano /etc/motd.tail**
-
-- enter your text
-
-- Ctrl+o, then enter then ctrl+x
-- remove the "help" text 
-**sudo chmod -x /etc/update-motd.d/10-help-text**
-
+Make another snapshot! Just to be safe (mine called autostart working)
 
 # setting up samba shares for easy configuration of HA #
  https://www.youtube.com/watch?v=iQwWEsuRWUw
 
 If you forgot to install samba at the installation. 
-
-**sudo apt-get update**
-**sudo apt-get install samba**
-
-- edit the smb config
-
-**sudo nano /etc/samba/smb.conf**
-- when you are in edit mode, hold down **ctrl+k** until all rows are removed (it removes one row at the time) 
-- then add the following information, you could edit the "netbios name" to whatever you want to call your server when accessing it from another PC
+```
+sudo apt-get update
+sudo apt-get install samba
+```
+edit the smb config
+```
+sudo nano /etc/samba/smb.conf
+```
+when you are in edit mode, hold down **ctrl+k** until all rows are removed (it removes one row at the time) 
+then add the following information, you could edit the "netbios name" to whatever you want to call your server when accessing it from another PC
 
 ```
 [global]
@@ -286,55 +247,58 @@ force directory mode = 0777
 hosts allow =
 ```
 
-- Add a user that can access the share
+Add a user that can access the share
+```
+sudo smbpasswd -a pi
+```
+enter the password, twice
 
-**sudo smbpasswd -a pi**
-
-- enter the password, twice
-
-- Restart Samba Service:
-
-**sudo service smbd restart**
-
-- Now you should be able to access your shares via network \\yourip  and logon with the user pi+yourpassword
+Restart Samba Service:
+```
+sudo service smbd restart
+```
+Now you should be able to access your shares via network \\yourip  and logon with the user pi+yourpassword
 
 # installing mosquitto (MQTT broker)
  https://www.youtube.com/watch?v=AsDHEDbyLfg&t
-- login to your pi 
 
-**sudo apt-get update**
-**sudo apt-get upgrade**
-**sudo apt-get install mosquitto**
-**sudo apt-get install mosquitto-clients**
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install mosquitto
+sudo apt-get install mosquitto-clients
+sudo nano /etc/mosquitto/mosquitto.conf
+```
 
-**sudo nano /etc/mosquitto/mosquitto.conf**
-
-- remove the line "include_dir /etc/mosquitto/conf.d" and add the following information 
-
+remove the line "include_dir /etc/mosquitto/conf.d" and add the following information 
+```
 allow_anonymous false
 password_file /etc/mosquitto/pwfile
 listener 1883
+```
+press ctrl+o, enter, ctrl+x
+```
+sudo mosquitto_passwd -c /etc/mosquitto/pwfile mqtt
+```
+type in a password, twice 
+reboot! 
 
-- press ctrl+o, enter, ctrl+x
+if you want to access the mqtt broker from outside you network, remember to open your firewall port 1883 to the servers IP.
+To test that your broker is working, open two instances of kitty and enter the first command in one of them, and the second in the other, dont forget to change the credentials info username/password to match your configuration 
 
-**sudo mosquitto_passwd -c /etc/mosquitto/pwfile mqtt**
+first instance: 
+```
+mosquitto_sub -d -u username -P password -t dev/test
+```
 
-- type in a password, twice 
-- reboot! 
-**sudo reboot** 
-
-- if you want to access the mqtt broker from outside you network, remember to open your firewall port 1883 to the servers IP.
-- to test that your broker is working, open two instances of kitty and enter the first command in one of them, and the second in the other, dont forget to change the credentials info username/password to match your configuration 
-
-- first instance: 
-**mosquitto_sub -d -u username -P password -t dev/test**
-
-- Second instance: 
-**mosquitto_pub -d -u username -P password -t dev/test -m "Hello world"**
-- press enter and you'll se a published message "Hello World" in the first instance.
+Second instance: 
+```
+mosquitto_pub -d -u username -P password -t dev/test -m "Hello world"
+```
+press enter and you'll se a published message "Hello World" in the first instance.
 
 ## adding the MQTT broker info to your HA configuration## 
-- Browse the share "home assistant" you created earlier and add the following to your configuration.yaml file
+Browse the share "home assistant" you created earlier and add the following to your configuration.yaml file
 
 ```
 mqtt:
@@ -344,10 +308,8 @@ mqtt:
   username: mqtt
   password: password
 ```
-- Save the file and reboot the server
-**sudo reboot**
-
-- logon to your HA site and verify that your configuration is working! 
+Save the file and reboot the server
+logon to your HA site and verify that your configuration is working! 
 
 ## Removing snapshots ## 
 
@@ -362,22 +324,18 @@ Enabeling you to control your HDMI devices through your HDMI port, if you have t
 Im going to reuse the scripts compiled for Hassbian (installation on raspberry pi) 
  https://github.com/home-assistant/hassbian-scripts#the-included-scripts
 
-Go to your home/pi folder
-
-**cd /home/pi**
-
-Create a new script
-
-**sudo nano installcec.sh** 
-
+Create a new file in your home directory
+```
+sudo nano /home/pi/installcec.sh
+```
 Copy the code from the script  https://github.com/home-assistant/hassbian-scripts/blob/master/install_libcec.sh
 
 Press ctrl+o, enter, ctrl+x
 
 start the script
-
-**sudo sh installcec.sh**
-
+```
+sudo sh installcec.sh
+```
 Right now I have no way of verifying that it works because there needs to be a HDMI device present (either a graphics card with HDMI that you send with pass-through to your VM, or an HDMI CEC USB adapter, search ebay for "Pulse Eight USB" and find an adapter that could work, something like "Pulse-Eight USB - CEC Adapter, for Kodi, Plex, MediaPortal, emby etc"
 
 ## creating another snapshot ##
@@ -387,17 +345,18 @@ calling it "BeforeZwaveinstallation"
 
 I'm going to reuse the hassbian scripts again  https://github.com/home-assistant/hassbian-scripts/blob/master/install_openzwave.sh
 But we need to remove some code for the openzwave we already installed.
-
-**cd /home/pi**
-**sudo nano openzwave.sh**
-
+```
+cd /home/pi
+sudo nano openzwave.sh
+```
 copy the script from the link 
 
 press ctrl+o, enter, ctrl+x
 
 start the script
-**sudo openzwave.sh** 
-
+```
+sudo openzwave.sh
+```
 reboot your server 
 check that everything is working 
 
@@ -414,20 +373,22 @@ At this point I'm moving my RFXTtrx, Zwave and USB-IRT to my VMware server, and 
 
 Applying the new devices and rebooting the VM
 
-# Testing the devices #
+##Testing the devices ##
 
-## Z-wave ##
+- Z-wave
  https://home-assistant.io/docs/z-wave/
 
 First we need to find what USB port our z-wave device is in
 
 In kitty, enter this command: 
-**ls /dev/ttyUSB* **
-
+```
+ls /dev/ttyUSB*
+```
 You will probably get two replies, /dev/ttyUSB0 and /dev/ttyUSB1, but in my last setup, my z-wave devices was at the port /dev/ttyACM0.
 So entering this command
-**ls /dev/tty* ** 
-
+```
+ls /dev/tty*
+```
 I'll find the /dev/ttyACM0 entry as well and will start to test this one. 
 Add the following to your configuration.yaml file
 
@@ -439,13 +400,14 @@ zwave:
 Reboot the vm and you should see your devices popping up as sensors/switches depending on your already connected z-wave devices in the http://yourIP:8123/dev-state page. 
 
 
-## RFXtrx ## 
+- RFXtrx 
  https://home-assistant.io/components/rfxtrx/
 
 Check the USB Port for your RFXtrx,
 In Kitty:
-**ls /dev/ttyUSB* **  
-
+```
+ls /dev/ttyUSB*
+```
 Mine was at **/dev/ttyUSB0**
 
 Add the following to your configuration.yaml file 
@@ -478,7 +440,7 @@ In that file, add the following:
 platform: rfxtrx
 automatic_add: true
 ```
-Reboot the VM! 
+Reboot! 
 
 Triggering a motion sensor, magnetswitch or pushing a remote for a 433mhz unit will automatically add it to home assistant and you can find it in the dev page, and also at the home view (all devices will pop-up there untill it's been configured) 
 
@@ -487,7 +449,9 @@ Triggering a motion sensor, magnetswitch or pushing a remote for a 433mhz unit w
 To make sure that our units gets locked at these "ttypoints" we can follow this guide  http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices/
 
 enter command
-**lsusb** 
+```
+lsusb
+```
 
 you will then see something like this 
 ```
@@ -502,10 +466,10 @@ Bus 001 Device 002: ID 0e0f:0003 VMware, Inc. Virtual Mouse
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
 ```
-and using the command 
-
-**udevadm info -a -n /dev/ttyUSB1 | grep '{serial}' | head -n1** we can get the serial number for our devices
-
+and using the command to get the serial number for our devices
+```
+udevadm info -a -n /dev/ttyUSB1 | grep '{serial}' | head -n1
+```
 Now we have theese: 
 
 **USB UIRT**
@@ -533,8 +497,11 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="f850", SYMLINK+="u
 
 ```
 
-enter command  ** cd /etc/udev/rules.d/**
-**sudo nano 99-usb-serial.rules**
+Create a new file for your persistant usb paths
+```
+sudo nano /etc/udev/rules.d/99-usb-serial.rules
+
+```
 Press ctrl+o, enter, ctrl+x
 
 reboot the VM
@@ -570,14 +537,16 @@ calling it "devices installed"
  https://youtu.be/BIvQ8x_iTNE?t=404
 
 Set up port forwarding of port 443 and port 80 (external and internal source/target port) to your VM
-
-**git clone https://github.com/letsencrypt/letsencrypt**
-**cd letsencrypt**
-**./letsencrypt-auto certonly --email youremail@address.com -d example.duckdns.org**
+```
+git clone https://github.com/letsencrypt/letsencrypt
+cd letsencrypt
+./letsencrypt-auto certonly --email youremail@address.com -d example.duckdns.org
+```
 On the "how would you like to authenticate with the Let's Encrypt CA?" page select "2  Automatically use a temporary webserver (standalone)"
 Remove the port forwards setup eariler, and set port 443 to forward to port 8123 on in your router settings.
-**sudo chmod -R 777 /etc/letsencrypt**
-
+```
+sudo chmod -R 777 /etc/letsencrypt
+```
 ## configuring SSL access and password protection ## 
 
 add the following to your configuration.yaml file
@@ -607,7 +576,10 @@ At this point i copied all the configuration files from my old HA instance to th
 
 1. Systemmonitor component 
 incorrect argument for the ethernet connection to monitor it
-**ifconfig**
+```
+ifconfig
+```
+and you will see ouput similar to this:
 ```
 pi@homeAssistant:~$ ifconfig
 ens160: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
@@ -632,14 +604,26 @@ Host is up (0.00012s latency).
 ``` 
 HA could still not uses found this  https://github.com/home-assistant/home-assistant/issues/1632#issuecomment-245340774
 
-**find / -name device_tracker.py** to find where your script is for nmap.
+to find where your script is for nmap use this command
+```
+find / -name device_tracker.py
+```
 
 open the file to edit it. 
-** sudo nano /srv/homeassistant/lib/python3.5/site-packages/homeassistant/components/device_tracker/nmap_tracker.py**
+```
+sudo nano /srv/homeassistant/lib/python3.5/site-packages/homeassistant/components/device_tracker/nmap_tracker.py
+```
 
 ctrl+w and search for **cmd =**
 
-replace cmd = *['arp', '-n', ip_address]* with **cmd = ['/usr/sbin/arp', '-n', ip_address]*
+replace 
+```
+cmd = *['arp', '-n', ip_address]* 
+```
+with
+```
+cmd = ['/usr/sbin/arp', '-n', ip_address]*
+```
 
 reboot the VM and it should work
 
