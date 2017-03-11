@@ -3,27 +3,27 @@
 My installation of HomeAssistant on a virtual server running on VMware ESXi 6.0.0
 
 Components
-- RFXtrx: link:https://home-assistant.io/components/rfxtrx/
-- Z-wave: link: https://home-assistant.io/components/zwave/
-- MQTT: link: https://home-assistant.io/components/mqtt/
-- Pushbullet: link: https://home-assistant.io/components/notify.pushbullet/
-- Telldus Live: Link: https://home-assistant.io/components/tellduslive/
-- HDMI CEC: Link: https://home-assistant.io/components/hdmi_cec/
-- ASUSWRT: Link: https://home-assistant.io/components/device_tracker.asuswrt/
-- CPU Speed: Link: https://home-assistant.io/components/sensor.cpuspeed/
-- Generic IP camera: Link: https://home-assistant.io/components/camera.generic/
-- Google cast: Link: https://home-assistant.io/components/media_player.cast/
-- Lirc: Link: https://home-assistant.io/components/lirc/
-- nmap: link: https://home-assistant.io/components/device_tracker.nmap_tracker/
-- Owntracks: link: https://home-assistant.io/components/device_tracker.owntracks/
-- Plex: Link: https://home-assistant.io/components/media_player.plex/
-- Plex Activity: Link: https://home-assistant.io/components/media_player.plex/
-- glances: link: https://home-assistant.io/components/sensor.glances/
-- yr.no: link: https://home-assistant.io/components/sensor.yr/
-- System Monitor: link:https://home-assistant.io/components/sensor.systemmonitor/
-- Onky: link: https://home-assistant.io/components/media_player.onkyo/
+- RFXtrx: https://home-assistant.io/components/rfxtrx/
+- Z-wave:  https://home-assistant.io/components/zwave/
+- MQTT:  https://home-assistant.io/components/mqtt/
+- Pushbullet:  https://home-assistant.io/components/notify.pushbullet/
+- Telldus Live:  https://home-assistant.io/components/tellduslive/
+- HDMI CEC:  https://home-assistant.io/components/hdmi_cec/
+- ASUSWRT:  https://home-assistant.io/components/device_tracker.asuswrt/
+- CPU Speed:  https://home-assistant.io/components/sensor.cpuspeed/
+- Generic IP camera:  https://home-assistant.io/components/camera.generic/
+- Google cast:  https://home-assistant.io/components/media_player.cast/
+- Lirc:  https://home-assistant.io/components/lirc/
+- nmap:  https://home-assistant.io/components/device_tracker.nmap_tracker/
+- Owntracks:  https://home-assistant.io/components/device_tracker.owntracks/
+- Plex:  https://home-assistant.io/components/media_player.plex/
+- Plex Activity:  https://home-assistant.io/components/media_player.plex/
+- glances:  https://home-assistant.io/components/sensor.glances/
+- yr.no:  https://home-assistant.io/components/sensor.yr/
+- System Monitor: https://home-assistant.io/components/sensor.systemmonitor/
+- Onky:  https://home-assistant.io/components/media_player.onkyo/
 - Ping (ICMP): https://home-assistant.io/components/device_tracker.ping/
-- speedtest: Link: https://home-assistant.io/components/sensor.speedtest/
+- speedtest:  https://home-assistant.io/components/sensor.speedtest/
 
 # Deploying and installing ubuntu server 16.10
 - Deploy a new virtual machine with 2cpu4cores(8vcpu) and 4GB of ram, 20GB of disk, ubuntu 64bit operating system (overkill resources but if you have the power...)
@@ -47,7 +47,7 @@ Finish the installation and reboot the server, remove installation media
 **sudo apt-get dist-upgrade** to install any other updates
 
 # installing VMware Tools
-Link: https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525
+ https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525
 
 Go to Virtual Machine > Install VMware Tools (or VM > Install VMware Tools).
 
@@ -82,7 +82,7 @@ Run this command to reboot the virtual machine after the installation completes:
 ## Now is a good time to create a snapshot to have a fallback in case something goes wrong ##
 
 # installting Virtual Environment ##
-link: https://home-assistant.io/docs/installation/virtualenv/
+ https://home-assistant.io/docs/installation/virtualenv/
 
 reconnect to your VM via Kitty and logon
 
@@ -133,7 +133,7 @@ You will probably see some componenets popping up if you are running Plex media 
 ## Create another snapshot and name it something like HABaseInstallation ##
 
 # configure autostart  #
-Link: https://home-assistant.io/docs/autostart/systemd/
+ https://home-assistant.io/docs/autostart/systemd/
 
 - go to /etc/systemd/system and create a new file for the systemd service
 
@@ -217,7 +217,7 @@ logout from the virtual environment
 
 
 # setting up samba shares for easy configuration of HA #
-link: https://www.youtube.com/watch?v=iQwWEsuRWUw
+ https://www.youtube.com/watch?v=iQwWEsuRWUw
 
 If you forgot to install samba at the installation. 
 
@@ -286,7 +286,7 @@ hosts allow =
 - Now you should be able to access your shares via network \\yourip  and logon with the user pi+yourpassword
 
 # installing mosquitto (MQTT broker)
-link: https://www.youtube.com/watch?v=AsDHEDbyLfg&t
+ https://www.youtube.com/watch?v=AsDHEDbyLfg&t
 - login to your pi 
 
 **sudo apt-get update**
@@ -347,7 +347,7 @@ Calling it "CleanInstall"
 Enabeling you to control your HDMI devices through your HDMI port, if you have the possibility to connect your server to your home theatre for example.
 
 Im going to reuse the scripts compiled for Hassbian (installation on raspberry pi) 
-Link: https://github.com/home-assistant/hassbian-scripts#the-included-scripts
+ https://github.com/home-assistant/hassbian-scripts#the-included-scripts
 
 Go to your home/pi folder
 
@@ -357,7 +357,7 @@ Create a new script
 
 **sudo nano installcec.sh** 
 
-Copy the code from the script Link: https://github.com/home-assistant/hassbian-scripts/blob/master/install_libcec.sh
+Copy the code from the script  https://github.com/home-assistant/hassbian-scripts/blob/master/install_libcec.sh
 
 Press ctrl+o, enter, ctrl+x
 
@@ -372,7 +372,7 @@ calling it "BeforeZwaveinstallation"
 
 # installing openzwave control panel 
 
-I'm going to reuse the hassbian scripts again link: https://github.com/home-assistant/hassbian-scripts/blob/master/install_openzwave.sh
+I'm going to reuse the hassbian scripts again  https://github.com/home-assistant/hassbian-scripts/blob/master/install_openzwave.sh
 But we need to remove some code for the openzwave we already installed.
 
 **cd /home/pi**
@@ -395,16 +395,16 @@ At this point I'm moving my RFXTtrx, Zwave and USB-IRT to my VMware server, and 
 
 - Adding a USB xHCI controller to my VM
 - Adding my USB decices: 
-- Future Devices RFXtrx433 (RFXtrx device link: http://www.rfxcom.com/RFXtrx433E-USB-43392MHz-Transceiver/en)
-- Future Devices USB-UIRT (My USB-UIRT link:http://www.usbuirt.com/ used to control IR devices)
-- Sigma Designs Modem ( my Z-wave controller link: http://aeotec.com/z-wave-usb-stick
+- Future Devices RFXtrx433 (RFXtrx device  http://www.rfxcom.com/RFXtrx433E-USB-43392MHz-Transceiver/en)
+- Future Devices USB-UIRT (My USB-UIRT http://www.usbuirt.com/ used to control IR devices)
+- Sigma Designs Modem ( my Z-wave controller  http://aeotec.com/z-wave-usb-stick
 
 Applying the new devices and rebooting the VM
 
 # Testing the devices #
 
 ## Z-wave ##
-Link: https://home-assistant.io/docs/z-wave/
+ https://home-assistant.io/docs/z-wave/
 
 First we need to find what USB port our z-wave device is in
 
@@ -427,7 +427,7 @@ Reboot the vm and you should see your devices popping up as sensors/switches dep
 
 
 ## RFXtrx ## 
-Link: https://home-assistant.io/components/rfxtrx/
+ https://home-assistant.io/components/rfxtrx/
 
 Check the USB Port for your RFXtrx,
 In Kitty:
@@ -471,7 +471,7 @@ Triggering a motion sensor, magnetswitch or pushing a remote for a 433mhz unit w
 
 ## Creating persistant names for usb serial devices ## 
 
-To make sure that our units gets locked at these "ttypoints" we can follow this guide link: http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices/
+To make sure that our units gets locked at these "ttypoints" we can follow this guide  http://hintshop.ludvig.co.nz/show/persistent-names-usb-serial-devices/
 
 enter command
 **lsusb** 
@@ -554,7 +554,7 @@ Reboot the VM and see if it works, and try removing them and changing USB ports,
 calling it "devices installed" 
 
 # setting upp SSL encryption with Lets Encrypt #
-Link: https://youtu.be/BIvQ8x_iTNE?t=404
+ https://youtu.be/BIvQ8x_iTNE?t=404
 
 Set up port forwarding of port 443 and port 80 (external and internal source/target port) to your VM
 
@@ -603,7 +603,7 @@ ens160: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 Changing \sensors\system_info_sensor.yaml to have arg: ens160, did not help, #return to solve#
 
 2. NMAP / ICM
--link: https://home-assistant.io/components/device_tracker.nmap_tracker/
+- https://home-assistant.io/components/device_tracker.nmap_tracker/
 
 - missing dependencies for nmap and arp
 ```
@@ -617,7 +617,7 @@ Starting Nmap 7.12 ( https://nmap.org ) at 2017-03-11 11:43 CET
 Nmap scan report for 192.168.1.3
 Host is up (0.00012s latency).
 ``` 
-HA could still not uses found this link: https://github.com/home-assistant/home-assistant/issues/1632#issuecomment-245340774
+HA could still not uses found this  https://github.com/home-assistant/home-assistant/issues/1632#issuecomment-245340774
 
 **find / -name device_tracker.py** to find where your script is for nmap.
 
@@ -636,7 +636,7 @@ Since I'm running on a VM, the thermal sensors for the hardware wont work.
 
 # Setting up backup to github #  
 
-link: https://home-assistant.io/cookbook/githubbackup/
+ https://home-assistant.io/cookbook/githubbackup/
 
 Before doing this, make sure that all your information that is sensitive (passwords, GPS cordinates, IP's etc) are stored in the secret.yaml file, this file will not be backed up! 
 
