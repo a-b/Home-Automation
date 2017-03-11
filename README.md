@@ -640,38 +640,43 @@ Since I'm running on a VM, the thermal sensors for the hardware wont work.
 
 Before doing this, make sure that all your information that is sensitive (passwords, GPS cordinates, IP's etc) are stored in the secret.yaml file, this file will not be backed up! 
 
-
-**sudo apt-get update**
-**sudo apt-get install git**
+```
+sudo apt-get update
+sudo apt-get install git
+```
 
 Create the .gitignore file and place it in your configuration folder
 
 browse to your config directory 
 
-**cd /home/homeassistant/.homeassistant/
+```
+cd /home/homeassistant/.homeassistant/
 sudo git init
 sudo git config user.email martikainen@live.se
 sudo git config user.name Mattias
 sudo git add .
-sudo git commit**
+sudo git commit
+```
 
 uncomment the line "initial commit", this will be a comment to all files that you upload.
 
 login to your github account and create a new repository, I'm calling mine Homeassistant2.0
-
-**sudo git remote add origin https://github.com/martikainen87/Homeassistant2.0
-sudo git push -u origin master**
+```
+sudo git remote add origin https://github.com/martikainen87/Homeassistant2.0
+sudo git push -u origin master
+```
 
 enter your github credentials, wait for the script to finish then check your repository 
 
-# plans #
+# Setting upp LIRC to use with USB-UIRT # 
+https://home-assistant.io/components/lirc/
 
-Set up:
-USB UIRT + LIRC
-Owntracks MQTT open ports and configure phones.
-Github Backup
-PING - my external server
-SNMP vmware
+```
+sudo apt-get install lirc liblircclient-dev**
+```
+Im selecting USB-UIRT and USB-UIRT Direct TV reicever in the two lists you receive, not sure if this is correct.  
+
+to be continued with how to set up your UIRT to receive/send IR commands. 
 
 
 
