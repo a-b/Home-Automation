@@ -36,40 +36,47 @@ Finish the installation and reboot the server, remove installation media
 
 # Updating the Ubuntu installation
 
-- Connect to the server with Kitty (other version of PuttY)
+Connect to the server with Kitty (other version of PuttY)
+Log in with pi/password:
 
-- Log in with pi/password:
-
-**sudo apt-get update** to get newest repository
-
-**sudo apt-get install** to install regular and security updates
-
-**sudo apt-get dist-upgrade** to install any other updates
+to get newest repository
+```
+sudo apt-get update
+```
+to install regular and security updates
+```
+sudo apt-get install
+```
+to install any other updates
+```
+sudo apt-get dist-upgrade
+```
 
 # installing VMware Tools
  https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=1022525
 
 Go to Virtual Machine > Install VMware Tools (or VM > Install VMware Tools).
-
 Run this command to create a directory to mount the CD-ROM:
-
-**sudo mkdir /mnt/cdrom**
-
+```
+sudo mkdir /mnt/cdrom
+```
 Run this command to mount the CD-ROM:
-
-**sudo mount /dev/cdrom /mnt/cdrom** or **sudo mount /dev/sr0 /mnt/cdrom**
-
+```
+sudo mount /dev/cdrom /mnt/cdrom** or **sudo mount /dev/sr0 /mnt/cdrom
+```
 The file name of the VMware Tools bundle varies depending on your version of the VMware product. Run this command to find the exact name:
-
-**ls /mnt/cdrom**
-
+```
+ls /mnt/cdrom
+```
 Run this command to extract the contents of the VMware Tools bundle:
-
-**tar xzvf /mnt/cdrom/VMwareTools-x.x.x-xxxx.tar.gz -C /tmp/** (Note: x.x.x-xxxx is the version discovered in the previous step)
-
+```
+tar xzvf /mnt/cdrom/VMwareTools-x.x.x-xxxx.tar.gz -C /tmp/
+```
+(Note: x.x.x-xxxx is the version discovered in the previous step)
 Run this command to change directories into the VMware Tools distribution:
-
-**cd /tmp/vmware-tools-distrib/**
+```
+cd /tmp/vmware-tools-distrib/
+```
 
 Run this command to install VMware Tools:
 
@@ -79,53 +86,59 @@ Run this command to reboot the virtual machine after the installation completes:
 
 **sudo reboot**
 
-## Now is a good time to create a snapshot to have a fallback in case something goes wrong ##
+ Now is a good time to create a snapshot to have a fallback in case something goes wrong 
 
 # installting Virtual Environment ##
  https://home-assistant.io/docs/installation/virtualenv/
 
 reconnect to your VM via Kitty and logon
+```
+sudo apt-get update
+sudo apt-get install python-pip python3-dev
+``` Press Y + enter on the question to install
 
-**sudo apt-get update**
-**sudo apt-get install python-pip python3-dev** Press Y + enter on the question to install
-**sudo pip install --upgrade virtualenv**
-
+install the virtual environment
+```sudo pip install --upgrade virtualenv
+```
 Add a user for home assistant 
+```
+sudo adduser --system homeassistant
+sudo addgroup homeassistant
+```
+If you plan to use a Z-Wave controller, you will need to add this user to the dialout group
+```
+sudo usermod -G dialout -a homeassistant
+```
+Create a directory for home assistant 
+```
+sudo mkdir /srv/homeassistant
+sudo chown homeassistant:homeassistant /srv/homeassistant
+```
+Become the new user
+```
+sudo su -s /bin/bash homeassistant
+```When acting as the user "homeassistant" sudo is not needed. 
 
-**sudo adduser --system homeassistant**
-**sudo addgroup homeassistant**
+setup the new virtual environment 
 
-- If you plan to use a Z-Wave controller, you will need to add this user to the dialout group
-
-**sudo usermod -G dialout -a homeassistant**
-
-- Create a directory for home assistant 
-
-**sudo mkdir /srv/homeassistant**
-**sudo chown homeassistant:homeassistant /srv/homeassistant**
-
-- Become the new user
-
-**sudo su -s /bin/bash homeassistant** When acting as the user "homeassistant" sudo is not needed. 
-
-- setup the new virtual environment 
-
-**virtualenv -p python3 /srv/homeassistant**
-
-- Activate the virtual environment
-
-**source /srv/homeassistant/bin/activate**
-
-- After that, your prompt should include (homeassistant).
-
-- Install home assistant! 
-
-(homeassistant)$ **pip3 install --upgrade homeassistant**
-
-- run home assistant!
-
-**exit** (to logout from the user)
-**sudo -u homeassistant -H /srv/homeassistant/bin/hass**
+```virtualenv -p python3 /srv/homeassistant
+```
+Activate the virtual environment
+```
+source /srv/homeassistant/bin/activate
+```
+After that, your prompt should include (homeassistant).
+Install home assistant! 
+```
+pip3 install --upgrade homeassistant
+```
+run home assistant
+```
+exit
+```(to logout from the user)
+```
+sudo -u homeassistant -H /srv/homeassistant/bin/hass
+```
 
 check that your configuration works by browsing to http://your.ip:8123 
 You will probably see some componenets popping up if you are running Plex media server or other services which HA can discover automatically. 
