@@ -696,3 +696,47 @@ $ sudo systemctl start home-assistant@homeassistant.service
 ``` 
 I needed to reboot the server to get everything working. 
 
+# Motorized curtains DIY 
+http://www.instructables.com/id/Motorized-WiFi-IKEA-Roller-Blind/?ALLSTEPS
+
+How to set-up your motorized curtains, the description included was not made for beginners so here's how i'm doing it, including adding it to HA and controlling it using the MQTT broker we set up earlier. 
+
+You will need a couple of things before beginning
+
+- NodeMCU flasher 
+https://github.com/nodemcu/nodemcu-flasher
+A win32 / win64 tool with an already compiled .exe to run. 
+
+- ESplorer  https://esp8266.ru/esplorer/ 
+direct download link: http://esp8266.ru/esplorer-latest/?f=ESPlorer.zip (if it changes, the link is at the main page)
+
+- Firmware https://nodemcu-build.com/
+add the following modules: file, GPIO, MQTT, net, node, PWM, timer, WiFi 
+
+**Flashing the firmware**
+
+Open the nodemcu-flasher (Drive:\nodemcu-flasher-master\Win64\Release\ESP8266Flasher.exe)
+Go to **advanced** and change **baudrate** to **115200**
+go to **config** and click the "wheel" and locate your firmware you receieved from nodemcu-build.com via email 
+Mine is called "nodemcu-master-8-modules-2017-03-10-17-15-00-float.bin" 
+Connect your NodeMCU ESP8266 to your computer via USB. 
+Install firmware if needed, should be automatic on windows 
+Go to **Operation** and choose the COM port which it is connected to (can be found in device manager under "ports (COM & LPT) and will probably be named something like "Silicon Labs CP210x USB to UART Bridge (**COM7**), its the COM part you need.
+Press **Flash(F)** 
+
+Wait for it to finish then disconnect, close the flash software and reconnect your ESP8266 to the USB cable. 
+After being reconnected, wait a minute for the device to restart, it's a bit slow and had me struggeling with re-flashing a couple of times before being able to use it. 
+Found this video that helped me: https://www.youtube.com/watch?v=nQrPckbvz2I 
+
+
+**Connecting with ESplorer**
+
+Run the **ESplorer.jar** 
+In the right window, top dropdown list, choose your COM port (COM7 for me)
+In the dropdown list next to **open** choose the **baudrade 115200** and click **Open**, wait a short while and it will connect (up to 20seconds) 
+
+
+
+
+
+
