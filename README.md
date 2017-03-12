@@ -324,7 +324,7 @@ Now that everything is up and working you can remove the previous snapshots to s
 Calling it "CleanInstall" 
 
 # Installing CEC support #
-Enabeling you to control your HDMI devices through your HDMI port, if you have the possibility to connect your server to your home theatre for example.
+Enabeling you to control your HDMI devices through your HDMI port, if you have the possibility to connect your server to your home theatre for example. You will need a USB -> Puls Eight adapter to do this, search ebay for "Pulse Eight USB" and find an adapter that could work, something like "Pulse-Eight USB - CEC Adapter, for Kodi, Plex, MediaPortal, emby etc"
 
 Im going to reuse the scripts compiled for Hassbian (installation on raspberry pi) 
  https://github.com/home-assistant/hassbian-scripts#the-included-scripts
@@ -341,7 +341,6 @@ start the script
 ```
 sudo sh installcec.sh
 ```
-Right now I have no way of verifying that it works because there needs to be a HDMI device present (either a graphics card with HDMI that you send with pass-through to your VM, or an HDMI CEC USB adapter, search ebay for "Pulse Eight USB" and find an adapter that could work, something like "Pulse-Eight USB - CEC Adapter, for Kodi, Plex, MediaPortal, emby etc"
 
 ## creating another snapshot ##
 calling it "BeforeZwaveinstallation" 
@@ -670,7 +669,7 @@ sudo git push -u origin master
 
 enter your github credentials, wait for the script to finish then check your repository 
 
-# Setting upp LIRC to use with USB-UIRT # 
+# Setting upp LIRC to use with USB-UIRT 
 https://home-assistant.io/components/lirc/
 
 ```
@@ -681,5 +680,19 @@ Im selecting USB-UIRT and USB-UIRT Direct TV reicever in the two lists you recei
 to be continued with how to set up your UIRT to receive/send IR commands. 
 
 
+# Uppgrading to newest version 
+https://home-assistant.io/docs/hassbian/upgrading/
 
+We can reuse the guide for hassbian but the script part might now work.
+Did a snapshot before upgrade called "workinginstall"
+
+```
+$ sudo systemctl stop home-assistant@homeassistant.service
+$ sudo su -s /bin/bash homeassistant
+$ source /srv/homeassistant/bin/activate
+$ pip3 install --upgrade homeassistant
+$ exit
+$ sudo systemctl start home-assistant@homeassistant.service
+``` 
+I needed to reboot the server to get everything working. 
 
