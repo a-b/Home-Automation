@@ -592,7 +592,7 @@ ens160: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 ```
 Changing \sensors\system_info_sensor.yaml to have arg: ens160, did not help, #return to solve#
 
-2. NMAP / ICM
+2. NMAP / ICMP
 - https://home-assistant.io/components/device_tracker.nmap_tracker/
 
 - missing dependencies for nmap and arp
