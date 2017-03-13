@@ -728,13 +728,17 @@ Wait for it to finish then disconnect, close the flash software and reconnect yo
 After being reconnected, wait a minute for the device to restart, it's a bit slow and had me struggeling with re-flashing a couple of times before being able to use it. 
 Found this video that helped me: https://www.youtube.com/watch?v=nQrPckbvz2I 
 
-
 **Connecting with ESplorer**
 
 Run the **ESplorer.jar** 
 In the right window, top dropdown list, choose your COM port (COM7 for me)
 In the dropdown list next to **open** choose the **baudrade 115200** and click **Open**, wait a short while and it will connect (up to 20seconds) 
 
+Resoldering the board. 
 
+
+update the config file to match HA settings (wifi, MQTT)
+Command to send mosquitto_pub -h 127.0.0.1 -u username -P password -t "homeassistant/cover/1/config" -m "20"
+command to subsribe to all topics: mosquitto_sub -h 127.0.0.1 -u username -P password -v -t '#'
 
 
