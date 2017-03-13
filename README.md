@@ -738,5 +738,3 @@ In the dropdown list next to **open** choose the **baudrade 115200** and click *
 
 
 
-
-
