@@ -736,6 +736,8 @@ In the dropdown list next to **open** choose the **baudrade 115200** and click *
 
 Resoldering the board. 
 
+![My image](martikainen87.github.com/homeassistant2.0/imgages/rollerblind_0.jpg)
+
 
 update the config file to match HA settings (wifi, MQTT)
 Command to send mosquitto_pub -h 127.0.0.1 -u username -P password -t "homeassistant/cover/1/config" -m "20"
