@@ -1,6 +1,0 @@
-platform: systemmonitor
-resources:
-  - type: network_in
-  - type: network_out
-  - type: processor_use
-  - type: last_boot

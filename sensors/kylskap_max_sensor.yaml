@@ -1,5 +1,5 @@
 platform: min_max
 entity_ids:
-  - sensor.frys_temperature
+  - sensor.kylskap_temperature
 name: 'Kylskap_max'
 type: max

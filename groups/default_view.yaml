@@ -3,16 +3,17 @@
     entities: 
       - sun.sun
       - sensor.balkong_temperature
+      - sensor.fibaro_system_fgms001zw5_motion_sensor_alarm_type_4_0
+      - sensor.fibaro_system_fgms001zw5_motion_sensor_burglar_4_10
       - sensor.yr_symbol
       - sensor.house_temperature_mean
       - device_tracker.malin_malin
-      - device_tracker.phone_mattias
+      - device_tracker.mqtt_mattias
       - group.hallway_card
       - group.kitchen_card
       - group.living_room_card
       - group.walk_in_closet_card
       - group.mancave_card
       - group.bedroom_card
-
-
+      - cover.mqtt_cover
       - camera.parking

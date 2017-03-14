@@ -1,0 +1,12 @@
+alias: rTorrent status
+trigger:
+  - platform: state
+    entity_id: device_tracker.rtorrentmartikainense
+    from: 'home'
+    to: 'not_home'
+action:
+  service: notify.pushbullet
+  data: 
+    title: 'rTorrent Offline'
+    target: 'device/Samsung' #See Pushbullet component for usage
+    message: "the VPN has disconnected"

@@ -1,0 +1,12 @@
+alias: Malin home
+trigger:
+  - platform: state
+    entity_id: device_tracker.malinsiphonemartikainense
+    from: 'home'
+    to: 'not_home'
+action:
+  service: notify.pushbullet
+  data: 
+    title: 'Malin är hemma'
+    target: 'device/Samsung' #See Pushbullet component for usage
+    message: "."

@@ -1,0 +1,10 @@
+  nas_card:
+    name: NAS
+    entities:
+      - sensor.nas_cpu_load
+      - sensor.nas_disk_use_2
+      - sensor.nas_disk_use
+      - sensor.nas_disk_free
+      - sensor.nas_ram_free
+      - sensor.nas_ram_use_2
+      - sensor.nas_ram_use

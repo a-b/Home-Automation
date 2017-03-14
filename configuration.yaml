@@ -62,6 +62,7 @@ mqtt:
   client_id: !secret mqtt_client_id
   username: !secret mqtt_username
   password: !secret mqtt_password
+  discovery: true
 
 zwave:
     usb_path: /dev/zwave
@@ -81,10 +82,3 @@ tellduslive:
   private_key: !secret telldus_private_key
   token: !secret telldus_token
   token_secret: !secret telldus_token_secret
-
-#HDMI CEC
-#hdmi_cec:
-#  devices:
-#    0: Projector
-#    1: Plex
-#    5: Onkyo Receiver

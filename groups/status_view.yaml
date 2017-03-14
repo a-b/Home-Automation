@@ -1,14 +1,24 @@
-  status_room_view:
+  status_view:
     name: Status
     view: yes
     entities: 
       - sensor.samsung_battery
-      - sensor.iphone_battery
-      - group.homeassistant_card
-      - group.tracker_card
-      - group.temperature_card
       - group.server_card
       - group.pc_card
       - group.plex_card
-      - group.transformer_card
-      - group.huwaei_card
+      - group.nas_card
+      - group.network_card
+      - group.temperature_card
+      - device_tracker.708bcda3b36
+      - device_tracker.a42bb0132439
+      - device_tracker.am335xoptmartikainense
+      - device_tracker.cc79cfe03ee6
+      - device_tracker.chromecastaudiomartikainense
+      - device_tracker.chromecastmartikainense
+      - device_tracker.eventghostmartikainense
+      - device_tracker.routerasuscom
+      - device_tracker.rtorrentmartikainense
+      - device_tracker.squeezeboxradiomartikainense
+      - device_tracker.vnasmartikainense
+      - device_tracker.pleximartikainense
+      - device_tracker.vardagsrummartikainense

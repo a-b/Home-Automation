@@ -1,0 +1,12 @@
+alias: ESXi Status
+trigger:
+  - platform: state
+    entity_id: device_tracker.708bcda3b360
+    from: 'home'
+    to: 'not_home'
+action:
+  service: notify.pushbullet
+  data: 
+    title: 'ESXi Offline'
+    target: 'device/Samsung' #See Pushbullet component for usage
+    message: "Fuuuuck"

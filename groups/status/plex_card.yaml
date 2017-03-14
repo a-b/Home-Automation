@@ -2,8 +2,6 @@
     name: Plex Server
     entities:
       - sensor.plex
-      - device_tracker.pleximartikainense
-      - device_tracker.vardagsrummartikainense
       - sensor.plexserver_cpu_load
       - sensor.plexserver_disk_use_2
       - sensor.plexserver_ram_use

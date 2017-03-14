@@ -1,10 +1,10 @@
-alias: "lights off in kitchen 10 minutes after last movement"
+alias: "lights off in kitchen 2 minutes after last movement"
 trigger:
   platform: state
   entity_id: switch.kitchen_motion_sensor
   to: 'off'
   for:
-    minutes: 10
+    minutes: 2
 action:
   service: homeassistant.turn_off
   entity_id: switch.kitchen_bench

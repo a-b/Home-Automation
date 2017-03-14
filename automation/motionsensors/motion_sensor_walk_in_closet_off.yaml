@@ -1,10 +1,10 @@
-alias: Turn off lights in walk in closet 10 minutes after last movement
+alias: Turn off lights in walk in closet 2 minutes after last movement
 trigger:
   platform: state
   entity_id: switch.walk_in_closet_motion_sensor
   to: 'off'
   for:
-    minutes: 10
+    minutes: 2
 action:
   service: homeassistant.turn_off
   entity_id: switch.closet_spotlights

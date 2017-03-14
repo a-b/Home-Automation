@@ -8,9 +8,6 @@ devices:
       - Temperature
   0a520901970001391c0259:
     name: Server
-    data_type:
-      - Humidity
-      - Temperature
   08500726e70000c979:
     name: Frys
   085007421b0000c879:
