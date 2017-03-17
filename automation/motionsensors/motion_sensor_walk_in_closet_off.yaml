@@ -1,4 +1,4 @@
-alias: Turn off lights in walk in closet 2 minutes after last movement
+alias: lights off in walk in closet 2 minutes after last movement
 trigger:
   platform: state
   entity_id: switch.walk_in_closet_motion_sensor

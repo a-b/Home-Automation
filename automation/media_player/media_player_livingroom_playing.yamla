@@ -1,0 +1,21 @@
+alias: "Media player Playing"
+trigger:
+  - platform: state
+    entity_id: media_player.vardagsrum
+    to: 'playing'
+    from: 'idle'
+condition:
+  - condition: state
+    entity_id: sun.sun
+    state: 'below_horizon'
+action:
+    service: switch.turn_on
+    entities:
+      - switch.buttkickers
+      - switch.subwoofer
+     service: switch.turn_off
+     entities:
+       - switch.tv_bench
+     service.cover.close
+     entities:
+       - cover.livingroom_curtains

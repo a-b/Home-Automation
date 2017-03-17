@@ -5,5 +5,6 @@
     - switch.livingroom_sofa
     - switch.tv_bench
     - switch.livingroom_window
-    - switch.livingroom_charger
+    - switch.huawei_charger
+    - sensor.huwaeibattery
     - cover.livingroom_curtains

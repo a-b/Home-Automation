@@ -1,5 +1,0 @@
-platform: min_max
-entity_ids:
-  - sensor.kylskap_temperature
-name: 'Kylskap_min'
-type: min

@@ -1,0 +1,11 @@
+alias: Server to warm
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.server_temperature
+    above: 30
+action:
+  service: notify.pushbullet
+  data_template:
+    title: "Servern är för varm"
+    target: 'device/Samsung'
+    message: "Temp:  {{ states.sensor.server_temperature.state }}  grader."

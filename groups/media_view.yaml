@@ -7,5 +7,3 @@
       - group.media_equipment_card
       - media_player.onkyo_receiver
       - media_player.vardagsrum
-      - media_player.video_bedroom
-      - media_player.sovrum_spotify

@@ -4,7 +4,7 @@ trigger:
     entity_id: updater.updater
 action:
   service: notify.pushbullet
-  data: 
+  data_template: 
     title: 'New Home Assistant Release'
-    target: 'device/Samsung' #See Pushbullet component for usage
+    target: 'device/Samsung'
     message: "Home Assistant  {{ states.updater.updater.state }}  is now available."

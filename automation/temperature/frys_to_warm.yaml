@@ -1,0 +1,11 @@
+alias: Frys to warm
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.frys_temperature
+    above: -15
+action:
+  service: notify.pushbullet
+  data_template:
+    title: 'Frysen ar for varm'
+    target: 'device/Samsung'
+    message: "Temp:  {{ states.sensor.frys_temperature.state }}  grader."

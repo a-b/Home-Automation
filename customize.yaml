@@ -1,9 +1,9 @@
   sensor.yr_symbol:
     friendly_name: Väder
 
-#  device_tracker.mqtt_mattias:
-#    friendly_name: Mattias
-#    entity_picture: /local/mattias.JPG
+  device_tracker.mqtt_mattias:
+    friendly_name: Mattias
+    entity_picture: /local/mattias.JPG
 
   device_tracker.malin_malin:
     friendly_name: Malin
@@ -20,36 +20,47 @@
   switch.bedroom_window:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
+
   switch.closet_spotlights:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
+
   switch.closet_window:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
+
   switch.hallway_desk:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
+
   switch.hallway_roof:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
+
   switch.kitchen_bench:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
+
   switch.kitchen_window:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
+
   switch.livingroom_sofa:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
+
   switch.livingroom_window:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
+
   switch.tv_bench:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
+
   switch.tvbench:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
+
   switch.mancave:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
@@ -59,6 +70,7 @@
   switch.huawei_charger:
     icon: mdi:battery-charging-20
     assumed_state: false
+
   switch.transformer_charger:
     icon: mdi:battery-charging-20
     assumed_state: false
@@ -67,8 +79,10 @@
 
   switch.kitchen_motion_sensor:
     entity_picture: /local/motionsensor.jpg
+
   switch.unused_modded_motion_sensor:
     entity_picture: /local/motionsensor.jpg
+
   switch.walk_in_closet_motion_sensor:
     entity_picture: /local/motionsensor.jpg
 
@@ -76,35 +90,18 @@
   sensor.kylskap_temperature:
     friendly_name: Kylskåp
     icon: mdi:fridge
-  sensor.kylskap_min_min:
-    friendly_name: kylskåp Min
-    icon: mdi:fridge
-  sensor.kylskap_max_max:
-    friendly_name: kylskåp Max
-    icon: mdi:fridge
 
 #### Frys Temperatur ####
   sensor.frys_temperature:
     friendly_name: Frys
     icon: mdi:fridge-filled
-  sensor.frys_min_min:
-    friendly_name: Frys Min
-    icon: mdi:fridge-filled
-  sensor.frys_max_max:
-    friendly_name: Frys Max
-    icon: mdi:fridge-filled
 
 #### Balkong Temperatur ### 
   sensor.balkong_temperature:
     friendly_name: Ute
-  sensor.balkong_max_max:
-    friendly_name: Ute Max
-  sensor.balkong_min_min:
-    friendly_name: Ute Min
 
 #### Vardagsrum Temperatur ####
-  sensor.vardagsrum_temperature:
-    friendly_name: Vardagsrum
+
 
 #### Sovrum Temperatur #####
   sensor.sovrum_temperature:
@@ -122,14 +119,17 @@
 #### Hall ####
   sensor.fibaro_system_fgms001zw5_motion_sensor_temperature_4_1:
     friendly_name: Hall
+
   sensor.fibaro_system_fgms001zw5_motion_sensor_alarm_type_4_0:
     friendly_name: Motion sensor
     device_class: motion
     entity_picture: /local/motionsensor.jpg
+
   sensor.fibaro_system_fgms001zw5_motion_sensor_burglar_4_10:
     friendly_name: Tamper Alarm
     device_class: motion
     entity_picture: /local/motionsensor.jpg
+
   sensor.fibaro_system_fgms001zw5_motion_sensor_luminance_4_3:
     friendly_name: Ljusnivå
     entity_picture: /local/luminance.png
@@ -144,14 +144,33 @@
   sensor.plex:
     friendly_name: Online Streams
     entity_picture: /local/plex.png
+
   sensor.plexserver_cpu_load:
     friendly_name: Load
     unit_of_measurement: "%"
     entity_picture: /local/cpu.png
+
+  sensor.plexserver_disk_use:
+    friendly_name: Usage
+    entity_picture: /local/ssd.jpg
+
+  sensor.plexserver_disk_free:
+    friendly_name: Usage
+    entity_picture: /local/ssd.jpg
+
   sensor.plexserver_disk_use_2:
     friendly_name: Usage
     entity_picture: /local/ssd.jpg
+
   sensor.plexserver_ram_use:
+    friendly_name: Usage
+    entity_picture: /local/ram.png
+
+  sensor.plexserver_ram_use_2:
+    friendly_name: Usage
+    entity_picture: /local/ram.png
+
+  sensor.plexserver_ram_free:
     friendly_name: Usage
     entity_picture: /local/ram.png
 
@@ -161,18 +180,41 @@
     friendly_name: Load
     unit_of_measurement: "%"
     entity_picture: /local/cpu.png
+
   sensor.nas_disk_use_2:
     friendly_name: Usage
     entity_picture: /local/ssd.jpg
+
+  sensor.nas_disk_use:
+    friendly_name: Usage
+    entity_picture: /local/ssd.jpg
+
+  sensor.nas_disk_free:
+    friendly_name: Free
+    entity_picture: /local/ssd.jpg
+
   sensor.nas_ram_use:
     friendly_name: Usage
     entity_picture: /local/ram.png
+
+  sensor.nas_ram_use_2:
+    friendly_name: Usage
+    entity_picture: /local/ram.png
+
+  sensor.nas_ram_free:
+    friendly_name: Free
+    entity_picture: /local/ram.png
+
 
 #### ESXI Server ####
 
   sensor.server_temperature:
     friendly_name: Temperature
     entity_picture: /local/cpu.png
+
+  sensor.server2_temperature:
+    friendly_name: Temperature
+    entity_picture: /local/ssd.jpg
 
   sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_3_0:
     friendly_name: Total Usage
@@ -187,6 +229,7 @@
   sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_2_0:
     friendly_name: Total usage
     entity_picture: /local/kwh.png
+
   sensor.fibaro_system_fgwpef_wall_plug_gen5_power_2_4:
     friendly_name: Current usage
     entity_picture: /local/watt.png
@@ -196,9 +239,11 @@
   sensor.speedtest_download:
     friendly name: Download Speed
     entity_picture: /local/download.png
+
   sensor.speedtest_upload:
     friendly name: Upload Speed
-    entity_picture: /local/Upload.png
+    entity_picture: /local/upload.png
+
   sensor.speedtest_ping:
     friendly_name: Ping
     entity_picture: /local/ping.png

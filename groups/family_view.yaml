@@ -2,5 +2,5 @@
     name: Familj
     view: yes
     entities: 
-      - group.malin_card
+#      - group.malin_card
       - group.mattias_card

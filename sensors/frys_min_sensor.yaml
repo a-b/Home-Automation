@@ -1,5 +1,0 @@
-platform: min_max
-entity_ids:
-  - sensor.frys_temperature
-name: 'Frys_min'
-type: min

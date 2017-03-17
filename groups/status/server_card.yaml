@@ -2,5 +2,6 @@
     name: Server Status
     entities:
       - sensor.server_temperature
+      - sensor.server2_temperature
       - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_3_4
       - sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_3_0

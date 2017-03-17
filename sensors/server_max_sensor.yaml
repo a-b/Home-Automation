@@ -1,5 +1,0 @@
-platform: min_max
-entity_ids:
-  - sensor.server_temperature
-name: 'Server_max'
-type: max
