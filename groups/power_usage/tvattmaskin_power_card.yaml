@@ -1,0 +1,5 @@
+  tvattmaskin_power_card:
+    name: Washing Machine
+    entities:
+      - sensor.tvattmaskin_power_9_8
+      - sensor.tvattmaskin_energy_9_0

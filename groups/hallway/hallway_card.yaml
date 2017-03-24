@@ -1,7 +1,6 @@
   hallway_card:
     name: Hall
     entities:
-      - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature_4_1
       - switch.hallway_desk
       - switch.hallway_roof
       - switch.transformer_charger

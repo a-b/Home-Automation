@@ -2,7 +2,7 @@ alias: Kylskap to warm
 trigger:
   - platform: numeric_state
     entity_id: sensor.kylskap_temperature
-    above: 12
+    above: 14
 action:
   service: notify.pushbullet
   data_template:

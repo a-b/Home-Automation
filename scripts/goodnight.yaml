@@ -1,0 +1,20 @@
+good_night:
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id:
+          - switch.buttkickers
+          - switch.subwoofer
+          - switch.livingroom_sofa
+          - switch.livingroom_window
+          - switch.tv_bench
+          - switch.closet_spotlights
+          - switch.closet_window
+          - switch.hallway_desk
+          - switch.hallway_roof
+          - switch.kitchen_bench
+          - switch.kitchen_window
+          - switch.mancave
+    - service: cover.close_cover
+      data:
+        entity_id: cover.bedroom_curtains

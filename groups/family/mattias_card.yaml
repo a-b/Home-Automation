@@ -1,5 +1,5 @@
   mattias_card:
     name: Mattias
     entities:
-      - device_tracker.phone_mattias
-      - camera.mattias_tracking
+      - device_tracker.mqtt_mattias
+      - camera.mattias

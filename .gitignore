@@ -20,3 +20,6 @@ ip_bans.yaml
 !/.gitignore
 config
 shell_commands
+shell_commands.yaml
+icloud
+images

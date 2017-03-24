@@ -1,0 +1,5 @@
+  frys_power_card:
+    name: Freezer
+    entities:
+      - sensor.frys_power_7_8
+      - sensor.frys_energy_7_0

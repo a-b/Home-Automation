@@ -2,7 +2,7 @@ alias: Server to warm
 trigger:
   - platform: numeric_state
     entity_id: sensor.server_temperature
-    above: 30
+    above: 35
 action:
   service: notify.pushbullet
   data_template:

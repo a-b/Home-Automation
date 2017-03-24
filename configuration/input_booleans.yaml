@@ -1,0 +1,4 @@
+washingmachine_busy:
+  name: Washingmachine Rinning
+  initial: off
+  icon: "mdi:arrow-right-drop-circle-outline"

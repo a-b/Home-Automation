@@ -1,8 +1,5 @@
   kitchen_card:
     name: Kök
     entities:
-      - sensor.kok_temperature
-      - sensor.kylskap_temperature
-      - sensor.frys_temperature
       - switch.kitchen_bench
       - switch.kitchen_window

@@ -1,10 +1,8 @@
   Living_room_card:
     name: Vardagsrum
     entities:
-    - sensor.vardagsrum_temperature
     - switch.livingroom_sofa
     - switch.tv_bench
     - switch.livingroom_window
     - switch.huawei_charger
     - sensor.huwaeibattery
-    - cover.livingroom_curtains

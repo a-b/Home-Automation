@@ -1,5 +1,5 @@
   pc_card:
     name: PC status
     entities:
-      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_2_4
-      - sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_2_0
+      - sensor.pc_power_2_4
+      - sensor.pc_energy_2_0

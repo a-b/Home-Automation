@@ -3,6 +3,6 @@ entity_ids:
   - sensor.kok_temperature
   - sensor.mancave_temperature
   - sensor.sovrum_temperature
-  - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature_4_1
+  - sensor.hall_temperature_4_1
 name: 'House_Temperature'
 type: mean

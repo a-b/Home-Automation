@@ -1,0 +1,8 @@
+alias: Washingmachine busy
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.tvattmaskin_power_9_8
+    below: 15
+action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.washingmachine_busy

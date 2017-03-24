@@ -1,9 +1,7 @@
   temperature_card:
     name: Temperatures
     entities:
-      - sensor.balkong_temperature
-      - sensor.fibaro_system_fgms001zw5_motion_sensor_temperature_4_1
-      - sensor.vardagsrum_temperature
+      - sensor.hall_temperature_4_1
       - sensor.sovrum_temperature
       - sensor.mancave_temperature
       - sensor.kok_temperature

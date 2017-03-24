@@ -1,0 +1,5 @@
+  tvsovrum_power_card:
+    name: Bedroom TV
+    entities:
+      - sensor.tvsovrum_power_5_8
+      - sensor.tvsovrum_energy_5_0

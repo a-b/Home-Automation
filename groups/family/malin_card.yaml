@@ -1,0 +1,5 @@
+  malin_card:
+    name: Malin
+    entities:
+      - device_tracker.mqtt_malin
+      - camera.malin

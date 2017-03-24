@@ -5,7 +5,7 @@ homeassistant:
   elevation: 33
   unit_system: metric
   time_zone: Europe/Stockholm
-  customize: !include customize.yaml
+  customize: !include configuration/customize.yaml
 
 http:
   api_password: !secret api_password
@@ -20,7 +20,6 @@ http:
 
 sensor: !include_dir_list sensors/
 switch: !include_dir_list switches/
-#media_player: !include_dir_list media_players/
 group: !include_dir_merge_named groups/
 zone: !include_dir_list zones/
 camera: !include_dir_list cameras/
@@ -28,8 +27,10 @@ light: !include_dir_list lights/
 cover: !include_dir_list covers/
 automation: !include_dir_list automation/
 device_tracker: !include_dir_list device_trackers/
-shell_command: !include shell_commands/shell_commands.yaml
-script: !include_dir_list scripts/
+shell_command: !include shell_commands.yaml
+script: !include_dir_merge_named scripts/
+media_player: !include_dir_list media_players/
+input_boolean: !include configuration/input_booleans.yaml
 
 #### Not in use yet #####
 #scene: !include_dir_lists scenes/
@@ -71,13 +72,11 @@ zwave:
 rfxtrx:
   device: /dev/rfxtrx
 
-#Notify
 notify:
   platform: pushbullet
   api_key: !secret pushbullet_password
   name: Pushbullet
 
-#Telldus Live
 tellduslive:
   public_key: !secret telldus_public_key
   private_key: !secret telldus_private_key

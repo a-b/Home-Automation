@@ -1,0 +1,14 @@
+alias: Washmingmachine done notification
+trigger:
+  - platform: state
+    entity_id: input_boolean.washingmachine_busy
+    from: 'on'
+    to: 'off'
+    for:
+      minutes: 5
+action:
+  service: notify.pushbullet
+  data: 
+    title: 'Tvätten klar'
+    target: 'device/Samsung' 
+    message: 'töm maskinen'

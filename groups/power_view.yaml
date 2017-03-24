@@ -1,0 +1,13 @@
+  power_view:
+    name: Power Usage
+    view: yes
+    entities: 
+      - group.pc_power_card
+      - group.server_power_card
+      - group.frys_power_card
+      - group.kyl_power_card
+      - group.sofa_power_card
+      - group.tvattmaskin_power_card
+      - group.tvsovrum_power_card
+      - group.unused1_power_card
+      - group.unused2_power_card

@@ -1,0 +1,3 @@
+  platform: icloud
+  username: mattias.martikainen@evry.com
+  password: !secret icloud_password

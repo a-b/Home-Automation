@@ -1,0 +1,5 @@
+  unused2_power_card:
+    name: Unused2
+    entities:
+      - sensor.unused2_power_11_8
+      - sensor.unused2_energy_11_0

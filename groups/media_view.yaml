@@ -5,5 +5,4 @@
       - group.living_room_card
       - group.bedroom_card
       - group.media_equipment_card
-      - media_player.onkyo_receiver
       - media_player.vardagsrum

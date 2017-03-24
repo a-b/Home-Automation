@@ -1,0 +1,3 @@
+  platform: icloud
+  username: mallutta86@gmail.com
+  password: !secret icloud_password2

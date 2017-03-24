@@ -137,7 +137,7 @@
 
 #### Inomhus Temperatur #####
   sensor.house_temperature_mean:
-    friendly_name: Inomhus
+    friendly_name: Inne
 
 ### PLEX Server ###
 
@@ -205,35 +205,6 @@
     friendly_name: Free
     entity_picture: /local/ram.png
 
-
-#### ESXI Server ####
-
-  sensor.server_temperature:
-    friendly_name: Temperature
-    entity_picture: /local/cpu.png
-
-  sensor.server2_temperature:
-    friendly_name: Temperature
-    entity_picture: /local/ssd.jpg
-
-  sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_3_0:
-    friendly_name: Total Usage
-    entity_picture: /local/kwh.png
-
-  sensor.fibaro_system_fgwpef_wall_plug_gen5_power_3_4:
-    friendly_name: Current usage
-    entity_picture: /local/watt.png
-
-##### PC #####
-
-  sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_2_0:
-    friendly_name: Total usage
-    entity_picture: /local/kwh.png
-
-  sensor.fibaro_system_fgwpef_wall_plug_gen5_power_2_4:
-    friendly_name: Current usage
-    entity_picture: /local/watt.png
-
 #### Network ####
 
   sensor.speedtest_download:
@@ -247,3 +218,95 @@
   sensor.speedtest_ping:
     friendly_name: Ping
     entity_picture: /local/ping.png
+
+#### ESXI Server ####
+
+  sensor.server_temperature:
+    friendly_name: Temperature
+    entity_picture: /local/cpu.png
+
+  sensor.server2_temperature:
+    friendly_name: Temperature
+    entity_picture: /local/ssd.jpg
+
+#### Power usage ####
+##Server 
+  sensor.server_energy_3_0:
+    friendly_name: Server Total Usage
+    entity_picture: /local/kwh.png
+
+  sensor.server_power_3_4:
+    friendly_name: Server Current usage
+    entity_picture: /local/watt.png
+
+##PC
+  sensor.pc_energy_2_0:
+    friendly_name: PC Total usage
+    entity_picture: /local/kwh.png
+
+  sensor.pc_power_2_4:
+    friendly_name: PC Current usage
+    entity_picture: /local/watt.png
+
+##Frys
+  sensor.frys_energy_7_0:
+    friendly_name: Freezer Total Usage
+    entity_picture: /local/kwh.png
+
+  sensor.frys_power_7_8:
+    friendly_name: Freezer Current usage
+    entity_picture: /local/watt.png
+
+##kyl
+  sensor.kyl_energy_8_0:
+    friendly_name: Fridge Total Usage
+    entity_picture: /local/kwh.png
+
+  sensor.kyl_power_8_8:
+    friendly_name: Fridge Current usage
+    entity_picture: /local/watt.png
+
+##sofa/projector
+  sensor.soffa_energy_6_0:
+    friendly_name: Projector Total Usage
+    entity_picture: /local/kwh.png
+
+  sensor.soffa_power_6_8:
+    friendly_name: Projector Current usage
+    entity_picture: /local/watt.png
+
+##Tvättmaskin
+  sensor.tvattmaskin_energy_9_0:
+    friendly_name: Washing Machine Total Usage
+    entity_picture: /local/kwh.png
+
+  sensor.tvattmaskin_power_9_8:
+    friendly_name: Washing Machine Current usage
+    entity_picture: /local/watt.png
+
+##TV Sovrum
+  sensor.tvsovrum_energy_5_0:
+    friendly_name: TV-Bedroom Total Usage
+    entity_picture: /local/kwh.png
+
+  sensor.tvsovrum_power_5_8:
+    friendly_name: TV-Bedroom Current usage
+    entity_picture: /local/watt.png
+
+##Unused1
+  sensor.unused1_energy_10_0:
+    friendly_name: Total Usage
+    entity_picture: /local/kwh.png
+
+  sensor.unused1_power_10_8:
+    friendly_name: Current usage
+    entity_picture: /local/watt.png
+
+##Unused1
+  sensor.unused2_energy_11_0:
+    friendly_name: Total Usage
+    entity_picture: /local/kwh.png
+
+  sensor.unused2_power_11_8:
+    friendly_name: Current usage
+    entity_picture: /local/watt.png
