@@ -18,22 +18,22 @@ http:
 #                                                  #
 ####################################################
 
-sensor: !include_dir_list sensors/
-switch: !include_dir_list switches/
-group: !include_dir_merge_named groups/
-zone: !include_dir_list zones/
-camera: !include_dir_list cameras/
-light: !include_dir_list lights/
-cover: !include_dir_list covers/
-automation: !include_dir_list automation/
-device_tracker: !include_dir_list device_trackers/
-shell_command: !include shell_commands.yaml
-script: !include_dir_merge_named scripts/
-media_player: !include_dir_list media_players/
+automation: !include_dir_list configuration/automation/
+device_tracker: !include_dir_list configuration/device_trackers/
+camera: !include_dir_list configuration/cameras/
+cover: !include_dir_list configuration/covers/
+group: !include_dir_merge_named configuration/groups/
 input_boolean: !include configuration/input_booleans.yaml
+light: !include_dir_list configuration/lights/
+media_player: !include_dir_list configuration/media_players/
+script: !include_dir_merge_named configuration/scripts/
+sensor: !include_dir_list configuration/sensors/
+switch: !include_dir_list configuration/switches/
+shell_command: !include configuration/shell_commands.yaml
+zone: !include_dir_merge_list configuration/zones/
 
-#### Not in use yet #####
-#scene: !include_dir_lists scenes/
+
+#scene: !include_dir_merge_lists configuration/scenes/
 
 
 ####################################################
@@ -50,6 +50,7 @@ config:
 sun:
 logger:
 recorder:
+  purge_days: 7
 
 ####################################################
 #                                                  #

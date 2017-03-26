@@ -1,0 +1,20 @@
+alias: 'Washer Done'
+trigger:
+  platform: state
+  entity_id: sensor.washer_pwrdn
+  from: 'False'
+  to: 'True'
+  for:
+    minutes: 3
+condition:
+    condition: state
+    entity_id: input_boolean.washer_switch
+    state: 'on'
+action:
+  - service: notify.pushbullet
+    data_template:
+      title: 'Tvätten klar'
+      target: 'device/Samsung' 
+      message: 'töm maskinen'
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.washer_switch

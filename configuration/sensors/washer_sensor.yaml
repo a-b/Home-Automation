@@ -1,0 +1,4 @@
+platform: template
+sensors:
+  washer_pwrdn:
+    value_template: "{{ states('sensor.tvattmaskin_power_9_8') | int < 3.4 }}"
