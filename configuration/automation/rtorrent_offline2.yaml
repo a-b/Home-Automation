@@ -1,7 +1,7 @@
 alias: rTorrent status
 trigger:
   - platform: state
-    entity_id: device_tracker.rtorrentmartikainense
+    entity_id: device_tracker.rtorrent
     from: 'home'
     to: 'not_home'
 action:

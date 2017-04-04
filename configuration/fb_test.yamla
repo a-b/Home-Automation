@@ -1,0 +1,11 @@
+alias: fb test
+trigger:
+  platform: state
+  entity_id: switch.mancave
+  from: 'off'
+  to: 'on'
+action:
+  service: notify.facebook
+  data:
+    message: "test"
+    target: '0046729744201'

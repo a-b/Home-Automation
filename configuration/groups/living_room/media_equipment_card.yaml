@@ -1,5 +1,7 @@
   media_equipment_card:
     name: Media Equipment
     entities:
+    - script.home_theatre_on
     - switch.buttkickers
     - switch.subwoofer
+    - script.home_theatre_off

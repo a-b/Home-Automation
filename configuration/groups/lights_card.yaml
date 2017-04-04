@@ -1,0 +1,14 @@
+  lights_card:
+    name: Lights
+    entities:
+      - switch.bedroom_window
+      - switch.hallway_desk
+      - switch.hallway_roof
+      - switch.kitchen_bench
+      - switch.kitchen_window
+      - switch.livingroom_sofa
+      - switch.livingroom_tvbench
+      - switch.livingroom_window
+      - switch.mancave
+      - switch.walkincloset_spotlights
+      - switch.walkincloset_window

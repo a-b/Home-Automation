@@ -4,8 +4,8 @@ trigger:
     entity_id: sensor.server_temperature
     above: 35
 action:
-  service: notify.pushbullet
+  service: notify.facebook
   data_template:
-    title: "Servern är för varm"
-    target: 'device/Samsung'
-    message: "Temp:  {{ states.sensor.server_temperature.state }}  grader."
+    message: "Servern är för varm, Temp:  {{ states.sensor.server_temperature.state }}  grader."
+    target:
+      - '0046729744201'

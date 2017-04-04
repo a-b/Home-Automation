@@ -1,0 +1,10 @@
+alias: "lights off in kitchen 1 minutes after last movement"
+trigger:
+  platform: state
+  entity_id: binary_sensor.hall_sensor_4_0
+  to: 'off'
+  for:
+    minutes: 5
+action:
+  service: automation.turn_on
+  entity_id: automation.magnet_sensor_front_door_on

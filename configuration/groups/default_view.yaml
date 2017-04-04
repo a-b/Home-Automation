@@ -6,13 +6,8 @@
       - sensor.house_temperature_mean
       - updater.updater
       - device_tracker.mqtt_malin
-      - device_tracker.mqtt_mattias
-      - group.hallway_card
-      - group.kitchen_card
-      - group.living_room_card
-      - group.walk_in_closet_card
-      - group.mancave_card
-      - group.bedroom_card
+      - device_tracker.mqtt_huawei
+      - group.lights_card
       - group.temperature_card
       - group.cover_card
       - group.tasks_card

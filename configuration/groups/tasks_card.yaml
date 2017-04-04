@@ -1,10 +1,8 @@
   tasks_card:
     name: tasks
     entities:
-      - switch.onkyo_power
       - script.good_morning
       - script.good_night
-      - script.home_theatre_off
-      - script.home_theatre_on
       - shell_command.plex_mount
       - script.plexmount
+      - light.toalett

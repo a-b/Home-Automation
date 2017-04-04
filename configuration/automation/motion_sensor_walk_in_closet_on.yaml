@@ -9,4 +9,4 @@ condition:
   state: 'below_horizon'
 action:
   service: homeassistant.turn_on
-  entity_id: switch.closet_spotlights
+  entity_id: switch.walkincloset_spotlights

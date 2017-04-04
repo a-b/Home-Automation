@@ -6,6 +6,6 @@ trigger:
 action:
   service: notify.pushbullet
   data_template:
-    title: 'Frysen ar for varm'
-    target: 'device/Samsung'
-    message: "Temp:  {{ states.sensor.frys_temperature.state }}  grader."
+    message: "frysen ar för varm, Temp:  {{ states.sensor.frys_temperature.state }}  grader."
+    target:
+      - '0046729744201'

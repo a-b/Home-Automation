@@ -11,10 +11,11 @@ condition:
     entity_id: input_boolean.washer_switch
     state: 'on'
 action:
-  - service: notify.pushbullet
-    data_template:
-      title: 'Tvätten klar'
-      target: 'device/Samsung' 
-      message: 'töm maskinen'
-  - service: input_boolean.turn_off
+  - service: notify.facebook
+    data:
+      message: 'Nu är tvätten klar!'
+      target:
+        - '0046729744201'
+        - '0046735166707'
+  - service: homeassistant.turn_off
     entity_id: input_boolean.washer_switch

@@ -2,7 +2,7 @@
     name: Vardagsrum
     entities:
     - switch.livingroom_sofa
-    - switch.tv_bench
+    - switch.livingroom_tvbench
     - switch.livingroom_window
     - switch.huawei_charger
     - sensor.huwaeibattery

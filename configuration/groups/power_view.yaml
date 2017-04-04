@@ -2,6 +2,8 @@
     name: Power Usage
     view: yes
     entities: 
+      - sensor.total_energy_used
+      - sensor.total_power_usage
       - group.pc_power_card
       - group.server_power_card
       - group.frys_power_card
@@ -9,5 +11,7 @@
       - group.sofa_power_card
       - group.tvattmaskin_power_card
       - group.tvsovrum_power_card
-      - group.unused1_power_card
+      - group.sovrum_power_card
       - group.unused2_power_card
+      - group.huawei_card
+      - group.transformer_card

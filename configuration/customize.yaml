@@ -21,11 +21,11 @@
     icon: mdi:lightbulb-on-outline
     assumed_state: false
 
-  switch.closet_spotlights:
+  switch.walkincloset_spotlights:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
 
-  switch.closet_window:
+  switch.walkincloset_window:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
 
@@ -53,11 +53,7 @@
     icon: mdi:lightbulb-on-outline
     assumed_state: false
 
-  switch.tv_bench:
-    icon: mdi:lightbulb-on-outline
-    assumed_state: false
-
-  switch.tvbench:
+  switch.livingroom_tvbench:
     icon: mdi:lightbulb-on-outline
     assumed_state: false
 
@@ -293,12 +289,12 @@
     friendly_name: TV-Bedroom Current usage
     entity_picture: /local/watt.png
 
-##Unused1
-  sensor.unused1_energy_10_0:
+##sovrum
+  sensor.sovrum_energy_10_0:
     friendly_name: Total Usage
     entity_picture: /local/kwh.png
 
-  sensor.unused1_power_10_8:
+  sensor.sovrum_power_10_8:
     friendly_name: Current usage
     entity_picture: /local/watt.png
 

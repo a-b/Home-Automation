@@ -1,0 +1,8 @@
+alias: Stopwatch stop
+trigger:
+  platform: state
+  entity_id: input_boolean.stopwatch
+  state: 'off'
+action:
+  - service: input_boolean.toggle
+    entity_id: input_boolean.dummy

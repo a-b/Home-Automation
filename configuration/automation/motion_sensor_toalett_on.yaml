@@ -1,0 +1,8 @@
+alias: "lights on in the toilet when motion sensor triggers"
+trigger:
+  platform: state
+  entity_id: switch.toalett_motion_sensor
+  to: 'on'
+action:
+  service: homeassistant.turn_on
+  entity_id: light.toalett

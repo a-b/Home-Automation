@@ -1,3 +1,0 @@
-  platform: icloud
-  username: !secret icloud_mail2
-  password: !secret icloud_password2

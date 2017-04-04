@@ -5,8 +5,8 @@ trigger:
     from: 'home'
     to: 'not_home'
 action:
-  service: notify.pushbullet
+  service: notify.facebook
   data: 
-    title: 'ESXi Offline'
-    target: 'device/Samsung' #See Pushbullet component for usage
-    message: "Fuuuuck"
+    message: "ESXi Offline"
+    target:
+      - '0046729744201'

@@ -74,12 +74,41 @@ rfxtrx:
   device: /dev/rfxtrx
 
 notify:
-  platform: pushbullet
-  api_key: !secret pushbullet_password
-  name: Pushbullet
+  - platform: pushbullet
+    api_key: !secret pushbullet_password
+    name: Pushbullet
+  - platform: facebook
+    name: facebook
+    page_access_token: !secret facebook_token
 
 tellduslive:
   public_key: !secret telldus_public_key
   private_key: !secret telldus_private_key
   token: !secret telldus_token
   token_secret: !secret telldus_token_secret
+
+panel_iframe:
+  torrent:
+    title: 'Torrent'
+    url: !secret panel_iframe1
+  plex:
+    title: 'Plex'
+    url: !secret panel_iframe2
+  plexpy:
+    title: 'PlexPy'
+    url: !secret panel_iframe3
+  grafana:
+    title: 'Grafana'
+    url: !secret panel_iframe4
+  influxdb:
+    title: 'InfluxDB'
+    url: !secret panel_iframe5
+
+#influxDB
+influxdb:
+  host: 192.168.1.128
+  port: 8086
+  database: db_homeassistant
+  default_measurement: state
+
+emulated_hue:

@@ -1,10 +1,10 @@
-alias: "Magnet sensor front door"
+alias: "Magnet sensor front door off"
 trigger:
   platform: state
   entity_id: switch.front_door_magnet
   to: 'off'
   for:
-    minutes: 10
+    minutes: 3
 action:
   service: homeassistant.turn_off
   entity_id: switch.hallway_roof

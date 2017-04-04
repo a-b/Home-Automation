@@ -3,7 +3,7 @@ automatic_add: true
 devices:
 ## Living room ###
   0b11000000570b1a03000070:
-    name: TV Bench 
+    name: Livingroom TV-Bench 
   0b1100170000501c01010f70:
     name: Huawei Charger
   0b110018000011eb01010f70:
@@ -21,9 +21,11 @@ devices:
 
 ## Walk in Closet ## 
   0b1100020000000101010f70:
-    name: Closet Spotlights
+    name: Walk-In-Closet Spotlights
   0b110003000059e001010f70:
-    name: Closet Window
+    name: Walk-In-Closet Window
+  0b110008007aa6260a010f70:
+    name: Walk in closet motion sensor
 
 ## Hallway ## 
   0b11000d0261809201000070:
@@ -40,8 +42,6 @@ devices:
     name: Kitchen Bench
   0b1100150322c16701010f70:
     name: Kitchen Window
-  0b11000200ae0f1e0a000050:
-    name: Kitchen Motion Sensor
   0b11002d009609d20a010f50:
     name: Kitchen pantry Magnet
     
@@ -49,17 +49,10 @@ devices:
   0b11000600007f3901000070:
     name: Bedroom Window
 
-## Unknown ## 
-
-  0b11000b0166b17a01040f70:
-    name: unknown1
-  0b11000b0167b18a01040f70:
-    name: unknown2
-  0b110017008260860b000060:
-    name: unknown3
   0b110021000d78d40a000060:
     name: Unused Magnet
   0b1100210115c8c60a010f70:
     name: Unused modded motion sensor
-  0b110008007aa6260a010f70:
-    name: Walk in closet motion sensor
+  
+  0b11004b00ae0f1e0a010f50:
+    name: Toalett motion sensor

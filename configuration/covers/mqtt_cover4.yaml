@@ -1,8 +1,8 @@
 
 platform: mqtt
-name: "MQTT Cover"
-state_topic: "homeassistant/cover/1/state"
-command_topic: "homeassistant/cover/1/config"
+name: "MQTT Cover4"
+state_topic: "homeassistant/cover/4/state"
+command_topic: "homeassistant/cover/4/config"
 payload_open: "10"
 payload_close: "20"
 state_open: "10"

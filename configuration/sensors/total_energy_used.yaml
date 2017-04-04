@@ -1,0 +1,13 @@
+platform: template
+sensors:
+  total_energy_used:
+    value_template: '{{ ((states.sensor.tvsovrum_energy_5_0.state | float) + 
+    (states.sensor.frys_energy_7_0.state | float) + 
+    (states.sensor.kyl_energy_8_0.state | float) + 
+    (states.sensor.pc_energy_2_0.state | float) + 
+    (states.sensor.server_energy_3_0.state | float) + 
+    (states.sensor.soffa_energy_6_0.state | float) + 
+    (states.sensor.sovrum_energy_10_0.state | float) + 
+    (states.sensor.tvattmaskin_energy_9_0.state | float)) | round(1) }}'
+    friendly_name: 'Total used'
+    unit_of_measurement: 'kWh'

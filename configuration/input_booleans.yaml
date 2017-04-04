@@ -2,3 +2,11 @@ washer_switch:
   name: Washingmachine Running
   initial: off
   icon: "mdi:arrow-right-drop-circle-outline"
+
+stopwatch:
+  name: Stopwatch
+  initial: off
+
+dummy:
+  name: Dummy
+  initial: off

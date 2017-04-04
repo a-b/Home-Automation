@@ -3,6 +3,4 @@ switches:
   onkyo_power:
     command_on: "/usr/local/bin/onkyo system-power=on"
     command_off: "/usr/local/bin/onkyo system-power=standby"
-    command_state: "/usr/local/bin/onkyo system-power=query"
     friendly_name: Onkyo Receiver
-    value_template: '{{ value == "on" }}'

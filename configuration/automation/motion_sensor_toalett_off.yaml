@@ -1,0 +1,10 @@
+alias: lights off in the toilet 30 seconds after last movement
+trigger:
+  platform: state
+  entity_id: switch.toalett_motion_sensor
+  to: 'off'
+  for:
+    seconds: 30
+action:
+  service: homeassistant.turn_off
+  entity_id: light.toalett

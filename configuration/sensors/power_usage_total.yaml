@@ -1,0 +1,15 @@
+platform: min_max
+entity_ids:
+  - sensor.unused2_power_11_8
+  - sensor.frys_power_7_8
+  - sensor.kyl_power_8_8
+  - sensor.pc_power_2_4
+  - sensor.server_power_3_4
+  - sensor.soffa_power_6_8
+  - sensor.sovrum_power_10_8
+  - sensor.tvattmaskin_power_9_8
+  - sensor.tvsovrum_power_5_8
+name: 'Power Usage'
+type: max
+
+

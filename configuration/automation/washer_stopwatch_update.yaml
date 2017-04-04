@@ -1,0 +1,11 @@
+alias: Stopwatch update
+trigger:
+  platform: time
+  seconds: '/1'
+condition:
+  condition: state
+  entity_id: input_boolean.stopwatch
+  state: 'on'
+action:
+  service: input_boolean.toggle
+  entity_id: input_boolean.dummy
