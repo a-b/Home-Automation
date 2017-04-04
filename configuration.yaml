@@ -106,9 +106,9 @@ panel_iframe:
 
 #influxDB
 influxdb:
-  host: 192.168.1.128
-  port: 8086
-  database: db_homeassistant
+  host: !secret influxdb_host
+  port: !secret influxdb_port
+  database: !secret influxdb_db
   default_measurement: state
 
 emulated_hue:
