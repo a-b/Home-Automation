@@ -1,5 +1,5 @@
   unused2_power_card:
-    name: Unused2
+    name: Hallway
     entities:
-      - sensor.unused2_power_11_8
-      - sensor.unused2_energy_11_0
+      - sensor.hall_power_11_8
+      - sensor.hall_energy_11_0

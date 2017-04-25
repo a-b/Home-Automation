@@ -2,8 +2,9 @@
     name: Cosy Lights
     entities:
       - switch.bedroom_window
-      - switch.closet_window
-      - switch.hallway_desk
+      - switch.sonoff_3
+      - switch.sonoff
+      - switch.sonoff_1
       - switch.kitchen_window
       - switch.livingroom_window
-      - switch.tvbench
+      - switch.livingroom_tvbench

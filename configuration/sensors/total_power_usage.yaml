@@ -8,6 +8,7 @@ sensors:
     (states.sensor.soffa_power_6_8.state | float) + 
     (states.sensor.sovrum_power_10_8.state | float) + 
     (states.sensor.tvattmaskin_power_9_8.state | float) + 
-    (states.sensor.tvsovrum_power_5_8.state | float)) | round(1) }}'
-    friendly_name: 'Total usage'
+    (states.sensor.hall_power_11_8.state | float) +
+    (states.sensor.tvsovrum_power_5_8.state | float)) | round(0) }}'
+    friendly_name: 'Current usage'
     unit_of_measurement: 'w'

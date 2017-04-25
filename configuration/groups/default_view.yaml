@@ -1,13 +1,16 @@
   default view:
     name: Home
+    view: yes
     entities: 
       - sensor.balkong_temperature
       - sensor.yr_symbol
       - sensor.house_temperature_mean
-      - updater.updater
       - device_tracker.mqtt_malin
       - device_tracker.mqtt_huawei
       - group.lights_card
       - group.temperature_card
       - group.cover_card
       - group.tasks_card
+      - group.lux_card
+      - media_player.spotify
+      - updater.updater

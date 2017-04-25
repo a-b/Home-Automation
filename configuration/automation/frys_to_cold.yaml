@@ -4,8 +4,8 @@ trigger:
     entity_id: sensor.frys_temperature
     below: -21
 action:
-  service: notify.pushbullet
-  data_template:
+  service: notify.facebook
+  data:
     message: "frysen ar for kall, Temp:  {{ states.sensor.frys_temperature.state }}  grader."
     target:
       - '0046729744201'

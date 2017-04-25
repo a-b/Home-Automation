@@ -3,6 +3,5 @@
     entities:
       - script.good_morning
       - script.good_night
-      - shell_command.plex_mount
-      - script.plexmount
-      - light.toalett
+      - script.home_theatre_on
+      - script.home_theatre_off

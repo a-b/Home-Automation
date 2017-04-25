@@ -3,7 +3,9 @@
     view: yes
     entities: 
       - sensor.total_energy_used
+      - sensor.total_energy_cost
       - sensor.total_power_usage
+      - sensor.total_power_cost
       - group.pc_power_card
       - group.server_power_card
       - group.frys_power_card
@@ -13,5 +15,3 @@
       - group.tvsovrum_power_card
       - group.sovrum_power_card
       - group.unused2_power_card
-      - group.huawei_card
-      - group.transformer_card

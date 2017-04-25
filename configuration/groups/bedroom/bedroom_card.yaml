@@ -1,4 +1,0 @@
-  bedroom_card:
-    name: Sovrum
-    entities:
-    - switch.bedroom_window

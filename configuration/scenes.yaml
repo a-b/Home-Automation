@@ -1,0 +1,13 @@
+  - name: toalett nighttime
+    entities: 
+      light.toalett:
+        state: on
+        transition: 2
+        brightness: 50
+
+  - name: toalett daytime
+    entities: 
+      light.toalett:
+        state: on
+        transition: 2
+        brightness: 200

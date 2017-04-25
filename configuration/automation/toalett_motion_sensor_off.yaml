@@ -1,7 +1,7 @@
 alias: lights off in the toilet 30 seconds after last movement
 trigger:
   platform: state
-  entity_id: switch.toalett_motion_sensor
+  entity_id: binary_sensor.toalett_sensor_24_0
   to: 'off'
   for:
     seconds: 30

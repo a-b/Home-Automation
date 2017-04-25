@@ -1,4 +1,0 @@
-  mancave_card:
-    name: Man Cave
-    entities:
-      - switch.mancave

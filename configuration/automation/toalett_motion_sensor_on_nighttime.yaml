@@ -1,0 +1,12 @@
+alias: "lights on in the toilet when motion sensor triggers daytime"
+trigger:
+  platform: state
+  entity_id: binary_sensor.toalett_sensor_24_0
+  to: 'on'
+condition:
+  condition: state
+  entity_id: sun.sun
+  state: 'below_horizon'
+action:
+  service: scene.turn_on
+  entity_id: scene.toalett_nighttime

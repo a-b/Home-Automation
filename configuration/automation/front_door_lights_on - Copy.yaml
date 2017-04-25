@@ -1,7 +1,7 @@
-alias: "lights on in kitchen when motion sensor triggers"
+alias: "Magnet sensor front door on"
 trigger:
   platform: state
-  entity_id: binary_sensor.kitchen_sensor_12_0
+  entity_id: binary_sensor.frontdoor_sensor_19_0
   to: 'on'
 condition:
   condition: state
@@ -9,4 +9,4 @@ condition:
   state: 'below_horizon'
 action:
   service: homeassistant.turn_on
-  entity_id: switch.kitchen_bench
+  entity_id: switch.hallway_roof

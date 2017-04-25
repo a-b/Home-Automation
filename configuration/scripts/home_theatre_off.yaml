@@ -14,3 +14,4 @@ home_theatre_off:
     - service: cover.open_cover
       data:
         entity_id: cover.livingroom_curtains
+    - service: shell_command.projector_off

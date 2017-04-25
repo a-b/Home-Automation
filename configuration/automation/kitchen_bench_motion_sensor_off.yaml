@@ -1,7 +1,7 @@
 alias: "lights off in kitchen 1 minutes after last movement"
 trigger:
   platform: state
-  entity_id: binary_sensor.kitchen_sensor_12_0
+  entity_id: binary_sensor.kitchen_sensor_25_0
   to: 'off'
   for:
     minutes: 1

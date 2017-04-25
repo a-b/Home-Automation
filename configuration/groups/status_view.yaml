@@ -9,6 +9,7 @@
       - group.nas_card
       - group.network_card
       - group.temperature_card
+      - group.transformer_card
       - device_tracker.708bcda3b36
       - device_tracker.a42bb0132439
       - device_tracker.am335xoptmartikainense

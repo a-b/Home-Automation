@@ -1,7 +1,7 @@
 alias: "lights on in walk in closet when motion sensor triggers"
 trigger:
   platform: state
-  entity_id: switch.walk_in_closet_motion_sensor
+  entity_id: binary_sensor.walkincloset_sensor_21_0
   to: 'on'
 condition:
   condition: state

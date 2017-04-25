@@ -61,6 +61,31 @@
     icon: mdi:lightbulb-on-outline
     assumed_state: false
 
+  switch.sonoff:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+    friendly_name: Walk In Closet Window
+
+  switch.sonoff_1:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+    friendly_name: hallway desk
+
+  switch.sonoff_2:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+    friendly_name: Walk in closet Spotlights
+
+  switch.sonoff_3:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+    friendly_name: sofa
+
+  switch.sonoff_4:
+    icon: mdi:lightbulb-on-outline
+    assumed_state: false
+    friendly_name: Bedroom Window
+
 #Chargers
 
   switch.huawei_charger:
@@ -298,11 +323,11 @@
     friendly_name: Current usage
     entity_picture: /local/watt.png
 
-##Unused1
-  sensor.unused2_energy_11_0:
+##Hall
+  sensor.hall_energy_11_0:
     friendly_name: Total Usage
     entity_picture: /local/kwh.png
 
-  sensor.unused2_power_11_8:
+  sensor.hall_power_11_8:
     friendly_name: Current usage
     entity_picture: /local/watt.png

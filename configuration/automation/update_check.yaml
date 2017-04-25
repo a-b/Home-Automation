@@ -1,0 +1,10 @@
+alias: Update notifications
+trigger:
+  - platform: state
+    entity_id: updater.updater
+action:
+  service: notify.facebook
+  data_template:
+    message: "Home Assistant  {{ states.updater.updater.state }}  is now available."
+    target:
+      - '0046729744201'

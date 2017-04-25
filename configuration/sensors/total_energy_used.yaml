@@ -8,6 +8,7 @@ sensors:
     (states.sensor.server_energy_3_0.state | float) + 
     (states.sensor.soffa_energy_6_0.state | float) + 
     (states.sensor.sovrum_energy_10_0.state | float) + 
-    (states.sensor.tvattmaskin_energy_9_0.state | float)) | round(1) }}'
+    (states.sensor.hall_energy_11_0.state | float) + 
+    (states.sensor.tvattmaskin_energy_9_0.state | float)) | round(0) }}'
     friendly_name: 'Total used'
     unit_of_measurement: 'kWh'

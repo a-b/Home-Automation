@@ -1,5 +1,0 @@
-  kitchen_card:
-    name: Kök
-    entities:
-      - switch.kitchen_bench
-      - switch.kitchen_window

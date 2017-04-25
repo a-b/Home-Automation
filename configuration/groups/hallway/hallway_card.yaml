@@ -1,7 +1,0 @@
-  hallway_card:
-    name: Hall
-    entities:
-      - switch.hallway_desk
-      - switch.hallway_roof
-      - switch.transformer_charger
-      - sensor.transformerbattery

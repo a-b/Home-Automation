@@ -4,8 +4,8 @@ trigger:
     entity_id: sensor.kylskap_temperature
     below: 5
 action:
-  service: notify.pushbullet
-  data_template: 
-    title: 'Kylskapet ar for kallt'
-    target: 'device/Samsung'
+  service: notify.facebook
+  data: 
     message: "Temp:  {{ states.sensor.kylskap_temperature.state }}  grader."
+    target:
+      - '0046729744201'

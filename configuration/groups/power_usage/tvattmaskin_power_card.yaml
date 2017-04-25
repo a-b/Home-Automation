@@ -4,4 +4,3 @@
       - sensor.tvattmaskin_power_9_8
       - sensor.tvattmaskin_energy_9_0
       - input_boolean.washer_switch
-      - sensor.stopwatch

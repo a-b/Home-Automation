@@ -1,0 +1,12 @@
+alias: "lights on in kitchen when motion sensor triggers"
+trigger:
+  platform: state
+  entity_id: binary_sensor.kitchen_sensor_25_0
+  to: 'on'
+condition:
+  condition: state
+  entity_id: sun.sun
+  state: 'below_horizon'
+action:
+  service: homeassistant.turn_on
+  entity_id: switch.kitchen_bench

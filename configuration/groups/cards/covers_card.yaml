@@ -3,7 +3,7 @@
     entities:
       - cover.livingroom_curtains
       - cover.bedroom_curtains
-      - cover.mqtt_cover1
-      - cover.mqtt_cover2
-      - cover.mqtt_cover3
-      - cover.mqtt_cover4
+#      - cover.mqtt_cover1
+#      - cover.mqtt_cover2
+#      - cover.mqtt_cover3
+#      - cover.mqtt_cover4

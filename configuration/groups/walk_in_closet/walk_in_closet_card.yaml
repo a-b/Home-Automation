@@ -1,5 +1,0 @@
-  walk_in_closet_card:
-    name: Walk-in Closet
-    entities:
-      - switch.walkincloset_window
-      - switch.walkincloset_spotlights
