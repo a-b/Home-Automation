@@ -1,8 +1,7 @@
 alias: "cosy lights on 45min before sunset"
 trigger:
-  platform: sun
-  event: sunset
-  offset: "-00:45:00"
+  platform: time
+  after: '18:00:00'
 action:
   service: homeassistant.turn_on
   entity_id: group.cosy_lights_card

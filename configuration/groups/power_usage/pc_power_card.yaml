@@ -3,3 +3,5 @@
     entities:
       - sensor.pc_power_2_4
       - sensor.pc_energy_2_0
+      - sensor.pc_power_cost
+      - sensor.pc_energy_cost

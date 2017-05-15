@@ -1,0 +1,6 @@
+platform: template
+sensors:
+  hallway_energy_cost:
+    value_template: '{{ ((states.sensor.hall_energy_11_0.state | float * 1.885)) | round(0) }}'
+    friendly_name: 'Total cost'
+    unit_of_measurement: 'kr'

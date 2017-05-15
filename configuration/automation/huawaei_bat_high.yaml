@@ -1,8 +1,0 @@
-alias: "Huwaei battery above 99"
-trigger:
-  platform: numeric_state
-  entity_id: sensor.huwaeibattery
-  above: 99
-action:
-  service: homeassistant.turn_off
-  entity_id: switch.huawei_charger

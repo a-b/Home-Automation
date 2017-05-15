@@ -1,5 +1,5 @@
 platform: mqtt
-name: "Sonoff 2"
+name: "Sonoff2"
 command_topic: "cmnd/sonoff2/power"
 state_topic: "stat/sonoff2/POWER"
 qos: 1

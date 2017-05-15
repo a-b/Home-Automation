@@ -4,9 +4,9 @@ trigger:
   entity_id: binary_sensor.toalett_sensor_24_0
   to: 'on'
 condition:
-  condition: state
-  entity_id: sun.sun
-  state: 'above_horizon'
+  condition: time
+  after: '08:00:00'
+  before: '18:00:00'
 action:
   service: scene.turn_on
   entity_id: scene.toalett_daytime

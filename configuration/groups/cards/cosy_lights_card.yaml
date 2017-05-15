@@ -1,10 +1,11 @@
   cosy_lights_card:
     name: Cosy Lights
     entities:
-      - switch.bedroom_window
-      - switch.sonoff_3
       - switch.sonoff
-      - switch.sonoff_1
-      - switch.kitchen_window
-      - switch.livingroom_window
-      - switch.livingroom_tvbench
+      - switch.sonoff1
+      - switch.sonoff3
+      - switch.sonoff10
+      - switch.sonoff6
+      - switch.sonoff12
+      - switch.sonoff8
+      - switch.sonoff11

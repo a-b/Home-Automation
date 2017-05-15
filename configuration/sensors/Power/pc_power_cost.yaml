@@ -1,0 +1,6 @@
+platform: template
+sensors:
+  pc_power_cost:
+    value_template: '{{ ((states.sensor.pc_power_2_4.state | float * 1 / 1000 *1.885)) | round(2) }}'
+    friendly_name: 'Current cost per hour'
+    unit_of_measurement: 'kr'

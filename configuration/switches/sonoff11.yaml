@@ -1,0 +1,8 @@
+platform: mqtt
+name: "Sonoff11"
+command_topic: "cmnd/sonoff11/power"
+state_topic: "stat/sonoff11/POWER"
+qos: 1
+payload_on: "ON"
+payload_off: "OFF"
+retain: true

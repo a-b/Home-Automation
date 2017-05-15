@@ -1,15 +1,17 @@
   lights_card:
     name: Lights
     entities:
-      - switch.sonoff_4
-      - switch.sonoff_1
+      - switch.sonoff4
+      - switch.sonoff6
+      - switch.sonoff1
       - switch.hallway_roof
-      - switch.kitchen_bench
-      - switch.kitchen_window
-      - switch.sonoff_3
-      - switch.livingroom_tvbench
-      - switch.livingroom_window
-      - switch.mancave
+      - switch.sonoff13
+      - switch.sonoff12
+      - switch.sonoff3
+      - switch.sonoff11
+      - switch.sonoff8
+      - switch.sonoff5
       - light.toalett
       - switch.sonoff
-      - switch.sonoff_2
+      - switch.sonoff2
+      - switch.sonoff10

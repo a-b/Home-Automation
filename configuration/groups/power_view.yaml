@@ -15,3 +15,4 @@
       - group.tvsovrum_power_card
       - group.sovrum_power_card
       - group.unused2_power_card
+      - input_boolean.washer_switch

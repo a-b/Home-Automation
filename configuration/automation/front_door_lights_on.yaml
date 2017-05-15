@@ -1,12 +1,11 @@
 alias: "Magnet sensor front door on"
 trigger:
   platform: state
-  entity_id: switch.front_door_magnet
+  entity_id: binary_sensor.frontdoor_sensor_19_0
   to: 'on'
 condition:
-  condition: state
-  entity_id: sun.sun
-  state: 'below_horizon'
+  platform: time
+  after: '18:00:00'
 action:
   service: homeassistant.turn_on
   entity_id: switch.hallway_roof

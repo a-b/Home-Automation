@@ -3,5 +3,5 @@
     entities:
     - script.home_theatre_on
     - script.home_theatre_off
-    - switch.buttkickers
-    - switch.subwoofer
+    - switch.sonoff7
+    - switch.sonoff9

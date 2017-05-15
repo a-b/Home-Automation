@@ -1,0 +1,8 @@
+alias: "kitchen bench button on"
+trigger:
+  platform: state
+  entity_id: switch.kitchen_bench_button
+  to: 'on'
+action:
+  service: homeassistant.turn_on
+  entity_id: switch.sonoff13

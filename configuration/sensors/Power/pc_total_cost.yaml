@@ -1,0 +1,6 @@
+platform: template
+sensors:
+  pc_energy_cost:
+    value_template: '{{ ((states.sensor.pc_energy_2_0.state | float * 1.885)) | round(0) }}'
+    friendly_name: 'Total cost'
+    unit_of_measurement: 'kr'

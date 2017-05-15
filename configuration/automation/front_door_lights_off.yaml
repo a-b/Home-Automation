@@ -1,7 +1,7 @@
 alias: "Magnet sensor front door off"
 trigger:
   platform: state
-  entity_id: switch.front_door_magnet
+  entity_id: binary_sensor.frontdoor_sensor_19_0
   to: 'off'
   for:
     minutes: 3

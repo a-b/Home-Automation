@@ -8,9 +8,10 @@
       - device_tracker.mqtt_malin
       - device_tracker.mqtt_huawei
       - group.lights_card
-      - group.temperature_card
       - group.cover_card
       - group.tasks_card
-      - group.lux_card
       - media_player.spotify
       - updater.updater
+      - binary_sensor.balkong_sensor_20_0
+      - binary_sensor.frontdoor_sensor_19_0
+      - shell_command.plex_reboot

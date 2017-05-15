@@ -5,4 +5,4 @@ trigger:
 action:
   - service: switch.turn_off
     data:
-      entity_id: switch.subwoofer
+      entity_id: switch.sonoff9

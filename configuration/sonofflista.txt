@@ -1,0 +1,15 @@
+Sonoff - Walk In Closet Fönster
+sonoff1 - bänk hall
+Sonoff2 - Walk In closet spotlights
+Sonoff3 - Soffa
+Sonoff4 - vardagsrum soffa
+Sonoff5 - mancave
+Sonoff6 - sovrum fönster2
+Sonoff7 - basskickers
+Sonoff8 - vardagsrum fönster
+Sonoff9 - baslåda
+Sonoff10 - vardagsrum byrå
+Sonoff11 - tv-bänk
+Sonoff12 - köksfönster
+Sonoff13 - Diskbänk
+Sonoff14 - 

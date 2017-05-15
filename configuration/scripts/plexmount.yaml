@@ -1,3 +1,0 @@
-plexmount:
-  sequence:
-    - service: shell_command.plex_mount

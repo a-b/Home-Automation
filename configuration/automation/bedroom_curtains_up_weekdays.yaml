@@ -1,7 +1,7 @@
-alias: "bedroom curtains up after 07:00 on weekdays"
+alias: "bedroom curtains up after 08:00 on weekdays"
 trigger:
   platform: time
-  after: '07:00:00'
+  after: '08:00:00'
 condition:
 - condition: time
   weekday:

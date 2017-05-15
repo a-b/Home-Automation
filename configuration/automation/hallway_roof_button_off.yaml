@@ -1,10 +1,8 @@
-alias: "Magnet sensor front door off"
+alias: "hallway_roof_button off"
 trigger:
   platform: state
-  entity_id: binary_sensor.frontdoor_sensor_19_0
+  entity_id: switch.hallway_roof_button
   to: 'off'
-  for:
-    minutes: 3
 action:
   service: homeassistant.turn_off
   entity_id: switch.hallway_roof

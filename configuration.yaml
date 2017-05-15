@@ -42,13 +42,13 @@ scene: !include configuration/scenes.yaml
 updater:
 discovery:
 history:
-logbook:
+#logbook:
 frontend:
 config:
 sun:
-logger:
-recorder:
-  purge_days: 7
+#logger:
+#recorder:
+#  purge_days: 3
 
 ####################################################
 #                                                  #
@@ -109,4 +109,5 @@ influxdb:
   database: !secret influxdb_db
   default_measurement: state
 
+#alexa controll
 emulated_hue:
