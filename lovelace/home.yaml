@@ -1,0 +1,1995 @@
+title: Hemma
+icon: mdi:home
+path: home
+
+#panel: true
+popup_cards:
+  sensor.mattias_status:
+    title: Mattias
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          entities:
+            - entity: sensor.mattias_status
+        - type: entities
+          entities:
+            - entity: sensor.mattias_address
+              name: Address
+              secondary_info: last-changed
+            - entity: device_tracker.mattias_phone
+              name: router and unifi
+              secondary_info: last-changed
+            - entity: device_tracker.google_maps_111971301097138355929
+              name: google maps
+              secondary_info: last-changed
+
+  sensor.malin_status:
+    title: Malin
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          entities:
+            - entity: sensor.malin_status
+        - type: entities
+          entities:
+            - device_tracker.malins_iphone
+            - device_tracker.malins_iphone_2
+            - sensor.malins_iphone_battery_level
+            - sensor.malins_iphone_battery_state
+
+  alarm_control_panel.grave_alarm:
+    title: Verisure
+    card:
+      type: custom:alarm_control_panel-card
+      entity: alarm_control_panel.grave_alarm
+      show_keypad: true
+      title: Verisure
+      style: '--alarm-color-disarmed: var(--label-badge-blue);'
+      scale: 15px
+      states:
+        - arm_home
+        - arm_away
+
+  sensor.dygn_status:
+    title: Dygnsperiod
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          entities:
+            - entity: sensor.dygn_status
+        - type: entities
+          entities:
+            - entity: sensor.dygn_status
+              secondary_info: last-changed
+
+  sensor.overvaning_rorelse:
+    title: Övervåning
+    card:
+      type: entities
+      entities:
+        - entity: binary_sensor.sovrum_rorelsesensor
+          name: Sovrum
+          secondary_info: last-changed
+        - entity: binary_sensor.tvrum_rorelsesensor
+          name: TVrum
+          secondary_info: last-changed
+        - entity: binary_sensor.gastrum_hoger_rorelsesensor
+          name: Gästrum Höger
+          secondary_info: last-changed
+        - entity: binary_sensor.gastrum_vanster_rorelsesensor
+          name: Gästrum Vänster
+          secondary_info: last-changed
+
+  sensor.all_doors_check:
+    title: Dörrar
+    card:
+      type: entities
+      entities:
+        - entity: sensor.front_door_magnet_status
+          secondary_info: last-changed
+        - entity: sensor.balcony_door_magnet_status
+          secondary_info: last-changed
+        - entity: sensor.uterum_door_magnet_status
+          secondary_info: last-changed
+        - entity: sensor.kitchen_door_magnet_status
+          secondary_info: last-changed
+        - entity: sensor.kladkammare_door_magnet_status
+          secondary_info: last-changed
+        - entity: sensor.laundry_room_door_magnet_status
+          secondary_info: last-changed
+        - entity: sensor.garage_door_magnet_status
+          secondary_info: last-changed
+
+##GARAGE
+
+  cover.garageport:
+    title: Garage
+    card:
+      type: vertical-stack
+      cards:
+        - type: entities
+          entities:
+            - entity: light.garage_takbelysning
+              name: Tak
+              secondary_info: last-changed
+        - type: picture-entity
+          entity: camera.garage
+          camera_image: camera.garage
+          camera_view: live
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: cover.garageport
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'open'
+                  icon: mdi:arrow-up-bold-outline
+                  color: rgb(251, 210, 41)
+                - value: 'closed'
+                  icon: mdi:arrow-up-bold-outline
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+              tap_action:
+                action: call-service
+                service: cover.open_cover
+                service_data:
+                  entity_id: cover.garageport
+            - type: custom:button-card
+              entity: cover.garageport
+              icon: mdi:stop
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              tap_action:
+                action: call-service
+                service: cover.stop_cover
+                service_data:
+                  entity_id: cover.garageport
+            - type: custom:button-card
+              entity: cover.garageport
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'closed'
+                  icon: mdi:arrow-down-bold-outline
+                  color: rgb(251, 210, 41)
+                - value: 'open'
+                  icon: mdi:arrow-down-bold-outline
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+              tap_action:
+                action: call-service
+                service: cover.close_cover
+                service_data:
+                  entity_id: cover.garageport
+###Garaget###
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.temperature_158d0001ab2a61
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.humidity_158d0001ab2a61
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.door_window_sensor_158d0001a4a844
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:door-open
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:door
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+            - type: custom:button-card
+              entity: binary_sensor.motion_sensor_158d0002b9357b
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+### Förrådet###
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.temperature_158d0001ab2bb4
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.humidity_158d0001ab2bb4
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.door_window_sensor_158d000273b993
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:door-open
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:door
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+            - type: custom:button-card
+              entity: binary_sensor.motion_sensor_158d0002b7b2c1
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: binary_sensor.smoke_sensor_158d0001db7b52
+              show_state: false
+              show_icon: true
+              show_name: false
+              state:
+                - value: 'on'
+                  icon: mdi:fire
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:fire
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+            - type: custom:button-card
+              entity: binary_sensor.motion_sensor_158d0002b8f5cf
+              show_state: false
+              show_icon: true
+              show_name: false
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+
+  sensor.bottenvaning_rorelse:
+    title: Bottenvåning
+    card:
+      type: vertical-stack
+      cards:
+        - type: entities
+          entities:
+            - entity: binary_sensor.kontor_rorelsesensor
+              name: Kontor
+              secondary_info: last-changed
+            - entity: binary_sensor.hemmabio_rorelsesensor
+              name: Hemmabio
+              secondary_info: last-changed
+            - entity: binary_sensor.hall_rorelsesensor
+              name: Hall
+              secondary_info: last-changed
+            - entity: binary_sensor.hall_2_rorelsesensor
+              name: Hall
+              secondary_info: last-changed
+            - entity: binary_sensor.kok_rorelsesensor
+              name: Kök
+              secondary_info: last-changed
+            - entity: binary_sensor.tvattstuga_rorelsesensor
+              name: Tvättstuga
+              secondary_info: last-changed
+            - entity: binary_sensor.uterum_rorelsesensor
+              name: Uterum
+              secondary_info: last-changed
+              
+
+  sensor.all_windows_check:
+    title: Fönster
+    card:
+      type: entities
+      entities:
+        - entity: sensor.toilett_window_magnet_status
+          secondary_info: last-changed
+        - entity: sensor.office_left_window_magnet_status
+          secondary_info: last-changed
+        - entity: sensor.office_right_window_magnet_status
+          secondary_info: last-changed
+        - entity: sensor.kitchen_left_window_magnet_status
+          secondary_info: last-changed
+        - entity: sensor.kitchen_right_window_magnet_status
+          secondary_info: last-changed
+
+  binary_sensor.am8_printing:
+    title: 3D Printer
+    card:
+      type: vertical-stack
+      cards:
+        - type: picture-entity
+          entity: camera.am8_camera
+          camera_image: camera.am8_camera
+          camera_view: live
+        - type: entities
+          entities:
+            - entity: sensor.am8_actual_tool0_temp
+              secondary_info: last-changed
+              name: Hotend
+            - entity: sensor.am8_actual_bed_temp
+              secondary_info: last-changed
+              name: Bed
+            - entity: sensor.am8_job_percentage
+              secondary_info: last-changed
+              name: Progress
+            - entity: sensor.octoprint_time_remaining
+              secondary_info: last-changed
+              name: Time Remaining
+
+  sensor.inomhus_temperatur:
+    title: Temperatur
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          title: Senaste 3 dygnen
+          hours_to_show: 72
+          entities:
+            - sensor.inomhus_temperatur
+        - type: entities
+          entities:
+            - entity: sensor.badrum_temperatur
+              secondary_info: last-changed
+              name: Badrum
+            - entity: sensor.gastrum_hoger_temperatur
+              secondary_info: last-changed
+              name: Gästrum Höger
+            - entity: sensor.gastrum_vanster_temperatur
+              secondary_info: last-changed
+              name: Gästrum Vänster
+            - entity: sensor.hall_temperatur
+              secondary_info: last-changed
+              name: Hall
+            - entity: sensor.hemmabio_temperatur
+              secondary_info: last-changed
+              name: Hemmabio
+            - entity: sensor.kontor_temperatur
+              secondary_info: last-changed
+              name: Kontor
+            - entity: sensor.kok_temperatur
+              secondary_info: last-changed
+              name: Kök
+            - entity: sensor.sovrum_temperatur
+              secondary_info: last-changed
+              name: Sovrum
+            - entity: sensor.tvrum_temperatur
+              secondary_info: last-changed
+              name: TVrum
+            - entity: sensor.tvattstuga_temperatur
+              secondary_info: last-changed
+              name: Tvättstuga
+
+  sensor.yr_temperature:
+    title: Temp
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          title: Senaste 3 dygnen
+          hours_to_show: 72
+          entities:
+            - sensor.yr_temperature
+            - sensor.uterum_temperatur
+            - sensor.vaxthus
+            - sensor.inomhus_temperatur
+        - type: entities
+          entities:
+            - entity: sensor.uterum_temperatur
+              secondary_info: last-changed
+              name: Uterum
+            - entity: sensor.vaxthus
+              secondary_info: last-changed
+              name: Växthus
+
+
+  sensor.information_status:
+    title: Information
+    card:
+      type: vertical-stack
+      cards:
+        - type: entities
+          entities:
+            - entity: sensor.information_sensor
+              secondary_info: last-changed
+              name: Status
+
+
+  light.sovrum:
+    title: Sovrum
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: light.sovrum
+              show_icon: false
+              name: 'Av'
+              tap_action:
+                action: call-service
+                service: light.turn_off
+                service_data:
+                  entity_id: light.sovrum
+            - type: "custom:button-card"
+              entity: light.sovrum
+              show_icon: false
+              name: 'På'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.sovrum
+                  color_temp: 255
+                  brightness: 255
+            - type: "custom:button-card"
+              entity: light.sovrum
+              show_icon: false
+              name: 'Mys'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.sovrum
+                  color_temp: 348
+                  brightness: 103
+        - type: entities
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.sovrum_tak_1
+              name: Tak
+              toggle: false
+              hide_state: true
+            - entity: light.sovrumsfonster
+              name: Fönster
+            - entity: light.mattias_sanglampa
+              name: Mattias
+            - entity: light.malin_sanglampa
+              name: Malin
+            - entity: light.balkong
+              name: Balkong
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: cover.sovrum
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'open'
+                  icon: mdi:arrow-up-bold-outline
+                  color: rgb(251, 210, 41)
+                - value: 'closed'
+                  icon: mdi:arrow-up-bold-outline
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+              tap_action:
+                action: call-service
+                service: cover.open_cover
+                service_data:
+                  entity_id: cover.sovrum
+            - type: custom:button-card
+              entity: sensor.cover_sovrum
+              show_state: false
+              show_icon: false
+              show_name: true
+              name: 50%
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: '49'
+                  styles:
+                    name:
+                      - color: rgb(251, 210, 41)
+              tap_action:
+                action: call-service
+                service: cover.set_cover_position
+                service_data:
+                  entity_id: cover.sovrum
+                  position: 50
+            - type: custom:button-card
+              entity: cover.sovrum
+              icon: mdi:stop
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              tap_action:
+                action: call-service
+                service: cover.stop_cover
+                service_data:
+                  entity_id: cover.sovrum
+            - type: custom:button-card
+              entity: cover.sovrum
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'closed'
+                  icon: mdi:arrow-down-bold-outline
+                  color: rgb(251, 210, 41)
+                - value: 'open'
+                  icon: mdi:arrow-down-bold-outline
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+              tap_action:
+                action: call-service
+                service: cover.close_cover
+                service_data:
+                  entity_id: cover.sovrum
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.sovrum_temperatur
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.sovrum_fukt
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.balkong_dorr
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:door-open
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:door
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+            - type: custom:button-card
+              entity: binary_sensor.sovrum_rorelsesensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: custom:mini-media-player
+          entity: media_player.sovrum_speaker
+          name: Sovrum
+          power_color: true
+          volume_stateless: true
+          artwork_border: true
+          short_info: true
+          show_progress: true
+          show_source: true
+          icon: mdi:google-home
+
+  light.gastrum_vanster:
+    title: Gästrum Vänster
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: light.gastrum_vanster
+              show_icon: false
+              name: 'Av'
+              tap_action:
+                action: call-service
+                service: light.turn_off
+                service_data:
+                  entity_id: light.gastrum_vanster
+            - type: "custom:button-card"
+              entity: light.gastrum_vanster
+              show_icon: false
+              name: 'På'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.gastrum_vanster
+                  color_temp: 255
+                  brightness: 255
+            - type: "custom:button-card"
+              entity: light.gastrum_vanster
+              show_icon: false
+              name: 'Mys'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.gastrum_vanster
+                  color_temp: 348
+                  brightness: 103
+        - type: entities
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.gastrum_vanster_fonster
+              name: Fönster
+              hide_state: true
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.gastrum_vanster_temperatur
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.gastrum_vanster_fukt
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.gastrum_vanster_rorelsesensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+
+  light.gastrum_hoger:
+    title: Gästrum Höger
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: light.gastrum_hoger
+              show_icon: false
+              name: 'Av'
+              tap_action:
+                action: call-service
+                service: light.turn_off
+                service_data:
+                  entity_id: light.gastrum_hoger
+            - type: "custom:button-card"
+              entity: light.gastrum_hoger
+              show_icon: false
+              name: 'På'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.gastrum_hoger
+                  color_temp: 255
+                  brightness: 255
+            - type: "custom:button-card"
+              entity: light.gastrum_hoger
+              show_icon: false
+              name: 'Mys'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.gastrum_hoger
+                  color_temp: 348
+                  brightness: 103
+        - type: entities
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.gastrum_hoger_fonster
+              name: Fönster
+              hide_state: true
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.gastrum_vanster_temperatur
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.gastrum_vanster_fukt
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.gastrum_vanster_rorelsesensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+
+  light.hall:
+    title: Hall
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: light.hall
+              show_icon: false
+              name: 'Av'
+              tap_action:
+                action: call-service
+                service: light.turn_off
+                service_data:
+                  entity_id: light.hall
+            - type: "custom:button-card"
+              entity: light.hall
+              show_icon: false
+              name: 'På'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.hall
+                  color_temp: 255
+                  brightness: 255
+            - type: "custom:button-card"
+              entity: light.hall
+              show_icon: false
+              name: 'Mys'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.hall
+                  color_temp: 348
+                  brightness: 103
+        - type: entities
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.hall_taklampa
+              name: Tak
+              hide_state: true
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.hall_temperatur
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.hall_fukt
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.hall_brandlarm
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:fire
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:fire
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: binary_sensor.hall_rorelsesensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+            - type: custom:button-card
+              entity: binary_sensor.hall_2_rorelsesensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+            - type: custom:button-card
+              entity: binary_sensor.hus_ytterdorr
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:door-open
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:door
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: custom:mini-media-player
+          entity: media_player.hall_speaker
+          name: Hall
+          power_color: true
+          volume_stateless: true
+          artwork_border: true
+          short_info: true
+          show_progress: true
+          show_source: true
+          icon: mdi:google-home
+
+  light.hemmabio_lights:
+    title: Hemmabio
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: light.hemmabio_lights
+              show_icon: false
+              name: 'Av'
+              tap_action:
+                action: call-service
+                service: light.turn_off
+                service_data:
+                  entity_id: light.hemmabio_lights
+            - type: "custom:button-card"
+              entity: light.hemmabio_lights
+              show_icon: false
+              name: 'På'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.hemmabio_lights
+                  color_temp: 255
+                  brightness: 255
+            - type: "custom:button-card"
+              entity: light.hemmabio_lights
+              show_icon: false
+              name: 'Mys'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.hemmabio_lights
+                  color_temp: 348
+                  brightness: 103
+        - type: entities
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.hemmabio_spotlight
+              name: Spotlights
+              hide_state: true
+            - type: custom:slider-entity-row
+              entity: light.vardagsrum_fonster
+              name: Fönster
+              hide_state: true
+            - entity: light.hemmabio_bank
+              name: Bänk
+              hide_state: true
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: cover.hemmabio
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'open'
+                  icon: mdi:arrow-up-bold-outline
+                  color: rgb(251, 210, 41)
+                - value: 'closed'
+                  icon: mdi:arrow-up-bold-outline
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+              tap_action:
+                action: call-service
+                service: cover.open_cover
+                service_data:
+                  entity_id: cover.hemmabio
+            - type: custom:button-card
+              entity: sensor.cover_hemmabio
+              show_state: false
+              show_icon: false
+              show_name: true
+              name: 50%
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: '49'
+                  styles:
+                    name:
+                      - color: rgb(251, 210, 41)
+              tap_action:
+                action: call-service
+                service: cover.set_cover_position
+                service_data:
+                  entity_id: cover.hemmabio
+                  position: 50
+            - type: custom:button-card
+              entity: cover.hemmabio
+              icon: mdi:stop
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              tap_action:
+                action: call-service
+                service: cover.stop_cover
+                service_data:
+                  entity_id: cover.hemmabio
+            - type: custom:button-card
+              entity: cover.hemmabio
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'closed'
+                  icon: mdi:arrow-down-bold-outline
+                  color: rgb(251, 210, 41)
+                - value: 'open'
+                  icon: mdi:arrow-down-bold-outline
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+              tap_action:
+                action: call-service
+                service: cover.close_cover
+                service_data:
+                  entity_id: cover.hemmabio
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.hemmabio_temperatur
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.hemmabio_fukt
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.hemmabio_rorelsesensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: binary_sensor.uterum_dorr
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:door-open
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:door
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+            - type: "custom:button-card"
+              color_type: blank-card
+            - type: custom:button-card
+              entity: binary_sensor.hemmabio_brandlarm
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:fire
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:fire
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: custom:mini-media-player
+          entity: media_player.hemmabio_speaker
+          name: Hemmabio
+          power_color: true
+          volume_stateless: true
+          artwork_border: true
+          short_info: true
+          show_progress: true
+          show_source: true
+          icon: mdi:google-home
+        - type: custom:mini-media-player
+          entity: media_player.hemmabio
+          name: Plex
+          power_color: true
+          volume_stateless: true
+          artwork_border: true
+          short_info: true
+          show_progress: true
+          show_source: true
+          icon: mdi:plex
+
+  light.kontor:
+    title: Kontor
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: light.kontor
+              show_icon: false
+              name: 'Av'
+              tap_action:
+                action: call-service
+                service: light.turn_off
+                service_data:
+                  entity_id: light.kontor
+            - type: "custom:button-card"
+              entity: light.kontor
+              show_icon: false
+              name: 'På'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.kontor
+                  color_temp: 255
+                  brightness: 255
+            - type: "custom:button-card"
+              entity: light.kontor
+              show_icon: false
+              name: 'Mys'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.kontor
+                  color_temp: 348
+                  brightness: 103
+        - type: entities
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.kontor_fonster
+              name: Fönster
+              hide_state: true
+            - type: custom:slider-entity-row
+              entity: light.kontor_taklampa
+              name: Tak
+              hide_state: true
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: cover.kontor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'open'
+                  icon: mdi:arrow-up-bold-outline
+                  color: rgb(251, 210, 41)
+                - value: 'closed'
+                  icon: mdi:arrow-up-bold-outline
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+              tap_action:
+                action: call-service
+                service: cover.open_cover
+                service_data:
+                  entity_id: cover.kontor
+            - type: custom:button-card
+              entity: sensor.cover_kontor
+              show_state: false
+              show_icon: false
+              show_name: true
+              name: 50%
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: '49'
+                  styles:
+                    name:
+                      - color: rgb(251, 210, 41)
+              tap_action:
+                action: call-service
+                service: cover.set_cover_position
+                service_data:
+                  entity_id: cover.kontor
+                  position: 50
+            - type: custom:button-card
+              entity: cover.kontor
+              icon: mdi:stop
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              tap_action:
+                action: call-service
+                service: cover.stop_cover
+                service_data:
+                  entity_id: cover.kontor
+            - type: custom:button-card
+              entity: cover.kontor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'closed'
+                  icon: mdi:arrow-down-bold-outline
+                  color: rgb(251, 210, 41)
+                - value: 'open'
+                  icon: mdi:arrow-down-bold-outline
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+              tap_action:
+                action: call-service
+                service: cover.close_cover
+                service_data:
+                  entity_id: cover.kontor
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.kontor_temperatur
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.kontor_fukt
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.kontor_rorelsesensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: binary_sensor.kontor_fonster_vanster
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:window-open
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:window-closed
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+            - type: "custom:button-card"
+              color_type: blank-card
+            - type: custom:button-card
+              entity: binary_sensor.kontor_fonster_hoger
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:window-open
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:window-closed
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: custom:mini-media-player
+          entity: media_player.kontor
+          name: Kontor
+          power_color: true
+          volume_stateless: true
+          artwork_border: true
+          short_info: true
+          show_progress: true
+          show_source: true
+          icon: mdi:google-home
+
+  light.kok:
+    title: Kök
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: light.kok
+              show_icon: false
+              name: 'Av'
+              tap_action:
+                action: call-service
+                service: light.turn_off
+                service_data:
+                  entity_id: light.kok
+            - type: "custom:button-card"
+              entity: light.kok
+              show_icon: false
+              name: 'På'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.kok
+                  color_temp: 255
+                  brightness: 255
+            - type: "custom:button-card"
+              entity: light.kok
+              show_icon: false
+              name: 'Mys'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.kok
+                  color_temp: 348
+                  brightness: 103
+        - type: entities
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.koksbank_lightstrip
+              name: Bänk
+              hide_state: true
+            - type: custom:slider-entity-row
+              entity: light.kok_fonster
+              name: Fönster
+              hide_state: true
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.kok_temperatur
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.kok_fukt
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.kok_rorelsesensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: binary_sensor.kok_fonster_vanster
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:window-open
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:window-closed
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+            - type: custom:button-card
+              entity: binary_sensor.altan_dorr_kok
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:door-open
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:door
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+            - type: custom:button-card
+              entity: binary_sensor.kok_fonster_hoger
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:window-open
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:window-closed
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: custom:mini-media-player
+          entity: media_player.kok_speaker
+          name: Kök
+          power_color: true
+          volume_stateless: true
+          artwork_border: true
+          short_info: true
+          show_progress: true
+          show_source: true
+          icon: mdi:google-home
+
+
+  light.tvrum:
+    title: TVrum
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: light.tvrum
+              show_icon: false
+              name: 'Av'
+              tap_action:
+                action: call-service
+                service: light.turn_off
+                service_data:
+                  entity_id: light.tvrum
+            - type: "custom:button-card"
+              entity: light.tvrum
+              show_icon: false
+              name: 'På'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.tvrum
+                  color_temp: 255
+                  brightness: 255
+            - type: "custom:button-card"
+              entity: light.tvrum
+              show_icon: false
+              name: 'Mys'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.tvrum
+                  color_temp: 348
+                  brightness: 103
+        - type: entities
+          entities:
+            - entity: light.tvrumsfonster
+              name: Fönster
+            - entity: light.tvrumsgolv
+              name: Golv
+            - type: custom:slider-entity-row
+              entity: light.tvrum_taklampa
+              name: Tak
+              hide_state: true
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.tvrum_temperatur
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.tvrum_fukt
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.tvrum_rorelsesensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: custom:mini-media-player
+          entity: media_player.tvrum_speaker
+          name: TVrum
+          power_color: true
+          volume_stateless: true
+          artwork_border: true
+          short_info: true
+          show_progress: true
+          show_source: true
+          icon: mdi:google-home
+        - type: custom:mini-media-player
+          entity: media_player.tvrummet
+          name: chromecast
+          power_color: true
+          volume_stateless: true
+          artwork_border: true
+          short_info: true
+          show_progress: true
+          show_source: true
+          icon: mdi:google-chrome
+
+  light.utomhus:
+    title: Utomhus & Uterum
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: light.utomhus
+              show_icon: false
+              name: 'Av'
+              tap_action:
+                action: call-service
+                service: light.turn_off
+                service_data:
+                  entity_id: light.utomhus
+            - type: "custom:button-card"
+              entity: light.utomhus
+              show_icon: false
+              name: 'På'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.utomhus
+                  color_temp: 255
+                  brightness: 255
+            - type: "custom:button-card"
+              entity: light.utomhus
+              show_icon: false
+              name: 'Mys'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.utomhus
+                  color_temp: 348
+                  brightness: 103
+        - type: picture-entity
+          entity: camera.uterum
+          camera_image: camera.uterum
+          camera_view: live
+        - type: entities
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.utebelysning
+              name: Ute
+              hide_state: true
+            - type: custom:slider-entity-row
+              entity: light.altan_koksdorr
+              name: Altan
+              hide_state: true
+            - type: custom:slider-entity-row
+              entity: light.uterum_golv
+              name: Golv
+              hide_state: true
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.uterum_temperatur
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.uterum_fukt
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.uterum_rorelsesensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: custom:mini-media-player
+          entity: media_player.uterum
+          name: chromecast
+          power_color: true
+          volume_stateless: true
+          artwork_border: true
+          short_info: true
+          show_progress: true
+          show_source: true
+          icon: mdi:google-chrome
+
+  light.ovrigt:
+    title: Övrigt
+    card:
+      type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: light.ovrigt
+              show_icon: false
+              name: 'Av'
+              tap_action:
+                action: call-service
+                service: light.turn_off
+                service_data:
+                  entity_id: light.ovrigt
+            - type: "custom:button-card"
+              entity: light.ovrigt
+              show_icon: false
+              name: 'På'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.ovrigt
+                  color_temp: 255
+                  brightness: 255
+            - type: "custom:button-card"
+              entity: light.ovrigt
+              show_icon: false
+              name: 'Mys'
+              tap_action:
+                action: call-service
+                service: light.turn_on
+                service_data:
+                  entity_id: light.ovrigt
+                  color_temp: 348
+                  brightness: 103
+        - type: entities
+          entities:
+            - type: custom:slider-entity-row
+              entity: light.tvattstuga_taklampa
+              name: Tvättstuga
+              hide_state: true
+            - type: custom:slider-entity-row
+              entity: light.kladkammare
+              name: Klädkammare
+              hide_state: true
+        - type: horizontal-stack
+          cards:
+            - type: "custom:button-card"
+              entity: sensor.tvattstuga_temperatur
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: "custom:button-card"
+              entity: sensor.tvattstuga_fukt
+              show_state: true
+              show_icon: false
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+            - type: custom:button-card
+              entity: binary_sensor.tvattstuga_rorelsesensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:run-fast
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:run
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: switch.tvattstuga_flakt
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:fan
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:fan-off
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+              tap_action:
+                action: call-service
+                service: switch.toggle
+                service_data:
+                  entity_id: switch.tvattstuga_flakt
+            - type: custom:button-card
+              entity: binary_sensor.tvattstuga_dorr
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:door-open
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:door
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+            - type: custom:button-card
+              entity: binary_sensor.tvattstuga_vattensensor
+              show_state: false
+              show_icon: true
+              show_name: false
+              styles:
+                card:
+                  - height: 55px
+              state:
+                - value: 'on'
+                  icon: mdi:water
+                  color: rgb(251, 210, 41)
+                - value: 'off'
+                  icon: mdi:water-off
+                  color: white
+                - value: 'unavailable'
+                  icon: mdi:alert
+                  color: red
+
+  sensor.grave_pow_watt:
+    title: Ström
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          title: Senaste 3 dygnen
+          hours_to_show: 72
+          entities:
+            - sensor.grave_pow_watt
+        - type: entities
+          entities:
+            - entity: sensor.grave_pow_watt
+              name: Gräve
+              icon: mdi:flash-circle
+            - entity: sensor.workstation_pow_watt
+              name: Workstation
+              icon: mdi:flash-circle
+            - entity: sensor.hpdl380g9_pow_watt
+              name: DL390 Server
+              icon: mdi:flash-circle
+            - entity: sensor.nas_pow_watt
+              name: Nas & Kommunikation
+              icon: mdi:flash-circle
+            - entity: sensor.kylfrys_pow_watt
+              name: Kyl & Frys
+              icon: mdi:flash-circle
+            - entity: sensor.aircondition_pow_watt
+              name: Air Condition
+              icon: mdi:flash-circle
+            - entity: sensor.diskmaskin_pow_watt
+              name: Diskmaskin
+              icon: mdi:flash-circle
+            - entity: sensor.tvattmaskin_pow_watt
+              name: Tvättmaskin
+              icon: mdi:flash-circle
+            - entity: sensor.torktumlare_pow_watt
+              name: Torktumlare
+              icon: mdi:flash-circle
+            - entity: sensor.hemmabio_pow_watt
+              name: Hemmabio
+              icon: mdi:flash-circle
+            - entity: sensor.tv_pow_watt
+              name: TV
+              icon: mdi:flash-circle
+            - entity: sensor.varmepump_pow_watt
+              name: Värmepump
+              icon: mdi:flash-circle
+            - entity: sensor.vattensystem_pow_watt
+              name: Vattenpump
+              icon: mdi:flash-circle
+
+cards:
+  - type: vertical-stack
+    cards:
+      - !include home_presence.yaml
+      - !include home_info_buttons.yaml
+      - !include home_media_player.yaml
+      - !include home_rumsgrupper.yaml

@@ -1,0 +1,808 @@
+type: custom:layout-card
+title: Power
+path: power
+layout: vertical
+icon: mdi:flash-circle
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            entities:
+             -  sensor.grave_pow_watt
+            name: Gräve
+            height: 50
+            line_width: 6
+            font_size: 80
+            animate: true
+            decimals: 0
+            line_color: '#3498db'
+            hours_to_show: 12
+            points_per_hour: 2
+            show:
+              icon: false
+              fill: fade
+            color_thresholds:
+              - value: 2000
+                color: "#f39c12"
+              - value: 2500
+                color: "#d35400"
+              - value: 3000
+                color: "#c0392b"
+          - type: entities
+            entities:
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: ''
+                group_config:
+                  secondary_info: last-changed
+                items:
+                  - sensor.grave_pow_watt
+                  - sensor.grave_current_cost
+                  - sensor.grave_hourly
+                  - sensor.grave_hourly_cost
+                  - sensor.grave_daily
+                  - sensor.grave_daily_cost
+                  - sensor.grave_weekly
+                  - sensor.grave_weekly_cost
+                  - sensor.grave_monthly
+                  - sensor.grave_monthly_cost
+                  - sensor.grave_yearly
+                  - sensor.grave_yearly_cost
+
+
+          - type: vertical-stack
+            cards:
+              - type: "custom:mini-graph-card"
+                entities:
+                 -  sensor.varmepump_pow_watt
+                name: Värmepump Garage
+                height: 50
+                line_width: 6
+                font_size: 80
+                animate: true
+                decimals: 0
+                line_color: '#3498db'
+                hours_to_show: 12
+                points_per_hour: 2
+                show:
+                  icon: false
+                  fill: fade
+              - type: entities
+                entities:
+                  - type: custom:fold-entity-row
+                    head:
+                      type: section
+                      label: ''
+                    group_config:
+                      secondary_info: last-changed
+                    items:
+                      - sensor.varmepump_pow_watt
+                      - sensor.varmepump_current_cost
+                      - sensor.varmepump_hourly
+                      - sensor.varmepump_hourly_cost
+                      - sensor.varmepump_daily
+                      - sensor.varmepump_daily_cost
+                      - sensor.varmepump_weekly
+                      - sensor.varmepump_weekly_cost
+                      - sensor.varmepump_monthly
+                      - sensor.varmepump_monthly_cost
+                      - sensor.varmepump_yearly
+                      - sensor.varmepump_yearly_cost
+
+
+          - type: vertical-stack
+            cards:
+              - type: "custom:mini-graph-card"
+                entities:
+                 -  sensor.vattensystem_pow_watt
+                name: Vattenpump
+                height: 50
+                line_width: 6
+                font_size: 80
+                animate: true
+                decimals: 0
+                line_color: '#3498db'
+                hours_to_show: 12
+                points_per_hour: 2
+                show:
+                  icon: false
+                  fill: fade
+              - type: entities
+                entities:
+                  - type: custom:fold-entity-row
+                    head:
+                      type: section
+                      label: ''
+                    group_config:
+                      secondary_info: last-changed
+                    items:
+                      - sensor.vattensystem_pow_watt
+                      - sensor.vattensystem_current_cost
+                      - sensor.vattensystem_hourly
+                      - sensor.vattensystem_hourly_cost
+                      - sensor.vattensystem_daily
+                      - sensor.vattensystem_daily_cost
+                      - sensor.vattensystem_weekly
+                      - sensor.vattensystem_weekly_cost
+                      - sensor.vattensystem_monthly
+                      - sensor.vattensystem_monthly_cost
+                      - sensor.vattensystem_yearly
+                      - sensor.vattensystem_yearly_cost
+
+          - type: horizontal-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: "custom:mini-graph-card"
+                    entities:
+                     -  sensor.kylfrys_pow_watt
+                    name: Kyl & Frys
+                    height: 50
+                    line_width: 6
+                    font_size: 80
+                    animate: true
+                    decimals: 0
+                    line_color: '#3498db'
+                    hours_to_show: 12
+                    points_per_hour: 2
+                    show:
+                      icon: false
+                      fill: fade
+                  - type: entities
+                    entities:
+                      - type: custom:fold-entity-row
+                        head:
+                          type: section
+                          label: ''
+                        group_config:
+                          secondary_info: last-changed
+                        items:
+                          - sensor.kylfrys_pow_watt
+                          - sensor.kylfrys_current_cost
+                          - sensor.kylfrys_hourly
+                          - sensor.kylfrys_hourly_cost
+                          - sensor.kylfrys_daily
+                          - sensor.kylfrys_daily_cost
+                          - sensor.kylfrys_weekly
+                          - sensor.kylfrys_weekly_cost
+                          - sensor.kylfrys_monthly
+                          - sensor.kylfrys_monthly_cost
+                          - sensor.kylfrys_yearly
+                          - sensor.kylfrys_yearly_cost
+
+
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            entities:
+             -  sensor.tvattmaskin_pow_watt
+            name: Tvättmaskin
+            height: 50
+            line_width: 6
+            font_size: 80
+            animate: true
+            decimals: 0
+            line_color: '#3498db'
+            hours_to_show: 12
+            points_per_hour: 2
+            show:
+              icon: false
+              fill: fade
+          - type: entities
+            entities:
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: ''
+                group_config:
+                  secondary_info: last-changed
+                items:
+                  - sensor.tvattmaskin_pow_watt
+                  - sensor.tvattmaskin_current_cost
+                  - sensor.tvattmaskin_hourly
+                  - sensor.tvattmaskin_hourly_cost
+                  - sensor.tvattmaskin_daily
+                  - sensor.tvattmaskin_daily_cost
+                  - sensor.tvattmaskin_weekly
+                  - sensor.tvattmaskin_weekly_cost
+                  - sensor.tvattmaskin_monthly
+                  - sensor.tvattmaskin_monthly_cost
+                  - sensor.tvattmaskin_yearly
+                  - sensor.tvattmaskin_yearly_cost
+
+          - type: vertical-stack
+            cards:
+              - type: "custom:mini-graph-card"
+                entities:
+                 -  sensor.torktumlare_pow_watt
+                name: Torktumlare
+                height: 50
+                line_width: 6
+                font_size: 80
+                animate: true
+                decimals: 0
+                line_color: '#3498db'
+                hours_to_show: 12
+                points_per_hour: 2
+                show:
+                  icon: false
+                  fill: fade
+              - type: entities
+                entities:
+                  - type: custom:fold-entity-row
+                    head:
+                      type: section
+                      label: ''
+                    group_config:
+                      secondary_info: last-changed
+                    items:
+                      - sensor.torktumlare_pow_watt
+                      - sensor.torktumlare_current_cost
+                      - sensor.torktumlare_hourly
+                      - sensor.torktumlare_hourly_cost
+                      - sensor.torktumlare_daily
+                      - sensor.torktumlare_daily_cost
+                      - sensor.torktumlare_weekly
+                      - sensor.torktumlare_weekly_cost
+                      - sensor.torktumlare_monthly
+                      - sensor.torktumlare_monthly_cost
+                      - sensor.torktumlare_yearly
+                      - sensor.torktumlare_yearly_cost
+
+          - type: vertical-stack
+            cards:
+              - type: "custom:mini-graph-card"
+                entities:
+                 -  sensor.diskmaskin_pow_watt
+                name: Diskmaskin
+                height: 50
+                line_width: 6
+                font_size: 80
+                animate: true
+                decimals: 0
+                line_color: '#3498db'
+                hours_to_show: 12
+                points_per_hour: 2
+                show:
+                  icon: false
+                  fill: fade
+              - type: entities
+                entities:
+                  - type: custom:fold-entity-row
+                    head:
+                      type: section
+                      label: ''
+                    group_config:
+                      secondary_info: last-changed
+                    items:
+                      - sensor.diskmaskin_pow_watt
+                      - sensor.diskmaskin_current_cost
+                      - sensor.diskmaskin_hourly
+                      - sensor.diskmaskin_hourly_cost
+                      - sensor.diskmaskin_daily
+                      - sensor.diskmaskin_daily_cost
+                      - sensor.diskmaskin_weekly
+                      - sensor.diskmaskin_weekly_cost
+                      - sensor.diskmaskin_monthly
+                      - sensor.diskmaskin_monthly_cost
+                      - sensor.diskmaskin_yearly
+                      - sensor.diskmaskin_yearly_cost
+
+          - type: horizontal-stack
+            cards:
+              - type: vertical-stack
+                cards:
+                  - type: "custom:mini-graph-card"
+                    entities:
+                     -  sensor.hemmabio_pow_watt
+                    name: Hemmabio
+                    height: 50
+                    line_width: 6
+                    font_size: 80
+                    animate: true
+                    decimals: 0
+                    line_color: '#3498db'
+                    hours_to_show: 12
+                    points_per_hour: 2
+                    show:
+                      icon: false
+                      fill: fade
+                  - type: entities
+                    entities:
+                      - type: custom:fold-entity-row
+                        head:
+                          type: section
+                          label: ''
+                        group_config:
+                          secondary_info: last-changed
+                        items:
+                          - sensor.hemmabio_pow_watt
+                          - sensor.hemmabio_current_cost
+                          - sensor.hemmabio_hourly
+                          - sensor.hemmabio_hourly_cost
+                          - sensor.hemmabio_daily
+                          - sensor.hemmabio_daily_cost
+                          - sensor.hemmabio_weekly
+                          - sensor.hemmabio_weekly_cost
+                          - sensor.hemmabio_monthly
+                          - sensor.hemmabio_monthly_cost
+                          - sensor.hemmabio_yearly
+                          - sensor.hemmabio_yearly_cost
+
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            entities:
+             -  sensor.nas_pow_watt
+            name: NAS
+            height: 50
+            line_width: 6
+            font_size: 80
+            animate: true
+            decimals: 0
+            line_color: '#3498db'
+            hours_to_show: 12
+            points_per_hour: 2
+            show:
+              icon: false
+              fill: fade
+          - type: entities
+            entities:
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: ''
+                group_config:
+                  secondary_info: last-changed
+                items:
+                  - sensor.nas_pow_watt
+                  - sensor.nas_current_cost
+                  - sensor.nas_hourly
+                  - sensor.nas_hourly_cost
+                  - sensor.nas_daily
+                  - sensor.nas_daily_cost
+                  - sensor.nas_weekly
+                  - sensor.nas_weekly_cost
+                  - sensor.nas_monthly
+                  - sensor.nas_monthly_cost
+                  - sensor.nas_yearly
+                  - sensor.nas_yearly_cost
+
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            entities:
+             -  sensor.hpdl380g9_pow_watt
+            name: DL380 Gen9
+            height: 50
+            line_width: 6
+            font_size: 80
+            animate: true
+            decimals: 0
+            line_color: '#3498db'
+            hours_to_show: 12
+            points_per_hour: 2
+            show:
+              icon: false
+              fill: fade
+          - type: entities
+            entities:
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: ''
+                group_config:
+                  secondary_info: last-changed
+                items:
+                  - sensor.hpdl380g9_pow_watt
+                  - sensor.hpdl380g9_current_cost
+                  - sensor.hpdl380g9_hourly
+                  - sensor.hpdl380g9_hourly_cost
+                  - sensor.hpdl380g9_daily
+                  - sensor.hpdl380g9_daily_cost
+                  - sensor.hpdl380g9_weekly
+                  - sensor.hpdl380g9_weekly_cost
+                  - sensor.hpdl380g9_monthly
+                  - sensor.hpdl380g9_monthly_cost
+                  - sensor.hpdl380g9_yearly
+                  - sensor.hpdl380g9_yearly_cost
+
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            entities:
+             -  sensor.aircondition_pow_watt
+            name: Air Condition
+            height: 50
+            line_width: 6
+            font_size: 80
+            animate: true
+            decimals: 0
+            line_color: '#3498db'
+            hours_to_show: 12
+            points_per_hour: 2
+            show:
+              icon: false
+              fill: fade
+          - type: entities
+            entities:
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: ''
+                group_config:
+                  secondary_info: last-changed
+                items:
+                  - sensor.aircondition_pow_watt
+                  - sensor.aircondition_current_cost
+                  - sensor.aircondition_hourly
+                  - sensor.aircondition_hourly_cost
+                  - sensor.aircondition_daily
+                  - sensor.aircondition_daily_cost
+                  - sensor.aircondition_weekly
+                  - sensor.aircondition_weekly_cost
+                  - sensor.aircondition_monthly
+                  - sensor.aircondition_monthly_cost
+                  - sensor.aircondition_yearly
+                  - sensor.aircondition_yearly_cost
+
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            entities:
+             -  sensor.workstation_pow_watt
+            name: Workstation
+            height: 50
+            line_width: 6
+            font_size: 80
+            animate: true
+            decimals: 0
+            line_color: '#3498db'
+            hours_to_show: 12
+            points_per_hour: 2
+            show:
+              icon: false
+              fill: fade
+          - type: entities
+            entities:
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: ''
+                group_config:
+                  secondary_info: last-changed
+                items:
+                  - sensor.workstation_pow_watt
+                  - sensor.workstation_current_cost
+                  - sensor.workstation_hourly
+                  - sensor.workstation_hourly_cost
+                  - sensor.workstation_daily
+                  - sensor.workstation_daily_cost
+                  - sensor.workstation_weekly
+                  - sensor.workstation_weekly_cost
+                  - sensor.workstation_monthly
+                  - sensor.workstation_monthly_cost
+                  - sensor.workstation_yearly
+                  - sensor.workstation_yearly_cost
+
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            entities:
+             -  sensor.tv_pow_watt
+            name: TV
+            height: 50
+            line_width: 6
+            font_size: 80
+            animate: true
+            decimals: 0
+            line_color: '#3498db'
+            hours_to_show: 12
+            points_per_hour: 2
+            show:
+              icon: false
+              fill: fade
+          - type: entities
+            entities:
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: ''
+                group_config:
+                  secondary_info: last-changed
+                items:
+                  - sensor.tv_pow_watt
+                  - sensor.tv_current_cost
+                  - sensor.tv_hourly
+                  - sensor.tv_hourly_cost
+                  - sensor.tv_daily
+                  - sensor.tv_daily_cost
+                  - sensor.tv_weekly
+                  - sensor.tv_weekly_cost
+                  - sensor.tv_monthly
+                  - sensor.tv_monthly_cost
+                  - sensor.tv_yearly
+                  - sensor.tv_yearly_cost
+
+  - type: horizontal-stack
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            entities:
+             -  sensor.laddstation_pow_watt
+            name: KIA Optima PHEV
+            height: 50
+            line_width: 6
+            font_size: 80
+            animate: true
+            decimals: 0
+            line_color: '#3498db'
+            hours_to_show: 12
+            points_per_hour: 2
+            show:
+              icon: false
+              fill: fade
+          - type: entities
+            entities:
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: ''
+                group_config:
+                  secondary_info: last-changed
+                items:
+                  - sensor.laddstation_pow_watt
+                  - sensor.laddstation_current_cost
+                  - sensor.laddstation_hourly
+                  - sensor.laddstation_hourly_cost
+                  - sensor.laddstation_daily
+                  - sensor.laddstation_daily_cost
+                  - sensor.laddstation_weekly
+                  - sensor.laddstation_weekly_cost
+                  - sensor.laddstation_monthly
+                  - sensor.laddstation_monthly_cost
+                  - sensor.laddstation_yearly
+                  - sensor.laddstation_yearly_cost
+
+
+popup_cards:
+  sensor.grave_pow_watt:
+    title: Huset
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          title: Senaste Dygnet
+          hours_to_show: 24
+          entities:
+            - sensor.grave_pow_watt
+        - type: entities
+          entities:
+            - entity: sensor.grave_pow_watt
+              name: Nuvarande förbrukning
+            - entity: sensor.grave_hourly
+              name: Senaste Timman
+            - entity: sensor.grave_daily
+              name: Idag
+            - entity: sensor.grave_weekly
+              name: Denna Vecka
+            - entity: sensor.grave_monthly
+              name: Denna månad
+            - entity: sensor.grave_yearly
+              name: Detta år
+
+  sensor.varmepump_pow_watt:
+    title: Värmepump
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          entities:
+            - entity: sensor.varmepump_pow_watt
+        - type: entities
+          entities:
+            - entity: sensor.varmepump_pow_watt
+              name: Nuvarande förbrukning
+            - entity: sensor.varmepump_hourly
+              name: Senaste Timman
+            - entity: sensor.varmepump_daily
+              name: Idag
+            - entity: sensor.varmepump_weekly
+              name: Denna Vecka
+            - entity: sensor.varmepump_monthly
+              name: Denna månad
+            - entity: sensor.varmepump_yearly
+              name: Detta år
+
+
+  sensor.vattensystem_pow_watt:
+    title: Vattensystem
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          title: Senaste Dygnet
+          hours_to_show: 24
+          entities:
+            - sensor.vattensystem_pow_watt
+        - type: entities
+          entities:
+            - entity: sensor.vattensystem_pow_watt
+              name: Nuvarande förbrukning
+            - entity: sensor.vattensystem_hourly
+              name: Senaste Timman
+            - entity: sensor.vattensystem_daily
+              name: Idag
+            - entity: sensor.vattensystem_weekly
+              name: Denna Vecka
+            - entity: sensor.vattensystem_monthly
+              name: Denna månad
+            - entity: sensor.vattensystem_yearly
+              name: Detta år
+
+  sensor.nas_pow_watt:
+    title: NAS + Nätverk
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          title: Senaste Dygnet
+          hours_to_show: 24
+          entities:
+            - sensor.nas_pow_watt
+        - type: entities
+          entities:
+            - entity: sensor.nas_pow_watt
+              name: Nuvarande förbrukning
+            - entity: sensor.nas_hourly
+              name: Senaste Timman
+            - entity: sensor.nas_daily
+              name: Idag
+            - entity: sensor.nas_weekly
+              name: Denna Vecka
+            - entity: sensor.nas_monthly
+              name: Denna månad
+            - entity: sensor.nas_yearly
+              name: Detta år
+
+  sensor.torktumlare_pow_watt:
+    title: Torktumlare
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          title: Senaste Dygnet
+          hours_to_show: 24
+          entities:
+            - sensor.torktumlare_pow_watt
+        - type: entities
+          entities:
+            - entity: sensor.torktumlare_pow_watt
+              name: Nuvarande förbrukning
+            - entity: sensor.torktumlare_hourly
+              name: Senaste Timman
+            - entity: sensor.torktumlare_daily
+              name: Idag
+            - entity: sensor.torktumlare_weekly
+              name: Denna Vecka
+            - entity: sensor.torktumlare_monthly
+              name: Denna månad
+            - entity: sensor.torktumlare_yearly
+              name: Detta år
+
+
+  sensor.tvattmaskin_pow_watt:
+    title: Tvättmaskin
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          title: Senaste Dygnet
+          hours_to_show: 24
+          entities:
+            - sensor.tvattmaskin_pow_watt
+        - type: entities
+          entities:
+            - entity: sensor.tvattmaskin_pow_watt
+              name: Nuvarande förbrukning
+            - entity: sensor.tvattmaskin_hourly
+              name: Senaste Timman
+            - entity: sensor.tvattmaskin_daily
+              name: Idag
+            - entity: sensor.tvattmaskin_weekly
+              name: Denna Vecka
+            - entity: sensor.tvattmaskin_monthly
+              name: Denna månad
+            - entity: sensor.tvattmaskin_yearly
+              name: Detta år
+
+  sensor.diskmaskin_pow_watt:
+    title: Diskmaskin
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          title: Senaste Dygnet
+          hours_to_show: 24
+          entities:
+            - sensor.diskmaskin_pow_watt
+        - type: entities
+          entities:
+            - entity: sensor.diskmaskin_pow_watt
+              name: Nuvarande förbrukning
+            - entity: sensor.diskmaskin_hourly
+              name: Senaste Timman
+            - entity: sensor.diskmaskin_daily
+              name: Idag
+            - entity: sensor.diskmaskin_weekly
+              name: Denna Vecka
+            - entity: sensor.diskmaskin_monthly
+              name: Denna månad
+            - entity: sensor.diskmaskin_yearly
+              name: Detta år
+
+  sensor.hpdl380g9_pow_watt:
+    title: DL380 Gen9
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          title: Senaste Dygnet
+          hours_to_show: 24
+          entities:
+            - sensor.hpdl380g9_pow_watt
+        - type: entities
+          entities:
+            - entity: sensor.hpdl380g9_pow_watt
+              name: Nuvarande förbrukning
+            - entity: sensor.hpdl380g9_hourly
+              name: Senaste Timman
+            - entity: sensor.hpdl380g9_daily
+              name: Idag
+            - entity: sensor.hpdl380g9_weekly
+              name: Denna Vecka
+            - entity: sensor.hpdl380g9_monthly
+              name: Denna månad
+            - entity: sensor.hpdl380g9_yearly
+              name: Detta år
+
+  sensor.laddstation_pow_watt:
+    title: KIA Optima PHEV
+    card:
+      type: vertical-stack
+      cards:
+        - type: history-graph
+          title: Senaste Dygnet
+          hours_to_show: 24
+          entities:
+            - sensor.laddstation_pow_watt
+        - type: entities
+          entities:
+            - entity: sensor.laddstation_pow_watt
+              name: Nuvarande förbrukning
+            - entity: sensor.laddstation_hourly
+              name: Senaste Timman
+            - entity: sensor.laddstation_daily
+              name: Idag
+            - entity: sensor.laddstation_weekly
+              name: Denna Vecka
+            - entity: sensor.laddstation_monthly
+              name: Denna månad
+            - entity: sensor.laddstation_yearly
+              name: Detta år

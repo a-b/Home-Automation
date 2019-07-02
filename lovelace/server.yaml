@@ -1,0 +1,336 @@
+type: custom:layout-card
+icon: mdi:server-network
+title: server
+path: server
+layout: vertical
+popup_cards:
+
+cards:
+#Column 1
+  - type: vertical-stack
+    cards:
+      - type: "custom:mini-graph-card"
+        name: Docker
+        height: 80
+        line_width: 6
+        font_size: 80
+        show:
+          icon: false
+          legend: false
+        line_color:
+         - '#42f46e'
+         - '#3498db'
+        entities:
+         - entity: sensor.processor_use
+           name: CPU
+           show_state: true
+           state_adaptive_color: true
+         - entity: sensor.memory_use_percent
+           name: RAM
+           show_state: true
+           state_adaptive_color: true
+      - type: vertical-stack
+        cards:
+          - type: custom:bar-card
+            title: Config disk usage
+            entity: sensor.disk_use_percent_config
+            severity:
+            - value: 80
+              color: '#3498db'
+            - value: 90
+              color: '#bf9540'
+            - value: 98
+              color: '#40bf40'
+          - type: custom:bar-card
+            title: Used 
+            entity: sensor.disk_use_config
+            severity:
+            - value: 80
+              color: '#3498db'
+            - value: 90
+              color: '#bf9540'
+            - value: 98
+              color: '#40bf40'
+          - type: custom:bar-card
+            title: Free
+            entity: sensor.disk_free_config
+            severity:
+            - value: 80
+              color: '#3498db'
+            - value: 90
+              color: '#bf9540'
+            - value: 98
+              color: '#40bf40'
+
+      - type: "custom:button-card"
+        color_type: blank-card
+      - type: "custom:button-card"
+        color_type: blank-card
+
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            name: Torrent
+            height: 80
+            line_width: 6
+            font_size: 80
+            show:
+              icon: false
+              legend: false
+            line_color:
+             - '#42f46e'
+             - '#3498db'
+            entities:
+             - entity: sensor.rtorrent_download
+               name: Download
+               show_state: true
+               state_adaptive_color: true
+             - entity: sensor.rtorrent_upload
+               name: Upload
+               show_state: true
+               state_adaptive_color: true
+
+      - type: "custom:button-card"
+        color_type: blank-card
+      - type: "custom:button-card"
+        color_type: blank-card
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            entity: sensor.ups_server_status
+            show_state: true
+            show_icon: false
+            show_name: false
+            tap_action:
+              action: more-info
+            state:
+              - value: 'Server UPS Online'
+                styles:
+                  state:
+                    - color: '#42f46e'
+              - value: 'Server UPS on Battery'
+                styles:
+                  state:
+                    - color: red
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            entity: sensor.ups_server_battery_voltage
+            show_state: true
+            show_icon: false
+            show_name: false
+            tap_action:
+              action: more-info
+          - type: custom:button-card
+            entity: sensor.ups_server_input_voltage
+            show_state: true
+            show_icon: false
+            show_name: false
+            tap_action:
+              action: more-info
+          - type: custom:button-card
+            entity: sensor.ups_server_load
+            show_state: true
+            show_icon: false
+            show_name: false
+            tap_action:
+              action: more-info
+
+#Column 2
+  - type: vertical-stack
+    cards:
+      - type: "custom:mini-graph-card"
+        name: NAS
+        height: 80
+        line_width: 6
+        font_size: 80
+        show:
+          icon: false
+          legend: false
+        line_color:
+         - '#42f46e'
+         - '#3498db'
+        entities:
+         - entity: sensor.synology_download
+           name: Download
+           show_state: true
+           state_adaptive_color: true
+         - entity: sensor.synology_upload
+           name: Upload
+           show_state: true
+           state_adaptive_color: true
+      - type: vertical-stack
+        cards:
+          - type: custom:bar-card
+            title: NAS
+            entity: sensor.volume_used_volume_1
+            severity:
+            - value: 80
+              color: '#3498db'
+            - value: 90
+              color: '#ff0000'
+            - value: 98
+              color: '#ff0000'
+          - type: custom:bar-card
+            title: Raid
+            entity: sensor.volume_used_volume_2
+            severity:
+            - value: 80
+              color: '#40bf40'
+            - value: 90
+              color: '#ff0000'
+            - value: 98
+              color: '#ff0000'
+          - type: custom:bar-card
+            title: Downloads
+            entity: sensor.volume_used_volume_3
+            severity:
+            - value: 80
+              color: '#40bf40'
+            - value: 90
+              color: '#ff0000'
+            - value: 98
+              color: '#ff0000'
+
+      - type: "custom:button-card"
+        color_type: blank-card
+      - type: "custom:button-card"
+        color_type: blank-card
+
+      - type: vertical-stack
+        cards:
+          - type: "custom:mini-graph-card"
+            name: SpeedTest
+            height: 80
+            line_width: 6
+            font_size: 80
+            show:
+              icon: false
+              legend: false
+            line_color:
+             - '#42f46e'
+             - '#3498db'
+            entities:
+             - entity: sensor.speedtest_download
+               name: Download
+               show_state: true
+               state_adaptive_color: true
+             - entity: sensor.speedtest_upload
+               name: Upload
+               show_state: true
+               state_adaptive_color: true
+
+      - type: "custom:button-card"
+        color_type: blank-card
+      - type: "custom:button-card"
+        color_type: blank-card
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            entity: sensor.ups_status
+            show_state: true
+            show_icon: false
+            show_name: false
+            tap_action:
+              action: more-info
+            state:
+              - value: 'NAS UPS Online'
+                styles:
+                  state:
+                    - color: '#42f46e'
+              - value: 'NAS UPS on Battery'
+                styles:
+                  state:
+                    - color: red
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            entity: sensor.ups_battery_voltage
+            show_state: true
+            show_icon: false
+            show_name: false
+            tap_action:
+              action: more-info
+          - type: custom:button-card
+            entity: sensor.ups_input_voltage
+            show_state: true
+            show_icon: false
+            show_name: false
+            tap_action:
+              action: more-info
+          - type: custom:button-card
+            entity: sensor.ups_load
+            show_state: true
+            show_icon: false
+            show_name: false
+            tap_action:
+              action: more-info
+
+#Column3
+
+  - type: vertical-stack
+    cards:
+      - type: "custom:mini-graph-card"
+        name: Zoneminder
+        height: 80
+        line_width: 6
+        font_size: 80
+        show:
+          icon: false
+          legend: false
+        line_color:
+         - '#42f46e'
+         - '#3498db'
+        entities:
+         - entity: sensor.zoneminder_cpu_used
+           show_state: true
+           name: CPU
+           state_adaptive_color: true
+         - entity: sensor.zoneminder_ram_used
+           name: RAM
+           state_adaptive_color: true
+  - type: vertical-stack
+    cards:
+      - type: custom:bar-card
+        title: used
+        entity: sensor.zoneminder_disk_used_2
+        max: 100
+        severity:
+        - value: 80
+          color: '#3498db'
+        - value: 90
+          color: '#bf9540'
+        - value: 98
+          color: '#40bf40'
+      - type: custom:bar-card
+        title: used
+        entity: sensor.zoneminder_disk_used
+        unit_of_measurement: GiB
+        max: 1000
+        severity:
+        - value: 80
+          color: '#3498db'
+        - value: 90
+          color: '#bf9540'
+        - value: 98
+          color: '#40bf40'
+      - type: custom:bar-card
+        title: free
+        entity: sensor.zoneminder_disk_free
+        unit_of_measurement: GiB
+        max: 4000
+        severity:
+        - value: 80
+          color: '#3498db'
+        - value: 90
+          color: '#bf9540'
+        - value: 98
+          color: '#40bf40'
+
+      - type: "custom:button-card"
+        color_type: blank-card
+      - type: "custom:button-card"
+        color_type: blank-card

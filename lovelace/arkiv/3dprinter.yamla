@@ -1,0 +1,80 @@
+title: 3D Printer
+icon: mdi:video-3d
+cards:
+  - type: vertical-stack
+    cards:
+      - type: "custom:button-card"
+        entity: shell_command.lovelace_gen
+        name: Refresh
+        action: service
+        service:
+          domain: script
+          action: turn_on
+          data:
+            entity_id: script.lovelace_generator
+
+      - type: "custom:button-card"
+        entity: sensor.am8_current_state
+        name: AM8 3D Printer
+
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: sensor.am8_current_state
+            action: more_info
+            name: Hotend
+
+          - type: "custom:button-card"
+            entity: sensor.am8_current_state
+            name: Bed
+
+          - type: "custom:button-card"
+            entity: sensor.am8_current_state
+            action: more_info
+            name: Temp
+
+          - type: "custom:button-card"
+            entity: sensor.am8_current_state
+            action: more_info
+            name: Fukt
+
+          - type: "custom:button-card"
+            entity: sensor.am8_current_state
+            action: more_info
+            name: Brandlarm
+
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            entity: sensor.am8_actual_tool0_temp
+            action: more_info
+            show_state: true
+
+          - type: "custom:button-card"
+            entity: sensor.am8_actual_bed_temp
+            action: more_info
+            show_state: true
+
+          - type: "custom:button-card"
+            entity: sensor.3dprinter_temperatur
+            action: more_info
+            show_state: true
+
+          - type: "custom:button-card"
+            entity: sensor.3dprinter_fukt
+            action: more_info
+            show_state: true
+
+          - type: "custom:button-card"
+            entity: binary_sensor.3dprinter_brandlarm
+            action: more_info
+            show_state: true
+
+
+      - type: horizontal-stack
+        cards:
+          - type: picture-glance
+            title: AM 8
+            entities:
+              - sensor.am8_current_state
+            camera_image: camera.am8_camera

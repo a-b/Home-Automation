@@ -1,0 +1,90 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: conditional
+        conditions:
+          - entity: input_select.tvattmaskin_status
+            state: "Tvättar"
+        card:
+          type: custom:button-card
+          entity: input_select.tvattmaskin_status
+          name: "Tvättmaskinen tvättar just nu"
+          show_state: false
+          show_icon: false
+          show_name: True
+          styles:
+            card:
+              - height: 5px
+          hold_action:
+            action: call-service
+            service: input_select.select_option
+            service_data:
+              entity_id: input_select.tvattmaskin_status
+              option: 'Av'
+
+      - type: conditional
+        conditions:
+          - entity: input_select.tvattmaskin_status
+            state: "Ren"
+        card:
+          type: custom:button-card
+          entity: input_select.tvattmaskin_status
+          name: "Tvättmaskinen är klar, töm den!"
+          show_state: false
+          show_icon: false
+          color_type: label-card
+          color: green
+          show_name: True
+          styles:
+            card:
+              - height: 5px
+          hold_action:
+            action: call-service
+            service: input_select.select_option
+            service_data:
+              entity_id: input_select.tvattmaskin_status
+              option: 'Av'
+
+      - type: conditional
+        conditions:
+          - entity: input_select.torktumlare_status
+            state: "Tvättar"
+        card:
+          type: custom:button-card
+          entity: input_select.torktumlare_status
+          name: "Torktumlaren tvättar just nu"
+          show_state: false
+          show_icon: false
+          show_name: True
+          styles:
+            card:
+              - height: 5px
+          hold_action:
+            action: call-service
+            service: input_select.select_option
+            service_data:
+              entity_id: input_select.torktumlare_status
+              option: 'Av'
+
+      - type: conditional
+        conditions:
+          - entity: input_select.torktumlare_status
+            state: "Ren"
+        card:
+          type: custom:button-card
+          entity: input_select.torktumlare_status
+          name: "Torktumlaren är klar, töm den!"
+          show_state: false
+          show_icon: false
+          show_name: True
+          styles:
+            card:
+              - height: 5px
+          hold_action:
+            action: call-service
+            service: input_select.select_option
+            service_data:
+              entity_id: input_select.torktumlare_status
+              option: 'Av'
+

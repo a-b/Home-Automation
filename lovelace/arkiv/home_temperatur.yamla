@@ -1,0 +1,36 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: "custom:mini-graph-card"
+        entities:
+         - sensor.inomhus_temperatur
+        name: Inomhus
+        height: 80
+        line_width: 6
+        font_size: 80
+        line_color: '#e74c3c'
+        show:
+          icon: false
+      - type: "custom:mini-graph-card"
+        entities:
+         - sensor.yr_temperature
+        name: Utomhus
+        height: 80
+        line_width: 6
+        font_size: 80
+        line_color: '#3498db'
+        show:
+          icon: false
+      - type: "custom:mini-graph-card"
+        entities:
+         - sensor.grave_pow_watt
+        name: Ström
+        height: 80
+        line_width: 6
+        font_size: 80
+        line_color: '#42f46e'
+        show:
+          icon: false
+
+

@@ -1,0 +1,14 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: picture-entity
+            entity: sensor.mattias_status
+            image: /local/mattias_cropped.png
+            show_name: false
+          - type: picture-entity
+            entity: sensor.malin_status
+            image: /local/malin_cropped.png
+            show_name: false

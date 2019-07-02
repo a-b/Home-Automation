@@ -1,0 +1,11 @@
+type: vertical-stack
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: conditional
+        conditions:
+          - entity: media_player.spotify
+            state: playing
+        card:
+          type: custom:mini-media-player
+          entity: media_player.spotify
