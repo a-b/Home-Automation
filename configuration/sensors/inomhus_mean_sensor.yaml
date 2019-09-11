@@ -1,7 +1,0 @@
-platform: min_max
-entity_ids:
-  - sensor.kok_temperature
-  - sensor.mancave_temperature
-  - sensor.sovrum_temperature
-name: 'House_Temperature'
-type: mean
