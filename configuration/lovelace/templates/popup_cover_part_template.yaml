@@ -1,0 +1,78 @@
+#lovelace_gen
+card:
+  type: vertical-stack
+  cards:
+    - type: horizontal-stack
+      cards:
+        - type: custom:button-card
+          entity: '[[cover]]'
+          show_state: false
+          show_icon: true
+          show_name: false
+          aspect_ratio: 2/1
+          state:
+            - value: 'open'
+              icon: mdi:arrow-up-bold-outline
+              color: yellow
+            - value: 'closed'
+              icon: mdi:arrow-up-bold-outline
+              color: white
+            - value: 'unavailable'
+              icon: mdi:alert
+              color: red
+          tap_action:
+            action: call-service
+            service: cover.open_cover
+            service_data:
+              entity_id: '[[cover]]'
+        - type: custom:button-card
+          entity: sensor.cover_kontor
+          show_state: false
+          show_icon: false
+          show_name: true
+          aspect_ratio: 2/1
+          name: 50%
+          state:
+            - value: '51'
+              styles:
+                name:
+                  - color: yellow
+          tap_action:
+            action: call-service
+            service: cover.set_cover_position
+            service_data:
+              entity_id: '[[cover]]'
+              position: 50
+        - type: custom:button-card
+          entity: '[[cover]]'
+          icon: mdi:stop
+          show_state: false
+          show_icon: true
+          show_name: false
+          aspect_ratio: 2/1
+          tap_action:
+            action: call-service
+            service: cover.stop_cover
+            service_data:
+              entity_id: '[[cover]]'
+        - type: custom:button-card
+          entity: '[[cover]]'
+          show_state: false
+          show_icon: true
+          show_name: false
+          aspect_ratio: 2/1
+          state:
+            - value: 'closed'
+              icon: mdi:arrow-down-bold-outline
+              color: yellow
+            - value: 'open'
+              icon: mdi:arrow-down-bold-outline
+              color: white
+            - value: 'unavailable'
+              icon: mdi:alert
+              color: red
+          tap_action:
+            action: call-service
+            service: cover.close_cover
+            service_data:
+              entity_id: '[[cover]]'

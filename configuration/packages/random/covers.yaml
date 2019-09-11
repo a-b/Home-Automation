@@ -1,0 +1,185 @@
+homeassistant:
+
+sensor:
+  - platform: template
+    sensors:
+      cover_hemmabio:
+        unit_of_measurement: '%'
+        value_template: "{{ state_attr('cover.hemmabio', 'current_position') }}"
+
+      cover_kontor:
+        unit_of_measurement: '%'
+        value_template: "{{ state_attr('cover.kontor', 'current_position') }}"
+
+      cover_sovrum:
+        unit_of_measurement: '%'
+        value_template: "{{ state_attr('cover.sovrum', 'current_position') }}"
+
+cover:
+  - platform: mqtt
+    name: 'Hemmabio Höger'
+    command_topic: '/raw/esp8266/14016158/in'
+    state_topic:  '/raw/esp8266/14016158/out'
+    position_topic: '/raw/esp8266/14016158/out'
+    set_position_topic: '/raw/esp8266/14016158/in'
+    value_template: '{{ value_json.position }}'
+    position_closed: 100
+    position_open: 0
+    state_open: "0"
+    state_closed: "100"
+    payload_open: "0"
+    payload_close: "100"
+    payload_stop: "(0)"
+    optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: 'Hemmabio Mitten'
+    command_topic: '/raw/esp8266/1482389/in'
+    state_topic: '/raw/esp8266/1482389/out'
+    position_topic: '/raw/esp8266/1482389/out'
+    set_position_topic: '/raw/esp8266/1482389/in'
+    value_template: '{{ value_json.position }}'
+    position_closed: 100
+    position_open: 0
+    state_open: "0"
+    state_closed: "100"
+    payload_open: "0"
+    payload_close: "100"
+    payload_stop: "(0)"
+    optimistic: false
+    retain: false
+
+  - platform: mqtt
+    name: 'Hemmabio Vänster'
+    command_topic: '/raw/esp8266/13967689/in'
+    state_topic: '/raw/esp8266/13967689/out'
+    position_topic: '/raw/esp8266/13967689/out'
+    set_position_topic: '/raw/esp8266/139676891/in'
+    value_template: '{{ value_json.position }}'
+    position_closed: 100
+    position_open: 0
+    state_open: "0"
+    state_closed: "100"
+    payload_open: "0"
+    payload_close: "100"
+    payload_stop: "(0)"
+    optimistic: false
+    retain: false
+
+  - platform: mqtt
+    name: 'Kontor Höger'
+    command_topic: '/raw/esp8266/1480551/in'
+    state_topic:  '/raw/esp8266/1480551/out'
+    position_topic: '/raw/esp8266/1480551/out'
+    set_position_topic: '/raw/esp8266/1480551/in'
+    value_template: '{{ value_json.position }}'
+    position_closed: 100
+    position_open: 0
+    state_open: "0"
+    state_closed: "100"
+    payload_open: "0"
+    payload_close: "100"
+    payload_stop: "(0)"
+    optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: 'Kontor Vänster'
+    command_topic: '/raw/esp8266/14020384/in'
+    state_topic: '/raw/esp8266/14020384/out'
+    position_topic: '/raw/esp8266/14020384/out'
+    set_position_topic: '/raw/esp8266/14020384/in'
+    value_template: '{{ value_json.position }}'
+    position_closed: 100
+    position_open: 0
+    state_open: "0"
+    state_closed: "100"
+    payload_open: "0"
+    payload_close: "100"
+    payload_stop: "(0)"
+    optimistic: false
+    retain: false
+
+  - platform: mqtt
+    name: 'Sovrum_1'
+    command_topic: '/raw/esp8266/2694384/in'
+    state_topic:  '/raw/esp8266/2694384/out'
+    position_topic: '/raw/esp8266/26943848/out'
+    set_position_topic: '/raw/esp8266/2694384/in'
+    value_template: '{{ value_json.position }}'
+    position_closed: 100
+    position_open: 0
+    state_open: "0"
+    state_closed: "100"
+    payload_open: "0"
+    payload_close: "100"
+    payload_stop: "(0)"
+    optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: 'Sovrum_2'
+    command_topic: '/raw/esp8266/5666440/in'
+    state_topic: '/raw/esp8266/5666440/out'
+    position_topic: '/raw/esp8266/5666440/out'
+    set_position_topic: '/raw/esp8266/5666440/in'
+    value_template: '{{ value_json.position }}'
+    position_closed: 100
+    position_open: 0
+    state_open: "0"
+    state_closed: "100"
+    payload_open: "0"
+    payload_close: "100"
+    payload_stop: "(0)"
+    optimistic: false
+    retain: false
+
+
+  - platform: group
+    name: Hemmabio
+    entities:
+      - cover.hemmabio_hoger
+      - cover.hemmabio_mitten
+      - cover.hemmabio_vanster
+
+
+  - platform: group
+    name: kontor
+    entities:
+      - cover.kontor_hoger
+      - cover.kontor_vanster
+
+  - platform: group
+    name: Sovrum
+    entities:
+      - cover.sovrum_1
+      - cover.sovrum_2
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - cover.hemmabio
+        - cover.kontor
+        - cover.sovrum
+    entity_config:
+      cover.hemmabio:
+        name: Rullgardiner
+        room: Hemmabio
+        aliases:
+         - Gardiner
+      cover.kontor:
+        name: Rullgardiner
+        room: Kontor
+        aliases:
+         - Gardiner
+      cover.sovrum:
+        name: Rullgardiner
+        room: sovrum
+        aliases:
+         - Gardiner
+         - rullgardiner

@@ -1,0 +1,775 @@
+homeassistant:
+
+input_text:
+  elpris:
+    name: Elpris
+    initial: 1.885
+
+sensor:
+  - platform: mqtt
+    state_topic: !secret sparsnas_sensor
+    name: "grave_pow_watt"
+    unit_of_measurement: "W"
+    value_template: "{{ value_json.Watt | round(0) }}"
+
+  - platform: mqtt
+    state_topic: !secret sparsnas_sensor
+    name: "grave Battery remaining"
+    unit_of_measurement: "%"
+    value_template: "{{ value_json.battery | round(1) }}"
+
+
+  - platform: template
+    sensors:
+### Grave ###
+      grave_current_cost:
+        value_template: "{{ ((states('sensor.grave_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      grave_hourly_cost:
+        value_template: "{{ ((states('sensor.grave_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      grave_daily_cost:
+        value_template: "{{ ((states('sensor.grave_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      grave_weekly_cost:
+        value_template: "{{ ((states('sensor.grave_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      grave_monthly_cost:
+        value_template: "{{ ((states('sensor.grave_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      grave_yearly_cost:
+        value_template: "{{ ((states('sensor.grave_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### Diskmaskin ###
+      diskmaskin_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.diskmaskin_pow_energy_power')|default(0))| round(0) }}"
+
+      diskmaskin_current_cost:
+        value_template: "{{ ((states('sensor.diskmaskin_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      diskmaskin_hourly_cost:
+        value_template: "{{ ((states('sensor.diskmaskin_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      diskmaskin_daily_cost:
+        value_template: "{{ ((states('sensor.diskmaskin_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      diskmaskin_weekly_cost:
+        value_template: "{{ ((states('sensor.diskmaskin_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      diskmaskin_monthly_cost:
+        value_template: "{{ ((states('sensor.diskmaskin_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      diskmaskin_yearly_cost:
+        value_template: "{{ ((states('sensor.diskmaskin_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### Tvattmaskin ###
+      tvattmaskin_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.tvattmaskin_pow_energy_power')|default(0))| round(0) }}"
+
+      tvattmaskin_current_cost:
+        value_template: "{{ ((states('sensor.tvattmaskin_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      tvattmaskin_hourly_cost:
+        value_template: "{{ ((states('sensor.tvattmaskin_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      tvattmaskin_daily_cost:
+        value_template: "{{ ((states('sensor.tvattmaskin_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      tvattmaskin_weekly_cost:
+        value_template: "{{ ((states('sensor.tvattmaskin_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      tvattmaskin_monthly_cost:
+        value_template: "{{ ((states('sensor.tvattmaskin_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      tvattmaskin_yearly_cost:
+        value_template: "{{ ((states('sensor.tvattmaskin_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### Torktumlare ###
+      torktumlare_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.torktumlare_pow_energy_power')|default(0))| round(0) }}"
+
+      torktumlare_current_cost:
+        value_template: "{{ ((states('sensor.torktumlare_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      torktumlare_hourly_cost:
+        value_template: "{{ ((states('sensor.torktumlare_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      torktumlare_daily_cost:
+        value_template: "{{ ((states('sensor.torktumlare_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      torktumlare_weekly_cost:
+        value_template: "{{ ((states('sensor.torktumlare_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      torktumlare_monthly_cost:
+        value_template: "{{ ((states('sensor.torktumlare_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      torktumlare_yearly_cost:
+        value_template: "{{ ((states('sensor.torktumlare_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### NAS ###
+      nas_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.nas_energy_power')|default(0))| round(0) }}"
+
+      nas_current_cost:
+        value_template: "{{ ((states('sensor.nas_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      nas_hourly_cost:
+        value_template: "{{ ((states('sensor.nas_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      nas_daily_cost:
+        value_template: "{{ ((states('sensor.nas_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      nas_weekly_cost:
+        value_template: "{{ ((states('sensor.nas_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      nas_monthly_cost:
+        value_template: "{{ ((states('sensor.nas_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      nas_yearly_cost:
+        value_template: "{{ ((states('sensor.nas_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### Vattensystem ###
+      vattensystem_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.vattensystem_pow_energy_power')|default(0))| round(0) }}"
+
+      vattensystem_current_cost:
+        value_template: "{{ ((states('sensor.vattensystem_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      vattensystem_hourly_cost:
+        value_template: "{{ ((states('sensor.vattensystem_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      vattensystem_daily_cost:
+        value_template: "{{ ((states('sensor.vattensystem_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      vattensystem_weekly_cost:
+        value_template: "{{ ((states('sensor.vattensystem_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      vattensystem_monthly_cost:
+        value_template: "{{ ((states('sensor.vattensystem_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      vattensystem_yearly_cost:
+        value_template: "{{ ((states('sensor.vattensystem_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+
+### Värmepump ###
+      varmepump_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.varmepump_pow_energy_power')|default(0))| round(0) }}"
+
+      varmepump_current_cost:
+        value_template: "{{ ((states('sensor.varmepump_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      varmepump_hourly_cost:
+        value_template: "{{ ((states('sensor.varmepump_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      varmepump_daily_cost:
+        value_template: "{{ ((states('sensor.varmepump_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      varmepump_weekly_cost:
+        value_template: "{{ ((states('sensor.varmepump_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      varmepump_monthly_cost:
+        value_template: "{{ ((states('sensor.varmepump_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      varmepump_yearly_cost:
+        value_template: "{{ ((states('sensor.varmepump_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+
+### HP DL380G9 Server ###
+      hpdl380g9_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.hp_ilo_psu_summary')|default(0))|replace('Watts','')| round(0) }}"
+
+      hpdl380g9_current_cost:
+        value_template: "{{ ((states('sensor.hpdl380g9_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      hpdl380g9_hourly_cost:
+        value_template: "{{ ((states('sensor.hpdl380g9_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      hpdl380g9_daily_cost:
+        value_template: "{{ ((states('sensor.hpdl380g9_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      hpdl380g9_weekly_cost:
+        value_template: "{{ ((states('sensor.hpdl380g9_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      hpdl380g9_monthly_cost:
+        value_template: "{{ ((states('sensor.hpdl380g9_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      hpdl380g9_yearly_cost:
+        value_template: "{{ ((states('sensor.hpdl380g9_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### aircondition ###
+      aircondition_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.aircondition_energy_power')|default(0))| round(0) }}"
+
+      aircondition_current_cost:
+        value_template: "{{ ((states('sensor.aircondition_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      aircondition_hourly_cost:
+        value_template: "{{ ((states('sensor.aircondition_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      aircondition_daily_cost:
+        value_template: "{{ ((states('sensor.aircondition_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      aircondition_weekly_cost:
+        value_template: "{{ ((states('sensor.aircondition_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      aircondition_monthly_cost:
+        value_template: "{{ ((states('sensor.aircondition_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      aircondition_yearly_cost:
+        value_template: "{{ ((states('sensor.aircondition_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### hemmabio ###
+      hemmabio_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.hemmabio_energy_power')|default(0))| round(0) }}"
+
+      hemmabio_current_cost:
+        value_template: "{{ ((states('sensor.hemmabio_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      hemmabio_hourly_cost:
+        value_template: "{{ ((states('sensor.hemmabio_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      hemmabio_daily_cost:
+        value_template: "{{ ((states('sensor.hemmabio_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      hemmabio_weekly_cost:
+        value_template: "{{ ((states('sensor.hemmabio_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      hemmabio_monthly_cost:
+        value_template: "{{ ((states('sensor.hemmabio_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      hemmabio_yearly_cost:
+        value_template: "{{ ((states('sensor.hemmabio_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### kylfrys ###
+      kylfrys_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.kylfrys_energy_power')|default(0))| round(0) }}"
+
+      kylfrys_current_cost:
+        value_template: "{{ ((states('sensor.kylfrys_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      kylfrys_hourly_cost:
+        value_template: "{{ ((states('sensor.kylfrys_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      kylfrys_daily_cost:
+        value_template: "{{ ((states('sensor.kylfrys_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      kylfrys_weekly_cost:
+        value_template: "{{ ((states('sensor.kylfrys_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      kylfrys_monthly_cost:
+        value_template: "{{ ((states('sensor.kylfrys_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      kylfrys_yearly_cost:
+        value_template: "{{ ((states('sensor.kylfrys_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### tv ###
+      tv_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.tv_energy_power')|default(0))| round(0) }}"
+
+      tv_current_cost:
+        value_template: "{{ ((states('sensor.tv_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      tv_hourly_cost:
+        value_template: "{{ ((states('sensor.tv_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      tv_daily_cost:
+        value_template: "{{ ((states('sensor.tv_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      tv_weekly_cost:
+        value_template: "{{ ((states('sensor.tv_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      tv_monthly_cost:
+        value_template: "{{ ((states('sensor.tv_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      tv_yearly_cost:
+        value_template: "{{ ((states('sensor.tv_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### workstation ###
+      workstation_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.workstation_energy_power')|default(0))| round(0) }}"
+
+      workstation_current_cost:
+        value_template: "{{ ((states('sensor.workstation_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      workstation_hourly_cost:
+        value_template: "{{ ((states('sensor.workstation_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      workstation_daily_cost:
+        value_template: "{{ ((states('sensor.workstation_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      workstation_weekly_cost:
+        value_template: "{{ ((states('sensor.workstation_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      workstation_monthly_cost:
+        value_template: "{{ ((states('sensor.workstation_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      workstation_yearly_cost:
+        value_template: "{{ ((states('sensor.workstation_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### laddstation ###
+      laddstation_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.garage_laddstation_energy_power')|default(0))| round(0) }}"
+
+      laddstation_current_cost:
+        value_template: "{{ ((states('sensor.laddstation_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      laddstation_hourly_cost:
+        value_template: "{{ ((states('sensor.laddstation_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      laddstation_daily_cost:
+        value_template: "{{ ((states('sensor.laddstation_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      laddstation_weekly_cost:
+        value_template: "{{ ((states('sensor.laddstation_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      laddstation_monthly_cost:
+        value_template: "{{ ((states('sensor.laddstation_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      laddstation_yearly_cost:
+        value_template: "{{ ((states('sensor.laddstation_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+### motorvärmare ###
+      motorvarmare_pow_watt:
+        unit_of_measurement: 'W'
+        value_template: "{{ (states('sensor.garage_motorvarmare_energy_power')|default(0))| round(0) }}"
+
+      motorvarmare_current_cost:
+        value_template: "{{ ((states('sensor.motorvarmare_pow_watt')|default(0)) | float * 1 / 1000 *1.885) | round(2) }}"
+        unit_of_measurement: 'kr/H'
+
+      motorvarmare_hourly_cost:
+        value_template: "{{ ((states('sensor.motorvarmare_hourly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      motorvarmare_daily_cost:
+        value_template: "{{ ((states('sensor.motorvarmare_daily')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      motorvarmare_weekly_cost:
+        value_template: "{{ ((states('sensor.motorvarmare_weekly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      motorvarmare_monthly_cost:
+        value_template: "{{ ((states('sensor.motorvarmare_monthly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+      motorvarmare_yearly_cost:
+        value_template: "{{ ((states('sensor.motorvarmare_yearly')|default(0) | float * 1.885)) | round(0) }}"
+        unit_of_measurement: 'kr'
+
+  - platform: integration
+    source: sensor.grave_pow_watt
+    name: grave_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.diskmaskin_pow_energy_power
+    name: diskmaskin_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.tvattmaskin_pow_energy_power
+    name: tvattmaskin_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.torktumlare_pow_energy_power
+    name: torktumlare_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.nas_pow_watt
+    name: nas_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.vattensystem_pow_energy_power
+    name: vattensystem_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.varmepump_pow_energy_power
+    name: varmepump_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.hpdl380g9_pow_watt
+    name: hpdl380g9_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.aircondition_pow_watt
+    name: aircondition_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.hemmabio_pow_watt
+    name: hemmabio_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.kylfrys_pow_watt
+    name: kylfrys_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.tv_pow_watt
+    name: tv_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.workstation_pow_watt
+    name: workstation_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.laddstation_pow_watt
+    name: laddstation_energy
+    unit_prefix: k
+    round: 2
+  - platform: integration
+    source: sensor.motorvarmare_pow_watt
+    name: laddstation_energy
+    unit_prefix: k
+    round: 2
+
+
+utility_meter:
+  grave_hourly:
+    source: sensor.grave_energy
+    cycle: hourly
+  grave_daily:
+    source: sensor.grave_energy
+    cycle: daily
+  grave_weekly:
+    source: sensor.grave_energy
+    cycle: weekly
+  grave_monthly:
+    source: sensor.grave_energy
+    cycle: monthly
+  grave_yearly:
+    source: sensor.grave_energy
+    cycle: yearly
+
+  diskmaskin_hourly:
+    source: sensor.diskmaskin_energy
+    cycle: hourly
+  diskmaskin_daily:
+    source: sensor.diskmaskin_energy
+    cycle: daily
+  diskmaskin_weekly:
+    source: sensor.diskmaskin_energy
+    cycle: weekly
+  diskmaskin_monthly:
+    source: sensor.diskmaskin_energy
+    cycle: monthly
+  diskmaskin_yearly:
+    source: sensor.diskmaskin_energy
+    cycle: yearly
+
+  tvattmaskin_hourly:
+    source: sensor.tvattmaskin_energy
+    cycle: hourly
+  tvattmaskin_daily:
+    source: sensor.tvattmaskin_energy
+    cycle: daily
+  tvattmaskin_weekly:
+    source: sensor.tvattmaskin_energy
+    cycle: weekly
+  tvattmaskin_monthly:
+    source: sensor.tvattmaskin_energy
+    cycle: monthly
+  tvattmaskin_yearly:
+    source: sensor.tvattmaskin_energy
+    cycle: yearly
+
+  torktumlare_hourly:
+    source: sensor.torktumlare_energy
+    cycle: hourly
+  torktumlare_daily:
+    source: sensor.torktumlare_energy
+    cycle: daily
+  torktumlare_weekly:
+    source: sensor.torktumlare_energy
+    cycle: weekly
+  torktumlare_monthly:
+    source: sensor.torktumlare_energy
+    cycle: monthly
+  torktumlare_yearly:
+    source: sensor.torktumlare_energy
+    cycle: yearly
+
+  nas_hourly:
+    source: sensor.nas_energy
+    cycle: hourly
+  nas_daily:
+    source: sensor.nas_energy
+    cycle: daily
+  nas_weekly:
+    source: sensor.nas_energy
+    cycle: weekly
+  nas_monthly:
+    source: sensor.nas_energy
+    cycle: monthly
+  nas_yearly:
+    source: sensor.nas_energy
+    cycle: yearly
+
+  vattensystem_hourly:
+    source: sensor.vattensystem_energy
+    cycle: hourly
+  vattensystem_daily:
+    source: sensor.vattensystem_energy
+    cycle: daily
+  vattensystem_weekly:
+    source: sensor.vattensystem_energy
+    cycle: weekly
+  vattensystem_monthly:
+    source: sensor.vattensystem_energy
+    cycle: monthly
+  vattensystem_yearly:
+    source: sensor.vattensystem_energy
+    cycle: yearly
+
+  varmepump_hourly:
+    source: sensor.varmepump_energy
+    cycle: hourly
+  varmepump_daily:
+    source: sensor.varmepump_energy
+    cycle: daily
+  varmepump_weekly:
+    source: sensor.varmepump_energy
+    cycle: weekly
+  varmepump_monthly:
+    source: sensor.varmepump_energy
+    cycle: monthly
+  varmepump_yearly:
+    source: sensor.varmepump_energy
+    cycle: yearly
+
+  hpdl380g9_hourly:
+    source: sensor.hpdl380g9_energy
+    cycle: hourly
+  hpdl380g9_daily:
+    source: sensor.hpdl380g9_energy
+    cycle: daily
+  hpdl380g9_weekly:
+    source: sensor.hpdl380g9_energy
+    cycle: weekly
+  hpdl380g9_monthly:
+    source: sensor.hpdl380g9_energy
+    cycle: monthly
+  hpdl380g9_yearly:
+    source: sensor.hpdl380g9_energy
+    cycle: yearly
+
+  aircondition_hourly:
+    source: sensor.aircondition_energy
+    cycle: hourly
+  aircondition_daily:
+    source: sensor.aircondition_energy
+    cycle: daily
+  aircondition_weekly:
+    source: sensor.aircondition_energy
+    cycle: weekly
+  aircondition_monthly:
+    source: sensor.aircondition_energy
+    cycle: monthly
+  aircondition_yearly:
+    source: sensor.aircondition_energy
+    cycle: yearly
+
+  hemmabio_hourly:
+    source: sensor.hemmabio_energy
+    cycle: hourly
+  hemmabio_daily:
+    source: sensor.hemmabio_energy
+    cycle: daily
+  hemmabio_weekly:
+    source: sensor.hemmabio_energy
+    cycle: weekly
+  hemmabio_monthly:
+    source: sensor.hemmabio_energy
+    cycle: monthly
+  hemmabio_yearly:
+    source: sensor.hemmabio_energy
+    cycle: yearly
+
+
+  kylfrys_hourly:
+    source: sensor.kylfrys_energy
+    cycle: hourly
+  kylfrys_daily:
+    source: sensor.kylfrys_energy
+    cycle: daily
+  kylfrys_weekly:
+    source: sensor.kylfrys_energy
+    cycle: weekly
+  kylfrys_monthly:
+    source: sensor.kylfrys_energy
+    cycle: monthly
+  kylfrys_yearly:
+    source: sensor.kylfrys_energy
+    cycle: yearly
+
+  tv_hourly:
+    source: sensor.tv_energy
+    cycle: hourly
+  tv_daily:
+    source: sensor.tv_energy
+    cycle: daily
+  tv_weekly:
+    source: sensor.tv_energy
+    cycle: weekly
+  tv_monthly:
+    source: sensor.tv_energy
+    cycle: monthly
+  tv_yearly:
+    source: sensor.tv_energy
+    cycle: yearly
+
+  workstation_hourly:
+    source: sensor.workstation_energy
+    cycle: hourly
+  workstation_daily:
+    source: sensor.workstation_energy
+    cycle: daily
+  workstation_weekly:
+    source: sensor.workstation_energy
+    cycle: weekly
+  workstation_monthly:
+    source: sensor.workstation_energy
+    cycle: monthly
+  workstation_yearly:
+    source: sensor.workstation_energy
+    cycle: yearly
+
+
+  laddstation_hourly:
+    source: sensor.laddstation_energy
+    cycle: hourly
+  laddstation_daily:
+    source: sensor.laddstation_energy
+    cycle: daily
+  laddstation_weekly:
+    source: sensor.laddstation_energy
+    cycle: weekly
+  laddstation_monthly:
+    source: sensor.laddstation_energy
+    cycle: monthly
+  laddstation_yearly:
+    source: sensor.laddstation_energy
+    cycle: yearly
+
+  motorvarmare_hourly:
+    source: sensor.motorvarmare_energy
+    cycle: hourly
+  motorvarmare_daily:
+    source: sensor.motorvarmare_energy
+    cycle: daily
+  motorvarmare_weekly:
+    source: sensor.motorvarmare_energy
+    cycle: weekly
+  motorvarmare_monthly:
+    source: sensor.motorvarmare_energy
+    cycle: monthly
+  motorvarmare_yearly:
+    source: sensor.motorvarmare_energy
+    cycle: yearly

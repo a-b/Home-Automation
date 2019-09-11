@@ -1,0 +1,17 @@
+homeassistant:
+
+sensor:
+  - platform: glances
+    host: !secret zoneminder_host
+    name: zoneminder
+    version: 2
+    resources:
+      - 'disk_use_percent'
+      - 'disk_use'
+      - 'disk_free'
+      - 'memory_use_percent'
+      - 'memory_use'
+      - 'memory_free'
+      - 'processor_load'
+      - 'cpu_use_percent'
+      - 'cpu_temp'

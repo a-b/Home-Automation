@@ -1,0 +1,42 @@
+homeassistant:
+
+
+sensor:
+#  - platform: nut
+#    name: ups
+#    host: !secret nut_host
+#    resources:
+#      - ups.load
+#      - battery.voltage
+#      - ups.status
+#      - input.voltage
+
+  - platform: nut
+    name: ups_server
+    host: !secret nut_host2
+    resources:
+      - ups.load
+      - battery.voltage
+      - ups.status
+      - input.voltage
+
+
+  - platform: template
+    sensors:
+      ups_status:
+        value_template: >
+          {% if is_state('sensor.ups_status_data', 'OL') %}
+              NAS UPS Online
+          {% else %}
+              NAS UPS on Battery }}.
+          {% endif %}
+        friendly_name: 'NAS UPS State'
+
+      ups_server_status:
+        value_template: >
+          {% if is_state('sensor.ups_server_status_data', 'OL') %}
+              NAS UPS Online
+          {% else %}
+              NAS UPS on Battery }}.
+          {% endif %}
+        friendly_name: 'NAS UPS State'

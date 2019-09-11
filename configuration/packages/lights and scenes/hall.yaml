@@ -1,0 +1,17 @@
+homeassistant:
+
+light:
+  - platform: group
+    name: Hall
+    entities:
+      - light.hall_taklampa
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.hall_taklampa
+    entity_config:
+      light.hall_taklampa:
+        name: Taklampa
+        room: Hall

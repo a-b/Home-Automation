@@ -1,0 +1,22 @@
+homeassistant:
+
+light:
+  - platform: group
+    name: 'Gästrum Höger'
+    entities:
+      - light.gastrum_hoger_fonster
+      - light.gastrum_hoger_tak
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.gastrum_hoger_fonster
+        - light.gastrum_hoger_tak
+    entity_config:
+      light.gastrum_hoger_fonster:
+        name: Fönster
+        room: Gästrum Höger
+      light.gastrum_hoger_tak:
+        name: Tak
+        room: Gästrum Höger

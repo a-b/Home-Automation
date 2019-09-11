@@ -1,0 +1,25 @@
+homeassistant:
+
+
+input_select:
+  aircondition_status:
+    name: "Aircondition Status"
+    options:
+      - Av
+      - Sovrummet För Varmt
+      - På
+    initial: Av
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - switch.aircondition
+    entity_config:
+      switch.aircondition:
+        name: AC
+        room: Sovrum
+        aliases:
+         - Aircondition
+         - kylan
+         - kyla

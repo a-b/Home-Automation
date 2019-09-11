@@ -1,0 +1,8 @@
+homeassistant:
+
+
+sensor:
+  - platform: template
+    sensors:
+      tvattstuga_fuktig:
+        value_template: "{{ states('sensor.tvattstuga_fukt') | int > 50 }}"

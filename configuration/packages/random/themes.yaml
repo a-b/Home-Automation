@@ -1,0 +1,22 @@
+homeassistant:
+
+
+input_select:
+  current_theme:
+    name: 'Tema'
+    options:
+     - 'default'
+     - 'dark_theme'
+    initial: 'dark_theme'
+    icon: 'mdi:palette'
+
+automation:
+  - alias: Themes set start theme
+    initial_state: 'on'
+    trigger:
+    - event: start
+      platform: homeassistant
+    action:
+    - data_template:
+        name: dark_theme
+      service: frontend.set_theme

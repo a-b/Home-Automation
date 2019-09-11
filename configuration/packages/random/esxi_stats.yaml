@@ -1,0 +1,9 @@
+esxi_stats:
+  host: !secret esxi_stats_host
+  username: !secret esxi_stats_username
+  password: !secret esxi_stats_password
+  monitored_conditions:
+    - hosts
+    - vms
+    - datastores
+

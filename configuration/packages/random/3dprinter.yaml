@@ -1,0 +1,83 @@
+homeassistant:
+  customize:
+    sensor.am8_actual_tool0_temp:
+      friendly_name: Nozzle
+    sensor.am8_actual_bed_temp:
+      friendly_name: Bed
+    sensor.am8_current_state:
+      friendly_name: Status
+    sensor.am8_job_percentage:
+      friendly_name: Progress
+    sensor.am8_target_bed_temp:
+      friendly_name: Bed Target
+    sensor.am8_target_tool0_temp:
+      friendly_name: Nozzle Target
+    sensor.3dprinter_temperatur:
+      friendly_name: Skåp Temp
+      icon: mdi:video-3d
+    sensor.3dprinter_fukt:
+      friendly_name: Skåp Fuktighet
+      icon: mdi:video-3d
+    switch.3d_printer:
+      friendly_name: 3D skrivaren
+
+
+octoprint:
+  - host: !secret octoprint_host
+    api_key: !secret octoprint_apikey
+    name: AM8
+    bed: true
+    number_of_tools: 1
+    sensors:
+      monitored_conditions:
+        - 'Current State'
+        - 'Job Percentage'
+        - 'Temperatures'
+        - 'Time Elapsed'
+        - 'Time Remaining'
+    binary_sensors:
+      monitored_conditions:
+        - 'Printing'
+        - 'Printing Error'
+
+camera:
+  - platform: mjpeg
+    name: AM8 Camera
+    mjpeg_url: !secret octoprint_camera_url
+    still_image_url: !secret octoprint_camera_image_url
+
+
+sensor:
+  - platform: template
+    sensors:
+      octoprint_time_remaining:
+        friendly_name: 'Printing Time Remaining'
+        value_template: >-
+          {% set rtime = states.sensor.am8_time_remaining.state | int %}
+          {% set seconds = rtime % 60 %}
+          {% set minutes = ((rtime % 3600) / 60) | int %}
+          {% set hours = ((rtime % 86400) / 3600) | int %}
+          {% set days = (rtime / 86400) | int %}
+          {%- if days > 0 -%}
+            {%- if days == 1 -%}
+              1 day
+            {%- else -%}
+              {{ days }} days
+            {%- endif -%}
+            {{ ', ' }}
+          {%- endif -%}
+          {%- if hours > 0 -%}
+            {%- if hours == 1 -%}
+              1 hour
+            {%- else -%}
+              {{ hours }} hours
+            {%- endif -%}
+            {{ ', ' }}
+          {%- endif -%}
+          {%- if minutes > 0 -%}
+            {%- if minutes == 1 -%}
+              1 minute
+            {%- else -%}
+              {{ minutes }} minutes
+            {%- endif -%}
+          {%- endif -%}

@@ -1,0 +1,140 @@
+homeassistant:
+  name: Home
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  elevation: 30
+  unit_system: metric
+  time_zone: Europe/Stockholm
+  packages: !include_dir_named packages
+
+auth:
+system_health:
+stream:
+
+frontend:
+  themes: !include_dir_merge_named themes/
+  javascript_version: latest
+
+hacs:
+  token: !secret hacstoken
+
+lovelace_gen:
+lovelace:
+  mode: yaml
+
+http:
+  base_url: !secret base_url
+  ip_ban_enabled: False
+  login_attempts_threshold: 3
+  use_x_forwarded_for: true
+  trusted_proxies: 127.0.0.1
+
+####################################################
+#                                                  #
+#                    Components                    #
+#                                                  #
+####################################################
+updater:
+hassio:
+discovery:
+config:
+history:
+logbook:
+map:
+sun:
+tts:
+  platform: google_translate
+  language: 'sv'
+  cache: true
+  cache_dir: /tmp/tts
+  time_memory: 300
+  base_url: !secret base_url
+ios:
+recorder:
+  db_url: !secret mysqldburl
+  purge_keep_days: 10
+  exclude:
+    domains:
+      - weblink
+      - updater
+    entities:
+      - sun.sun
+      - sensor.last_boot
+      - sensor.date
+      - binary_sensor.uptimerobot
+
+
+#influxdb:
+#  host: !secret influxdb_host
+#  database: !secret influxdb_database
+#  username: !secret influxdb_user
+#  password: !secret influxdb_pass
+
+notify:
+  - platform: html5
+    name: html5
+    vapid_pub_key: !secret vapid_pub_key
+    vapid_prv_key: !secret vapid_prv_key
+    vapid_email: !secret vapid_email
+
+
+  - name: alla
+    platform: group
+    services:
+      - service: html5_mattias
+      - service: ios_malins_iphone
+
+
+  - name: mattiasgroup
+    platform: group
+    services:
+      - service: html5_mattias
+
+xiaomi_aqara:
+  gateways:
+   - mac: !secret xiaomigw_mac1
+     key: !secret xiaomigw_token1
+     host: !secret xiaomigw_host1
+   - mac: !secret xiaomigw_mac2
+     key: !secret xiaomigw_token2
+     host: !secret xiaomigw_host2
+
+verisure:
+  username: !secret verisure_username
+  password: !secret verisure_password
+
+#tibber:
+#  access_token: !secret tibbertoken
+
+
+
+sensor:
+#  - platform: pollenkoll
+#    sensors:
+#      - city: Forshaga
+#        state: Al
+
+#  - platform: plex
+#    name: Plex
+#    username: !secret plex_username
+#    password: !secret plex_password
+#    server: Docker
+#    token: !secret plex_token
+#    ssl: true
+    
+  
+
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+
+
+#binary_sensor:
+#  - platform: uptimerobot
+#    api_key: !secret uptime_apikey
+
+shell_command:
+  lovelace_gen: 'python /config/lovelace-gen.py > /config/lovelace-gen.log'
+

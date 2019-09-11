@@ -1,0 +1,9 @@
+homeassistant:
+
+
+light:
+  - platform: group
+    name: 'Övrigt'
+    entities:
+      - light.kladkammare
+      - light.tvattstuga_taklampa

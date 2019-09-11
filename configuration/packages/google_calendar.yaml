@@ -1,0 +1,25 @@
+homeassistant:
+
+google:
+  client_id: !secret google_clientid
+  client_secret: !secret google_clientsecret
+
+
+automation:
+  - alias: 'Sopor Notification'
+    trigger:
+      platform: state
+      entity_id: !secret calendar_entity
+      to: 'on'
+    condition:
+        condition: template
+        value_template: "{{is_state_attr('calendar.trash' , 'message', Thrash)}}"
+    action:
+    - service: persistent_notification.create
+      data:
+        message: "Imorgon är det sophämtning, bär ut alla sopor!"
+        title: "Soptömning"
+    -   service: notify.alla
+        data:
+          message: "Sopbilen kommer imorgon, gå ut med alla sopor"
+          title: "Soptömning"

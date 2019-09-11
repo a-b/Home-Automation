@@ -1,0 +1,31 @@
+# lovelace_gen
+card:
+  type: vertical-stack
+  cards:
+    - type: "custom:mini-graph-card"
+      entities:
+         -  sensor.[[device]]_pow_watt
+      name: '[[name]]'
+      height: 50
+      line_width: 6
+      font_size: 80
+      animate: false
+      decimals: 0
+      line_color: '#3498db'
+      hours_to_show: 24
+      points_per_hour: 1
+      show:
+        icon: false
+        fill: fade
+        labels: true
+    - type: entities
+      entities:
+        - type: custom:fold-entity-row
+          head:
+            type: section
+            label: ''
+          items:
+            - type: custom:decluttering-card
+              template: popup_template_powercost
+              variables:
+                - entity: '[[device]]'

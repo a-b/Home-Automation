@@ -1,0 +1,7 @@
+homeassistant:
+
+zoneminder:
+  host: !secret zoneminder_host2
+  
+camera:
+  - platform: zoneminder

@@ -1,0 +1,24 @@
+homeassistant:
+
+automation:
+  - alias: Doorbell
+    initial_state: 'on'
+    trigger:
+      platform: event
+      event_type: deconz_event
+      event_data:
+        id: ringklocka
+        event: 1002
+    condition:
+      condition: state
+      entity_id: 'binary_sensor.hus_ytterdorr'
+      state: 'off'
+    action:
+      - service: notify.mattiasgroup
+        data:
+          message: 'Någon är vid dörren'
+      - service: xiaomi_aqara.play_ringtone
+        data:
+          gw_mac: !secret xiaomigw_mac1
+          ringtone_id: 13
+          ringtone_vol: 100

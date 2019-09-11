@@ -1,0 +1,17 @@
+#lovelace_gen
+
+card:
+  type: vertical-stack
+  cards:
+    - type: horizontal-stack
+      cards:
+        - type: custom:mini-media-player
+          entity: '[[mediaplayer]]'
+          name: '[[name]]'
+          power_color: true
+          volume_stateless: true
+          artwork_border: true
+          short_info: true
+          show_progress: true
+          show_source: true
+          icon: mdi:google-home

@@ -1,0 +1,6 @@
+homeassistant:
+
+vacuum:
+  - platform: xiaomi_miio
+    host: !secret ragnar_host
+    token: !secret ragnar_token

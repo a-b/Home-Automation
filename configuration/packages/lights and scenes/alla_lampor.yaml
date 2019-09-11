@@ -1,0 +1,52 @@
+homeassistant:
+
+light:
+  - platform: group
+    name: alla lampor
+    entities:
+      - light.sovrumsfonster
+      - light.gastrum_vanster_tak
+      - light.mattias_sanglampa
+      - light.malin_sanglampa
+      - light.sovrum_spotlight
+      - light.balkong
+      - light.hall_taklampa_1
+      - light.hall_taklampa_2
+      - light.hall_taklampa_3
+      - light.hall_taklampa_4
+      - light.koksbank_lightstrip
+      - light.hemmabio_bank
+      - light.hemmabio_spotlight_1
+      - light.hemmabio_spotlight_2
+      - light.hemmabio_spotlight_3
+      - light.vardagsrum_fonster
+      - light.kontor_taklampa_1
+      - light.kontor_taklampa_2
+      - light.kontor_taklampa_3
+      - light.kontor_taklampa_4
+      - light.kontor_fonster_1
+      - light.kontor_fonster_2
+      - light.kladkammare
+      - light.tvrumsfonster
+      - light.tvrumsgolv
+      - light.tvrum_tak_1
+      - light.tvrum_tak_2
+      - light.tvrum_tak_3
+      - light.tvattstuga_taklampa_1
+      - light.tvattstuga_taklampa_2
+      - light.tvattstuga_taklampa_3
+      - light.tvattstuga_taklampa_4
+      - light.tvattstuga_taklampa_5
+      - light.tvattstuga_taklampa_6
+      - light.gastrum_vanster_fonster
+      - light.gastrum_vanster_tak
+      - light.gastrum_hoger_fonster
+      - light.gastrum_hoger_tak
+      - light.garage_takbelysning
+      - light.utebelysning_1
+      - light.utebelysning_2
+      - light.utebelysning_3
+      - light.garage_uppfart
+      - light.altan_koksdorr
+      - light.uterum_golv
+      - light.uterum_fonster

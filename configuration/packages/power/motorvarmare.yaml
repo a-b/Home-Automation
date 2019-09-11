@@ -1,0 +1,227 @@
+homeassistant:
+
+
+input_select:
+  motorvarmare:
+    name: Motorvärmare Info
+    options:
+      - Av
+      - På
+    initial: Av
+
+input_number:
+  alarm_1_hour:
+    name: Hours
+    icon: mdi:timer
+    initial: 6
+    min: 0
+    max: 23
+    step: 1
+  alarm_1_minutes:
+    name: Minutes
+    icon: mdi:timer
+    initial: 00
+    min: 0
+    max: 59
+    step: 1
+
+input_boolean:
+  alarm_active:
+    name: Schema Aktiverat
+    initial: off
+    icon: mdi:calendar
+  motorvarmare:
+    name: Motorvärmare Info
+    initial: off
+    icon: mdi:information-outline
+
+sensor:
+  - platform: template
+    sensors:
+       alarm_1_time:
+            friendly_name: 'Vald tid för schema'
+            value_template: >-
+                {{ "%0.02d:%0.02d" | format(states("input_number.alarm_1_hour") | int, states("input_number.alarm_1_minutes") | int) }}
+
+
+automation:
+#Sätter automatiskt igång schemat nedanför vid kallt väder på veckodagar
+  - id: Motorvarmare aktivera schema
+    alias: Motorvarmare aktivera schema
+    trigger:
+      - platform: time
+        at: 04:30
+    condition:
+      - condition: state
+        entity_id: input_boolean.alarm_active
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.home
+        state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.yr_temperature
+        below: 5
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.alarm_active
+
+# Schema för veckordagar
+  - id: Motorvarmare huvudschema
+    alias: Motorvarmare huvudschema
+    trigger:
+      - platform: time_pattern
+        minutes: '/1'
+        seconds: 0
+    condition:
+      - condition: state
+        entity_id: input_boolean.alarm_active
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.home
+        state: 'on'
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: template
+        value_template: >-
+            {{ now().strftime("%H:%M") == states.sensor.alarm_1_time.state }}
+    action:
+      - entity_id: switch.garage_motorvarmare
+        service: switch.turn_on
+      - entity_id: input_boolean.alarm_active
+        service: input_boolean.turn_off
+      - entity_id: input_boolean.motorvarmare
+        service: input_boolean.turn_off
+
+
+#schema vid 0 gradigt
+  - id: Motorvarmare aktivera schema 0 gradigt
+    alias: Motorvarmare aktivera schema
+    trigger:
+      - platform: time
+        at: 04:00
+    condition:
+      - condition: state
+        entity_id: input_boolean.alarm_active
+        state: 'off'
+      - condition: numeric_state
+        entity_id: sensor.yr_temperature
+        below: 5
+        above: -5
+    action:
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.alarm_1_hour
+          value: '06'
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.alarm_1_minutes
+          value: '00'
+
+
+#schema vid minus 10
+  - id: Motorvarmare aktivera schema minus 10
+    alias: Motorvarmare aktivera schema
+    trigger:
+      - platform: time
+        at: 04:00
+    condition:
+      - condition: state
+        entity_id: input_boolean.alarm_active
+        state: 'off'
+      - condition: numeric_state
+        entity_id: sensor.yr_temperature
+        below: -5
+        above: -10
+    action:
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.alarm_1_hour
+          value: '05'
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.alarm_1_minutes
+          value: '30'
+
+
+#schema vid minus 20
+  - id: Motorvarmare aktivera schema minus 25
+    alias: Motorvarmare aktivera schema
+    trigger:
+      - platform: time
+        at: 04:00
+    condition:
+      - condition: state
+        entity_id: input_boolean.alarm_active
+        state: 'off'
+      - condition: numeric_state
+        entity_id: sensor.yr_temperature
+        below: -10
+        above: -25
+    action:
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.alarm_1_hour
+          value: '05'
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.alarm_1_minutes
+          value: '00'
+
+#Notifiera mattias vid ingen last
+  - id: motorvarmare Notifiera mattias vid ingen last
+    alias: motorvarmare Notifiera mattias vid ingen last
+    trigger:
+      - platform: state
+        entity_id: switch.garage_motorvarmare
+        to: 'on'
+        for: 00:05:00
+    condition:
+      - condition: numeric_state
+        entity_id: sensor.motorvarmare_pow_watt
+        below: 100
+    action:
+      - service: notify.mattiasgroup
+        data:
+          message: Motorvärmaren är aktiv utan last, kontrollera att den är ikopplad
+
+
+#Stäng av motorvärmaren när den slutat dra ström
+  - id: motorvarmare stang av vid ingen last
+    alias: motorvarmare stang av vid ingen last
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.motorvarmare_pow_watt
+        below: 100
+        for: 00:10:00
+    action:
+      entity_id: switch.garage_motorvarmare
+      service: switch.turn_off
+
+#Stäng av motorvärmaren när vi ej är hemma
+  - id: motorvarmare av ej hemma
+    alias: Motorvarmare av ej hemma
+    trigger:
+      - platform: state
+        entity_id: alarm_control_panel.grave_alarm
+        to: 'armed_away'
+    action:
+      entity_id: switch.garage_motorvarmare
+      service: switch.turn_off
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+homeassistant:
+
+
+input_boolean:
+  mysbelysning:
+    name: "mysbelysning "
+    initial: off
+
+  full_mysbelysning:
+    name: "halv mysbelysning "
+    initial: off
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - input_boolean.mysbelysning
+    entity_config:
+      input_boolean.mysbelysning:
+        name: mysbelysning

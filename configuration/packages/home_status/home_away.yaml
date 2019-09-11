@@ -1,0 +1,15 @@
+homeassistant:
+  customize:
+    sensor.hemma_status:
+      icon: mdi:home
+
+input_boolean:
+  home:
+    name: "hemma"
+
+group:
+  home_away_group:
+    name: home and away
+    entities:
+      - device_tracker.malins_iphone
+      - device_tracker.mattias_iphone

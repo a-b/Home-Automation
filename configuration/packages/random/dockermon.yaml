@@ -1,0 +1,169 @@
+homeassistant:
+  customize:
+    sensor.docker_status:
+      icon: mdi:docker
+
+sensor:
+  - platform: template
+    sensors:
+      docker_check:
+        value_template: >-
+          {{ is_state('switch.plex', 'off')
+             or is_state('switch.sparsnas', 'off')
+             or is_state('switch.dockermon', 'off')
+             or is_state('switch.grafana', 'off')
+             or is_state('switch.caddy', 'off')
+             or is_state('switch.mqtt', 'off')
+             or is_state('switch.aircast', 'off')
+             or is_state('switch.samba', 'off')
+             or is_state('switch.influxdb', 'off')
+             or is_state('switch.mariadb', 'off')
+             or is_state('switch.ssh', 'off')
+             or is_state('switch.node_red', 'off')
+             or is_state('switch.vscode', 'off')
+             or is_state('switch.ups', 'off')
+             or is_state('switch.unifi_controller', 'off') }}
+        friendly_name: 'Docker'
+
+      docker_status:
+        value_template: >
+          {% if is_state('sensor.docker_check', 'True') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+        friendly_name: Docker
+
+switch:
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/sparsnas
+    name: Sparsnäs
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://192.168.1.7:8126/container/plex
+    name: Plex
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/dockermon
+    name: Dockermon
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_a0d7b954_grafana
+    name: Grafana
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_fe41fc28_caddy
+    name: Caddy
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/homeassistant
+    name:  Home Assistant
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_core_samba
+    name:  Samba
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_core_ssh
+    name:  SSH
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_a0d7b954_mqtt
+    name:  MQTT
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_a0d7b954_unifi
+    name:  UNIFI Controller
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_a0d7b954_aircast
+    name:  AirCast
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_a0d7b954_influxdb
+    name:  InfluxDB
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_core_mariadb
+    name:  MariaDB
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_a0d7b954_nodered
+    name:  Node-Red
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_a0d7b954_vscode
+    name:  VScode
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_a0d7b954_sonweb
+    name:  Tasmota
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_7be23ff5_dropbox_sync
+    name:  Dropbox
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/facedetection
+    name:  Deepstack
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+  - platform: rest
+    resource: http://127.0.0.1:8126/container/addon_8dfed277_nut
+    name:  UPS
+    body_on: '{"state": "start"}'
+    body_off: '{"state": "stop"}'
+    is_on_template: '{{ value_json is not none and value_json.state == "running" }}'

@@ -1,0 +1,218 @@
+homeassistant:
+
+group:
+  xiaomi_alarm_doors:
+    name: "Dörrar"
+    view: false
+    entities:
+      - binary_sensor.uterum_dorr
+      - binary_sensor.tvattstuga_dorr
+      - binary_sensor.hus_ytterdorr
+      - binary_sensor.kok_dorr
+      - binary_sensor.garage_dorr
+      - binary_sensor.garage_forrad_dorr
+      - binary_sensor.garage_port
+
+  xiaomi_alarm_windows:
+    name: "Fönster"
+    view: false
+    entities:
+      - binary_sensor.kontor_fonster_hoger
+      - binary_sensor.kontor_fonster_vanster
+      - binary_sensor.kok_fonster_hoger
+      - binary_sensor.kok_fonster_vanster
+      - binary_sensor.toalett_fonster
+      - binary_sensor.hall_fonster
+
+sensor:
+  - platform: template
+    sensors:
+      all_doors_check:
+        value_template: >-
+          {{ is_state('binary_sensor.balkong_dorr', 'on')
+             or is_state('binary_sensor.uterum_dorr', 'on')
+             or is_state('binary_sensor.tvattstuga_dorr', 'on')
+             or is_state('binary_sensor.hus_ytterdorr', 'on')
+             or is_state('binary_sensor.kok_dorr', 'on')
+             or is_state('binary_sensor.garage_dorr', 'on')
+             or is_state('binary_sensor.garage_forrad_dorr', 'on')
+             or is_state('binary_sensor.garage_port', 'on') }}
+        friendly_name: 'Alla Dörrar'
+
+      all_windows_check:
+        value_template: >-
+          {{ is_state('binary_sensor.kontor_fonster_hoger', 'on')
+             or is_state('binary_sensor.kontor_fonster_vanster', 'on')
+             or is_state('binary_sensor.kok_fonster_hoger', 'on')
+             or is_state('binary_sensor.kok_fonster_vanster', 'on')
+             or is_state('binary_sensor.toalett_fonster', 'on')
+             or is_state('binary_sensor.hall_fonster', 'on') }}
+        friendly_name: 'Alla Fönster'
+
+      bottenvaning_rorelse:
+        value_template: >-
+          {{ is_state('binary_sensor.kontor_rorelsesensor', 'on')
+             or is_state('binary_sensor.hemmabio_rorelsesensor', 'on')
+             or is_state('binary_sensor.tvattstuga_rorelsesensor', 'on')
+             or  is_state('binary_sensor.kok_rorelsesensor', 'on')
+             or is_state('binary_sensor.hall_rorelsesensor', 'on')
+             or is_state('binary_sensor.hall_2_rorelsesensor', 'on')}}
+
+      overvaning_rorelse:
+        value_template: >-
+          {{ is_state('binary_sensor.sovrum_rorelsesensor', 'on')
+             or is_state('binary_sensor.tvrum_rorelsesensor', 'on')
+             or is_state('binary_sensor.gastrum_hoger_rorelsesensor', 'on')
+             or is_state('binary_sensor.gastrum_vanster_rorelsesensor', 'on')}}
+
+## sovrum
+      sovrum_motion:
+        value_template: >-
+          {{ is_state('binary_sensor.sovrum_rorelsesensor', 'on')
+             or is_state('binary_sensor.sovrum_rorelsesensor', 'on') }}
+      sovrum_windows:
+        value_template: >-
+          {{ is_state('binary_sensor.sovrum_fonster', 'on')
+             or is_state('binary_sensor.sovrum_fonster', 'on') }}
+      sovrum_doors:
+        value_template: >-
+          {{ is_state('binary_sensor.balkong', 'on')
+             or is_state('binary_sensor.sovrum_doors', 'on') }}
+
+## Hall
+      hall_motion:
+        value_template: >-
+          {{ is_state('binary_sensor.hall_rorelsesensor', 'on')
+             or is_state('binary_sensor.hall_2_rorelsesensor', 'on') }}
+      hall_windows:
+        value_template: >-
+          {{ is_state('binary_sensor.hall_fonster', 'on')
+             or is_state('binary_sensor.hall_fonster', 'on') }}
+      hall_doors:
+        value_template: >-
+          {{ is_state('binary_sensor.hus_ytterdorr', 'on')
+             or is_state('binary_sensor.entredorr', 'on') }}
+
+### Kontor
+      kontor_motion:
+        value_template: >-
+          {{ is_state('binary_sensor.kontor_rorelsesensor', 'on')
+             or is_state('binary_sensor.kontor_rorelsesensor', 'on') }}
+      kontor_windows:
+        value_template: >-
+          {{ is_state('binary_sensor.kontor_fonster_hoger', 'on')
+             or is_state('binary_sensor.kontor_fonster_vanster', 'on') }}
+
+
+## kök
+      kok_motion:
+        value_template: >-
+          {{ is_state('binary_sensor.kok_rorelsesensor', 'on')
+             or is_state('binary_sensor.kok_rorelsesensor', 'on') }}
+      kok_windows:
+        value_template: >-
+          {{ is_state('binary_sensor.kok_fonster_hoger', 'on')
+             or is_state('binary_sensor.kok_fonster_vanster', 'on') }}
+      kok_doors:
+        value_template: >-
+          {{ is_state('binary_sensor.altan_dorr_kok', 'on')
+             or is_state('binary_sensor.kok_dorr', 'on') }}
+      kok_water:
+        value_template: >-
+          {{ is_state('binary_sensor.kok_diskbank', 'on')
+             or is_state('binary_sensor.kok_diskbank', 'on') }}
+
+## Hemmabio
+      hemmabio_motion:
+        value_template: >-
+          {{ is_state('binary_sensor.hemmabio_rorelsesensor', 'on')
+             or is_state('binary_sensor.hemmabio_rorelsesensor', 'on') }}
+      hemmabio_windows:
+        value_template: >-
+          {{ is_state('binary_sensor.hemmabio_fonster_hoger', 'on')
+             or is_state('binary_sensor.hemmabio_fonster_vanster', 'on') }}
+      hemmabio_doors:
+        value_template: >-
+          {{ is_state('binary_sensor.altan_dorr_vardagsrum_biorum', 'on')
+             or is_state('binary_sensor.uterum_dorr', 'on') }}
+
+## gästrum höger
+      gastrum_hoger_motion:
+        value_template: >-
+          {{ is_state('binary_sensor.gastrum_hoger_rorelsesensor', 'on')
+             or is_state('binary_sensor.gastrum_hoger_rorelsesensor', 'on') }}
+      gastrum_hoger_windows:
+        value_template: >-
+          {{ is_state('binary_sensor.gastrum_hoger_fonster_hoger', 'on')
+             or is_state('binary_sensor.gastrum_hoger_fonster_vanster', 'on') }}
+
+## gästrum vanster
+      gastrum_vanster_motion:
+        value_template: >-
+          {{ is_state('binary_sensor.gastrum_vanster_rorelsesensor', 'on')
+             or is_state('binary_sensor.gastrum_vanster_rorelsesensor', 'on') }}
+      gastrum_vanster_windows:
+        value_template: >-
+          {{ is_state('binary_sensor.gastrum_vanster_fonster_hoger', 'on')
+             or is_state('binary_sensor.gastrum_vanster_fonster_vanster', 'on') }}
+
+## tvrum
+      tvrum_motion:
+        value_template: >-
+          {{ is_state('binary_sensor.tvrum_rorelsesensor', 'on')
+             or is_state('binary_sensor.tvrum_rorelsesensor', 'on') }}
+      tvrum_windows:
+        value_template: >-
+          {{ is_state('binary_sensor.tvrum_fonster_hoger', 'on')
+             or is_state('binary_sensor.tvrum_fonster_vanster', 'on') }}
+
+
+## tvattstuga
+      tvattstuga_motion:
+        value_template: >-
+          {{ is_state('binary_sensor.tvattstuga_rorelsesensor', 'on')
+             or is_state('binary_sensor.tvattstuga_rorelsesensor', 'on') }}
+      tvattstuga_doors:
+        value_template: >-
+          {{ is_state('binary_sensor.tvattstuga_dorr', 'on')
+             or is_state('binary_sensor.tvattstuga_dorr', 'on') }}
+      tvattstuga_water:
+        value_template: >-
+          {{ is_state('binary_sensor.tvattstuga_vattensensor', 'on')
+             or is_state('binary_sensor.tvattstuga_varmepanna', 'on') }}
+
+## garage
+      garage_motion:
+        value_template: >-
+          {{ is_state('binary_sensor.garage_bank_rorelsesensor', 'on')
+             or is_state('binary_sensor.garage_dorr_rorelsesensor', 'on')
+             or is_state('binary_sensor.garage_forrad_rorelsesensor', 'on') }}
+      garage_windows:
+        value_template: >-
+          {{ is_state('binary_sensor.garage_fonster_hoger', 'on')
+             or is_state('binary_sensor.garage_fonster_vanster', 'on') }}
+      garage_doors:
+        value_template: >-
+          {{ is_state('binary_sensor.garage_dorr', 'on')
+             or is_state('binary_sensor.garage_forrad_dorr', 'on')
+             or is_state('binary_sensor.garage_port', 'on')
+             or is_state('cover.garageport', 'open') }}
+      garage_water:
+        value_template: >-
+          {{ is_state('binary_sensor.garage_vattensystem', 'on')
+             or is_state('binary_sensor.garage_vattensystem', 'on') }}
+
+
+## uterum
+      uterum_motion:
+        value_template: >-
+          {{ is_state('binary_sensor.uterum_rorelsesensor', 'on')
+             or is_state('binary_sensor.uterum_rorelsesensor', 'on') }}
+      uterum_windows:
+        value_template: >-
+          {{ is_state('binary_sensor.uterum_fonster_hoger', 'on')
+             or is_state('binary_sensor.uterum_fonster_vanster', 'on') }}
+      uterum_doors:
+        value_template: >-
+          {{ is_state('binary_sensor.uterum_dorr', 'on')
+             or is_state('binary_sensor.uterum_dorr', 'open') }}

@@ -1,0 +1,328 @@
+# lovelace_gen
+type: custom:layout-card
+icon: mdi:information-outline
+title: status
+path: status
+layout: vertical
+cards:
+  - type: entities
+    title: Enheter
+    entities:       
+      - type: custom:fold-entity-row
+        head: sensor.docker_status
+        group_config:
+          secondary_info: last-changed
+        items:
+          - switch.plex
+          - switch.sparsnas
+          - switch.dockermon
+          - switch.grafana
+          - switch.caddy
+          - switch.mqtt
+          - switch.unifi_controller
+          - switch.aircast
+          - switch.samba
+          - switch.influxdb
+          - switch.mariadb
+          - switch.ssh
+          - switch.node_red
+          - switch.vscode
+
+  - type: entities
+    title: Rumsgrupper
+    entities:
+
+      - type: custom:fold-entity-row
+        head: sensor.badrum_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - sensor.badrum_temperatur
+        - sensor.badrum_fukt
+
+      - type: custom:fold-entity-row
+        head: sensor.garage_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - sensor.garage_laddstation_analog_temperature
+        - sensor.garage_motorvarmare_analog_temperature
+        - device_tracker.anran_kamera_4_garage
+        - device_tracker.ap_garage
+        - device_tracker.garagepc
+        - device_tracker.garageport
+        - device_tracker.sonoff_garage_belysning
+        - device_tracker.xiaomi_gateway_garage
+        - device_tracker.garage_motorvarmare
+        - device_tracker.garage_laddstation
+        - binary_sensor.garage_bank_rorelsesensor
+        - sensor.garage_bank_rorelsesensor
+        - binary_sensor.garage_dorr_rorelsesensor
+        - sensor.garage_dorr_rorelsesensor
+        - binary_sensor.garage_forrad_rorelsesensor
+        - sensor.garage_forrad_rorelsesensor
+        - binary_sensor.garage_dorr
+        - binary_sensor.garage_forrad_dorr
+        - binary_sensor.garage_port
+        - binary_sensor.garage_dorr_las
+        - binary_sensor.garage_vattensystem
+        - binary_sensor.smoke_sensor_158d0001db7b52
+        - sensor.garage_brandlarm_battery
+        - sensor.garage_temperatur
+        - sensor.garage_temperatur_2
+        - sensor.garage_temperatur_3
+        - sensor.garage_frys_temperatur
+        - sensor.garage_frys_temperatur_2
+        - sensor.garage_frys_temperatur_3
+        - cover.garageport
+        - light.garage
+        - light.garage_bankbelysning
+        - sensor.garage_bankbelysning_status
+        - light.garage_takbelysning
+        - sensor.garage_takbelysning_status
+        - light.garage_uppfart
+        - sensor.garage_rund_knapp_battery_level
+        - sensor.garage_rund_knapp_garageport_battery_level
+
+      - type: custom:fold-entity-row
+        head: sensor.gastrum_hoger_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - binary_sensor.gastrum_hoger_rorelsesensor
+        - sensor.gastrum_hoger_rorelsesensor
+        - sensor.gastrum_hoger_temperatur
+        - sensor.gastrum_hoger_fukt
+        - sensor.gastrum_hoger_dubbelknapp_battery_level
+        - light.gastrum_hoger_fonster
+
+      - type: custom:fold-entity-row
+        head: sensor.gastrum_vanster_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - binary_sensor.gastrum_vanster_rorelsesensor
+        - sensor.gastrum_vanster_lux
+        - sensor.gastrum_vanster_temperatur
+        - sensor.gastrum_vanster_fukt
+        - sensor.gastrum_vanster_dubbelknapp_battery_level
+        - light.gastrum_vanster_fonster
+
+      - type: custom:fold-entity-row
+        head: sensor.hall_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - binary_sensor.hall_rorelsesensor
+        - sensor.hall_temperatur
+        - sensor.hall_fukt
+        - sensor.hall_lux
+        - sensor.hall_battery
+        - binary_sensor.hall_2_rorelsesensor
+        - binary_sensor.hus_ytterdorr
+        - light.hall_taklampa_1
+        - light.hall_taklampa_2
+        - light.hall_taklampa_3
+        - light.hall_taklampa_4
+        - media_player.hall_speaker
+
+      - type: custom:fold-entity-row
+        head: sensor.hemmabio_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - binary_sensor.hemmabio_rorelsesensor
+        - binary_sensor.hemmabio_rorelsesensor
+        - sensor.hemmabio_temperatur
+        - sensor.hemmabio_lux
+        - sensor.hemmabio_lux_battery
+        - sensor.hemmabio_fukt
+        - binary_sensor.hemmabio_brandlarm
+        - sensor.hemmabio_dubbelknapp_battery_level
+        - sensor.hemmabio_kub_battery_level
+        - device_tracker.hemmabio
+        - device_tracker.hemmabio_bank_ljus
+        - device_tracker.rullgardin_hemmabio_hoger
+        - device_tracker.rullgardin_hemmabio_mitten
+        - device_tracker.rullgardin_hemmabio_vanster
+        - light.hemmabio_bank
+        - light.hemmabio_spotlight_1
+        - light.hemmabio_spotlight_2
+        - light.hemmabio_spotlight_3
+        - media_player.hemmabio_speaker
+        - media_player.plex_hemmabio
+        - media_player.onkyo
+        - media_player.receiver
+
+      - type: custom:fold-entity-row
+        head: sensor.kontor_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - binary_sensor.kontor_rorelsesensor
+        - sensor.kontor_rorelsesensor_battery
+        - sensor.kontor_rorelsesensor
+        - sensor.kontor_temperatur
+        - sensor.kontor_temperatur_2
+        - sensor.kontor_battery
+        - binary_sensor.kontor_fonster_hoger
+        - sensor.kontorsfonster_hoger_battery
+        - binary_sensor.kontor_fonster_vanster
+        - sensor.kontor_rund_knapp_battery_level
+        - sensor.kontor_dubbelknapp_battery_level
+        - device_tracker.rullgardin_kontor_hoger
+        - device_tracker.rullgardin_kontor_vanster
+        - light.kontor_fonster_1
+        - light.kontor_fonster_2
+        - light.kontor_taklampa_1
+        - light.kontor_taklampa_2
+        - light.kontor_taklampa_3
+        - light.kontor_taklampa_4
+        - media_player.kontor
+
+      - type: custom:fold-entity-row
+        head: sensor.kok_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - binary_sensor.kok_rorelsesensor
+        - sensor.kok_lux
+        - sensor.kok_temperatur
+        - sensor.kok_temperatur_battery
+        - sensor.kok_fukt
+        - binary_sensor.kok_fonster_vanster
+        - binary_sensor.kok_fonster_hoger
+        - binary_sensor.kok_dorr
+        - device_tracker.gh_kok
+        - light.altan_koksdorr
+        - light.koksbank_lightstrip
+        - media_player.kok_speaker
+
+      - type: custom:fold-entity-row
+        head: sensor.sovrum_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - light.sovrum_spotlight
+        - binary_sensor.sovrum_rorelsesensor
+        - sensor.sovrum_lux
+        - sensor.sovrum_lux_battery
+        - sensor.sovrum_temperatur
+        - sensor.sovrum_fukt
+        - sensor.sovrum_dubbelknapp_battery_level
+        - device_tracker.gh_sovrum
+        - device_tracker.rullgardin_sovrum2
+        - device_tracker.rullgardin_sovrum_1
+        - device_tracker.sonoff_sovrum_fonster
+        - device_tracker.sonoff_sovrum_fonster
+        - device_tracker.sonoff_malin_sanglampa
+        - device_tracker.sonoff_mattias_sanglampa
+        - light.sovrumsfonster
+        - light.malin_sanglampa
+        - light.mattias_sanglampa
+        - media_player.sovrum_speaker
+
+      - type: custom:fold-entity-row
+        head: sensor.tvrum_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - binary_sensor.tvrum_rorelsesensor
+        - sensor.tvrum_rorelsesensor
+        - sensor.tvrum_lux_battery
+        - sensor.tvrum_temperatur
+        - sensor.tvrum_fukt
+        - sensor.tvrum_dubbelknapp_battery_level
+        - sensor.tvrum_kub_rotate_battery_level
+        - device_tracker.blitzwolf_tvrumsfonster
+        - device_tracker.blitzwolf_tvrumsgolv
+        - device_tracker.gh_tvrum
+        - light.tvrum_tak_1
+        - light.tvrum_tak_2
+        - light.tvrum_tak_3
+        - light.tvrumsfonster
+        - light.tvrumsgolv
+        - media_player.tvrummet
+        - media_player.tvrum_speaker
+
+      - type: custom:fold-entity-row
+        head: sensor.tvattstuga_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - binary_sensor.tvattstuga_rorelsesensor
+        - sensor.tvattstuga_temperatur
+        - sensor.tvattstuga_temperatur_battery
+        - sensor.tvattstuga_temperatur_2
+        - binary_sensor.tvattstuga_varmepanna
+        - binary_sensor.tvattstuga_vattensensor
+        - binary_sensor.tvattstuga_dorr
+        - device_tracker.sonoff_tvattstuga_flakt
+        - switch.tvattstuga_flakt
+        - light.tvattstuga_taklampa_1
+        - light.tvattstuga_taklampa_2
+        - light.tvattstuga_taklampa_3
+        - light.tvattstuga_taklampa_4
+        - light.tvattstuga_taklampa_5
+        - light.tvattstuga_taklampa_6
+
+      - type: custom:fold-entity-row
+        head: sensor.uterum_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - binary_sensor.uterum_rorelsesensor
+        - sensor.uterum_lux
+        - sensor.uterum_lux_battery
+        - sensor.uterum_temperatur_battery
+        - sensor.uterum_temperatur
+        - sensor.uterum_fukt
+        - binary_sensor.uterum_dorr
+        - device_tracker.anran_kamera_2_uterum
+        - device_tracker.chromecastaudio_uterum
+        - light.uterum_fonster
+        - light.uterum_golv
+        - media_player.uterum
+
+      - type: custom:fold-entity-row
+        head: sensor.ovrigt_status
+        group_config:
+          secondary_info: last-changed
+        items:
+        - sensor.3dprinter_temperatur
+        - sensor.3dprinter_fukt
+        - binary_sensor.3dprinter_brandlarm
+        - sensor.pc_temperatur
+        - sensor.pc_fukt
+        - sensor.server_nas
+        - sensor.server_fukt
+        - sensor.yr_temperature
+        - sensor.inomhus_temperatur
+        - binary_sensor.landroid
+        - binary_sensor.balkong_dorr
+        - binary_sensor.toalett_fonster
+        - binary_sensor.kladkammare_dorr
+        - device_tracker.anran_kamera_3_entre
+        - device_tracker.anran_kamera_5_altan
+        - device_tracker.anran_kamera_6_uppfart
+        - device_tracker.anran_kamera_7_tradgard
+        - device_tracker.anran_kamera_8_baksida
+        - device_tracker.anran_kamera_baksida_2
+
+
+      - type: custom:fold-entity-row
+        head: sensor.ovrigt_status
+        title: Server
+        group_config:
+          secondary_info: last-changed
+        items:
+        - sensor.ups_status
+        - sensor.ups_status_data
+        - sensor.ups_battery_voltage
+        - sensor.ups_input_voltage
+        - sensor.ups_load
+        - sensor.ups_server_status
+        - sensor.ups_server_status_data
+        - sensor.ups_server_battery_voltage
+        - sensor.ups_server_input_voltage
+        - sensor.ups_server_load

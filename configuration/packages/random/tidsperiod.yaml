@@ -1,0 +1,32 @@
+homeassistant:
+  customize:
+    sensor.dygn_status:
+      friendly_name: Tidsperiod
+      icon: mdi:clock
+      custom_ui_state_card: state-card-custom-ui
+      show_last_changed: true
+
+
+input_select:
+  dygn_status_dropdown:
+    name: dygn Status
+    options:
+      - Morgon
+      - Dag
+      - Eftermiddag
+      - Kväll
+      - Natt
+    initial: Dag
+
+
+
+sensor:
+  - platform: template
+    sensors:
+      dygn_status:
+        value_template: "{{ states('input_select.dygn_status_dropdown') }}"
+
+
+
+
+

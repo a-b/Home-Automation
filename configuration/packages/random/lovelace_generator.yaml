@@ -1,0 +1,6 @@
+homeassistant:
+
+script:
+  lovelace_generator:
+    sequence:
+      - service: shell_command.lovelace_gen

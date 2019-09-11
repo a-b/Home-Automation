@@ -1,0 +1,55 @@
+homeassistant:
+  customize:
+    sensor.mattias_status:
+      entity_picture: /local/mattias.png
+
+
+input_select:
+  mattias_status_dropdown:
+    name: mattias dropdown
+    options:
+     - "Hemma"
+     - "Away"
+     - "På Jobbet"
+     - "På Gymmet"
+     - "Gustavsvik Golf"
+     - "Sover"
+     - "Sovrum"
+     - "Kontor"
+     - "Hemmabio"
+     - "Kök"
+     - "Hall"
+     - "TVrum"
+#    initial: Hemma
+
+input_boolean:
+  mattias_hemma:
+    name: "Mattias Hemma"
+
+sensor:
+  - platform: template
+    sensors:
+      mattias_status:
+        value_template: "{{ states('input_select.mattias_status_dropdown') }}"
+        friendly_name: 'Mattias'
+
+      mattias_address:
+        value_template: "{{state_attr('device_tracker.google_maps_111971301097138345929' , 'address')}}"
+        friendly_name: 'Mattias Address'
+
+binary_sensor:
+  - platform: bayesian
+    prior: 0.5
+    name: mattias_presence_home
+    probability_threshold: 0.9
+    observations:
+      - entity_id: 'device_tracker.google_maps_111971301097138345929'
+        prob_given_true: 0.9
+        prob_given_false: 0.1
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.mattias_phone'
+        prob_given_true: 0.9
+        prob_given_false: 0.1
+        platform: 'state'
+        to_state: 'home'

@@ -1,0 +1,37 @@
+homeassistant:
+
+sensor:
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /config
+      - type: disk_free
+        arg: /config
+      - type: disk_use
+        arg: /config
+      - type: memory_use_percent
+      - type: processor_use
+
+binary_sensor:
+  - platform: template
+    sensors:
+      disk_space_low:
+        value_template: '{{ (states("sensor.disk_free_config") | float) < 20 }}'
+        friendly_name: 'Disk space Low'
+
+automation:
+  - alias: Disk Space Low
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.disk_space_low
+      to: 'True'
+    action:
+      - service: notify.mattiasgroup
+        data:
+          message: "Disk space low!"
+          target: mattias
+      - service: persistent_notification.create
+        data_template:
+          title: "Disk Space Low!"
+          message: 'Please clean the disk'

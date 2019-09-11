@@ -1,0 +1,30 @@
+zone:
+  - name: home
+    latitude: !secret home_lat
+    longitude: !secret home_long
+    radius: 250
+    icon: mdi:home
+
+  - name: Work
+    latitude: !secret work_lat
+    longitude: !secret work_long
+    radius: 150
+    icon: mdi:worker
+
+  - name: Gym
+    latitude: !secret gym_lat
+    longitude: !secret gym_long
+    radius: 150
+    icon: mdi:dumbbell
+
+  - name: Stallet
+    latitude: !secret stallet_lat
+    longitude: !secret stallet_long
+    radius: 150
+    icon: mdi:chess-knight
+
+  - name: Gustavsvik Golf
+    latitude: !secret gvikgolv_lat
+    longitude: !secret gvikgolv_long
+    radius: 500
+    icon: mdi:golf

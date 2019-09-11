@@ -1,0 +1,182 @@
+#lovelace_gen
+card:
+  type: vertical-stack
+  cards:
+    - type: horizontal-stack
+      cards:
+        - type: custom:button-card
+          entity: '[[motion]]'
+          show_state: false
+          show_icon: true
+          show_name: false
+          aspect_ratio: 2/1
+          state:
+          - value: 'False'
+            icon: mdi:run
+            color: white
+          - value: 'True'
+            icon: mdi:run-fast
+            color: yellow
+          tap_action:
+            action: more-info
+          styles:
+            grid:
+              - position: relative
+            custom_fields:
+              last_changed:
+                - position: absolute
+                - left: 70%
+                - top: 60%
+                - font-size: 9px
+          custom_fields:
+            last_changed: >
+              [[[
+                var d = new Date(entity.last_changed);
+                return `${d.getHours()}:${d.getMinutes()}`
+              ]]]
+        - type: custom:button-card
+          entity: '[[windows]]'
+          show_state: false
+          show_icon: true
+          show_name: false
+          aspect_ratio: 2/1
+          state:
+          - value: 'False'
+            icon: mdi:window-closed
+            color: white
+          - value: 'True'
+            icon: mdi:window-open
+            color: yellow
+          tap_action:
+            action: more-info
+          styles:
+            grid:
+              - position: relative
+            custom_fields:
+              last_changed:
+                - position: absolute
+                - left: 70%
+                - top: 60%
+                - font-size: 9px
+          custom_fields:
+            last_changed: >
+              [[[
+                var d = new Date(entity.last_changed);
+                return `${d.getHours()}:${d.getMinutes()}`
+              ]]]
+        - type: custom:button-card
+          entity: '[[doors]]'
+          show_state: false
+          show_icon: true
+          show_name: false
+          aspect_ratio: 2/1
+          state:
+          - value: 'False'
+            icon: mdi:door
+            color: white
+          - value: 'True'
+            icon: mdi:door-open
+            color: yellow
+          tap_action:
+            action: more-info
+          styles:
+            grid:
+              - position: relative
+            custom_fields:
+              last_changed:
+                - position: absolute
+                - left: 70%
+                - top: 60%
+                - font-size: 9px
+          custom_fields:
+            last_changed: >
+              [[[
+                var d = new Date(entity.last_changed);
+                return `${d.getHours()}:${d.getMinutes()}`
+              ]]]
+        - type: custom:button-card
+          entity: '[[fire]]'
+          show_state: false
+          show_icon: true
+          show_name: false
+          aspect_ratio: 2/1
+          state:
+          - value: 'off'
+            icon: mdi:fire
+            color: white
+          - value: 'on'
+            icon: mdi:fire
+            color: red
+          tap_action:
+            action: more-info
+          styles:
+            grid:
+              - position: relative
+            custom_fields:
+              last_changed:
+                - position: absolute
+                - left: 70%
+                - top: 60%
+                - font-size: 9px
+          custom_fields:
+            last_changed: >
+              [[[
+                var d = new Date(entity.last_changed);
+                return `${d.getHours()}:${d.getMinutes()}`
+              ]]]
+    - type: horizontal-stack
+      cards:
+        - type: custom:button-card
+          entity: '[[temperature]]'
+          show_state: true
+          show_icon: false
+          show_name: false
+          aspect_ratio: 2/1
+          tap_action:
+            action: more-info
+        - type: custom:button-card
+          entity: '[[mouisture]]'
+          show_state: true
+          show_icon: false
+          show_name: false
+          aspect_ratio: 2/1
+          tap_action:
+            action: more-info
+        - type: custom:button-card
+          entity: '[[airpressure]]'
+          show_state: true
+          show_icon: false
+          show_name: false
+          aspect_ratio: 2/1
+          tap_action:
+            action: more-info
+        - type: custom:button-card
+          entity: '[[water]]'
+          show_state: false
+          show_icon: true
+          show_name: false
+          aspect_ratio: 2/1
+          state:
+          - value: 'False'
+            icon: mdi:water-outline
+            color: white
+          - value: 'True'
+            icon: mdi:water-outline
+            color: red
+          tap_action:
+            action: more-info
+          styles:
+            grid:
+              - position: relative
+            custom_fields:
+              last_changed:
+                - position: absolute
+                - left: 70%
+                - top: 60%
+                - font-size: 9px
+          custom_fields:
+            last_changed: >
+              [[[
+                var d = new Date(entity.last_changed);
+                return `${d.getHours()}:${d.getMinutes()}`
+              ]]]

@@ -1,0 +1,126 @@
+# lovelace_gen
+card:
+  type: custom:button-card
+  entity: '[[button_entity]]'
+  name: '[[name]]'
+  show_icon: false
+  show_label: true
+  show_state: true
+  state:
+    - value: 'Online'
+      styles:
+        state:
+          - color: green
+    - value: 'Problem'
+      styles:
+        state:
+          - color: red
+  tap_action:
+    action: more-info
+  dbltap_action:
+    action: call-service
+    service: light.toggle
+    service_data:
+      entity_id: '[[light_entity]]'
+  styles:
+    card:
+      - height: 60px
+      - padding: 02%
+    grid:
+      - position: relative
+    name:
+      - position: absolute
+      - top: 2%
+      - text-transform: uppercase
+      - letter-spacing: 0.3em
+      - font-family: Helvetica
+      - font-size: 14px
+    state:
+      - font-size: 12px
+      - position: absolute
+      - letter-spacing: 0.3em
+      - font-family: Helvetica
+      - top: -40%
+    custom_fields:
+      light:
+        - position: absolute
+        - left: 00%
+        - top: 55%
+      motion:
+        - position: absolute
+        - left: 15%
+        - top: 55%
+      window_left:
+        - position: absolute
+        - left: 30%
+        - top: 55%
+      window_right:
+        - position: absolute
+        - left: 45%
+        - top: 55%
+      door:
+        - position: absolute
+        - left: 60%
+        - top: 55%
+      cover:
+        - position: absolute
+        - left: 75%
+        - top: 55%
+      fire:
+        - position: absolute
+        - left: 90%
+        - top: 0%
+      water:
+        - position: absolute
+        - left: 91%
+        - top: 30%
+
+  custom_fields:
+    light: >
+      [[[
+        var icon = states["[[light_entity]]"].state === 'on' ? 'mdi:lightbulb-on-outline' : '';
+        var icon_color = states["[[light_entity]]"].state === 'on' ? 'yellow' : '#424242';
+        return '<ha-icon icon="' + icon +'" style="width: 20px; color:' + icon_color +';"></ha-icon>'
+      ]]]
+    motion: >
+      [[[
+        var icon = states["[[motion_sensor]]"].state === 'on' ? 'mdi:run-fast' : '';
+        var icon_color = states["[[motion_sensor]]"].state === 'on' ? 'yellow' : '#424242';
+        return '<ha-icon icon="' + icon +'" style="width: 20px; color:' + icon_color +';"></ha-icon>'
+      ]]]
+    window_left: >
+      [[[
+        var icon = states["[[window_left]]"].state === 'on' ? 'mdi:window-open' : '';
+        var icon_color = states["[[window_left]]"].state === 'on' ? 'yellow' : '#424242';
+        return '<ha-icon icon="' + icon +'" style="width: 20px; color:' + icon_color +';"></ha-icon>'
+      ]]]
+    window_right: >
+      [[[
+        var icon = states["[[window_right]]"].state === 'on' ? 'mdi:window-open' : '';
+        var icon_color = states["[[window_right]]"].state === 'on' ? 'yellow' : '#424242';
+        return '<ha-icon icon="' + icon +'" style="width: 20px; color:' + icon_color +';"></ha-icon>'
+      ]]]
+    door: >
+      [[[
+        var icon = states["[[door]]"].state === 'on' ? 'mdi:door-open' : '';
+        var icon_color = states["[[door]]"].state === 'on' ? 'yellow' : '#424242';
+        return '<ha-icon icon="' + icon +'" style="width: 20px; color:' + icon_color +';"></ha-icon>'
+      ]]]
+    cover: >
+      [[[
+        var icon = states["[[cover]]"].state === 'closed' ? 'mdi:arrow-down-bold-outline' : '';
+        var icon_color = states["[[cover]]"].state === 'closed' ? 'yellow' : '#424242';
+        return '<ha-icon icon="' + icon +'" style="width: 20px; color:' + icon_color +';"></ha-icon>'
+      ]]]
+    fire: >
+      [[[
+        var icon = states["[[fire]]"].state === 'on' ? 'mdi:fire' : '';
+        var icon_color = states["[[fire]]"].state === 'on' ? 'red' : '#424242';
+        return '<ha-icon icon="' + icon +'" style="width: 20px; color:' + icon_color +';"></ha-icon>'
+      ]]]
+    water: >
+      [[[
+        var icon = states["[[water]]"].state === 'on' ? 'mdi:water-outline' : '';
+        var icon_color = states["[[water]]"].state === 'on' ? 'red' : '#424242';
+        return '<ha-icon icon="' + icon +'" style="width: 20px; color:' + icon_color +';"></ha-icon>'
+      ]]]

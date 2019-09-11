@@ -1,0 +1,70 @@
+homeassistant:
+
+group:
+  light_sovrum:
+    name: "sovrum"
+    view: false
+    entities:
+      - light.sovrumsfonster
+      - light.mattias_sanglampa
+      - light.malin_sanglampa
+      - light.balkong
+      - light.sovrum_spotlight
+
+light:
+  - platform: group
+    name: 'Sovrum'
+    entities:
+      - light.sovrumsfonster
+      - light.mattias_sanglampa
+      - light.malin_sanglampa
+      - light.balkong
+      - light.sovrum_spotlight
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.sovrumsfonster
+        - light.mattias_sanglampa
+        - light.malin_sanglampa
+        - light.balkong
+        - light.sovrum_spotlight
+    entity_config:
+      light.sovrumsfonster:
+        name: Fönster
+        room: Sovrum
+        aliases:
+         - sovrumsfönster
+      light.mattias_sanglampa:
+        name: Mattias Sänglampa
+        room: Sovrum
+        aliases:
+         - Mattias
+         - Sänglampor
+         - Sänglampa
+         - säng
+         - sängen
+      light.malin_sanglampa:
+        name: Malin Sänglampa
+        room: Sovrum
+        aliases:
+         - Malin
+         - Sänglampor
+         - Sänglampa
+         - säng
+         - sängen
+      light.balkong:
+        name: Balkong
+        room: Balkong
+        aliases:
+         - Balkongen
+      light.sovrum_spotlight:
+        name: spotlight
+        room: Sovrum
+        aliases:
+         - Spottar
+         - spotlights
+         - tak
+         - taket
+         - garderob

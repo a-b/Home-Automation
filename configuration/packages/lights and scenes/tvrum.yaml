@@ -1,0 +1,49 @@
+homeassistant:
+
+light:
+  - platform: group
+    name: 'TVrum'
+    entities:
+      - light.tvrumsfonster
+      - light.tvrumsgolv
+      - light.tvrum_taklampa
+
+  - platform: switch
+    name: tvrumsfonster
+    entity_id: switch.tvrumsfonster
+
+  - platform: switch
+    name: tvrumsgolv
+    entity_id: switch.tvrumsgolv
+
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.tvrumsfonster
+        - light.tvrumsgolv
+        - light.tvrum_taklampa
+        - light.tvrum
+    entity_config:
+      light.tvrumsfonster:
+        name: Fönster
+        room: TVrum
+        aliases:
+         - tvrumsfönster
+      light.tvrumsgolv:
+        name: Golv
+        room: TVrum
+        aliases:
+         - golvlampa
+         - golvet
+         - tvrumsgolv
+      light.tvrum_taklampa:
+        name: Taklampa
+        room: TVrum
+        aliases:
+         - tak
+      light.tvrum:
+        name: tvrum
+        room: TVrum
+

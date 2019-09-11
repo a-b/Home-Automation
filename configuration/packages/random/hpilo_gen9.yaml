@@ -1,0 +1,89 @@
+homeassistant:
+
+sensor:
+  - platform: hp_ilo
+    host: !secret hpilo_gen9host
+    username: Administrator
+    password: !secret hpilo_gen9password
+    scan_interval: 120
+    monitored_variables:
+      - name: power_status
+        sensor_type: server_power_status
+      - name: power_readings
+        sensor_type: server_power_readings
+      - name: power_on_time
+        sensor_type: server_power_on_time
+      - name: uid_status
+        sensor_type: server_uid_status
+
+      - name: bios_hardware
+        sensor_type: server_health
+        value_template: "{{ ilo_data.health_at_a_glance['bios_hardware']['status'] }}"
+
+      - name: fan_status
+        sensor_type: server_health
+        value_template: "{{ ilo_data.health_at_a_glance['fans']['status'] }}"
+
+      - name: memory_status
+        sensor_type: server_health
+        value_template: "{{ ilo_data.health_at_a_glance['memory']['status'] }}"
+
+      - name: network_status
+        sensor_type: server_health
+        value_template: "{{ ilo_data.health_at_a_glance['network']['status'] }}"
+
+      - name: processor_status
+        sensor_type: server_health
+        value_template: "{{ ilo_data.health_at_a_glance['processor']['status'] }}"
+
+      - name: storage_status
+        sensor_type: server_health
+        value_template: "{{ ilo_data.health_at_a_glance['storage']['status'] }}"
+
+      - name: temperature_status
+        sensor_type: server_health
+        value_template: "{{ ilo_data.health_at_a_glance['temperature']['status'] }}"
+
+      - name: memory_cpu1_sockets
+        sensor_type: server_health
+        value_template: "{{ ilo_data.memory['memory_details_summary']['cpu_1']['number_of_sockets'] }}"
+
+      - name: memory_cpu1_frequency
+        sensor_type: server_health
+        value_template: "{{ ilo_data.memory['memory_details_summary']['cpu_1']['operating_frequency'] }}"
+
+      - name: memory_cpu1_voltage
+        sensor_type: server_health
+        value_template: "{{ ilo_data.memory['memory_details_summary']['cpu_1']['operating_voltage'] }}"
+
+      - name: memory_cpu1_size
+        sensor_type: server_health
+        value_template: "{{ ilo_data.memory['memory_details_summary']['cpu_1']['total_memory_size'] }}"
+
+      - name: psu_summary
+        sensor_type: server_health
+        value_template: "{{ ilo_data.power_supply_summary['present_power_reading'] }}"
+        unit_of_measurement: W
+
+      - name: temperature_inlet
+        sensor_type: server_health
+        unit_of_measurement: '°C'
+        value_template: "{{ ilo_data.temperature['01-Inlet Ambient']['currentreading'] }}"
+
+      - name: temperature_cpu1_
+        sensor_type: server_health
+        unit_of_measurement: '°C'
+        value_template: "{{ ilo_data.temperature['02-CPU 1']['currentreading'] }}"
+
+      - name: processors_cores
+        sensor_type: server_health
+        value_template: "{{ ilo_data.processors['Proc 1']['execution_technology'] }}"
+
+      - name: processors_name
+        sensor_type: server_health
+        value_template: "{{ ilo_data.processors['Proc 1']['name'] }}"
+
+      - name: processors_speed
+        sensor_type: server_health
+        value_template: "{{ ilo_data.processors['Proc 1']['speed'] }}"
+

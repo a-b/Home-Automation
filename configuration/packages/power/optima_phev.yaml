@@ -1,0 +1,52 @@
+homeassistant:
+
+
+input_select:
+  optima_phev:
+    name: "Kia Optima PHEV"
+    options:
+      - Av
+      - Laddar
+    initial: Av
+
+  optima_phev_test:
+    name: "Kia Optima PHEV"
+    options:
+      - Av
+      - Laddar
+    initial: Av
+
+sensor:
+  - platform: history_stats
+    name: Kia optima phew laddning dag
+    entity_id: input_select.optima_phev
+    state: 'Laddar'
+    type: count
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: Kia optima phew laddning vecka
+    entity_id: input_select.optima_phev
+    state: 'Laddar'
+    type: count
+    start: '{{ as_timestamp( now().replace(hour=0).replace(minute=0).replace(second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: Kia optima phew laddning månad
+    entity_id: input_select.optima_phev
+    state: 'Laddar'
+    type: count
+    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    duration:
+      days: 30
+
+  - platform: history_stats
+    name: Kia optima phew laddning år
+    entity_id: input_select.optima_phev
+    state: 'Laddar'
+    type: count
+    end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    duration:
+      days: 365

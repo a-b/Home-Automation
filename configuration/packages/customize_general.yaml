@@ -1,0 +1,57 @@
+homeassistant:
+  customize:
+    sensor.grave_pow_watt:
+      friendly_name: Gräve
+    sensor.yr_temperature:
+      friendly_name: Utomhus
+    sensor.uterum_temperatur:
+      friendly_name: Uterum
+    sensor.sparsnas_pow_watt:
+      friendly_name: Gräve
+    sensor.diskmaskin_pow_watt:
+      friendly_name: Diskmaskin
+    sensor.tvattmaskin_pow_watt:
+      friendly_name: Tvättmaskin
+    sensor.torktumlare_pow_watt:
+      friendly_name: Torktumlare
+    sensor.nas_pow_watt:
+      friendly_name: NAS
+    sensor.vattensystem_pow_watt:
+      friendly_name: Vattenpump
+    sensor.varmepump_pow_watt:
+      friendly_name: Värmepump
+    sensor.inomhus_temperatur:
+      device_class: temperature
+      unit_of_measurement: °C
+    binary_sensor.hall_2_rorelsesensor:
+      friendly_name: Hall Trapp
+      device_class: motion
+    binary_sensor.hall_rorelsesensor:
+      friendly_name: Hall
+      device_class: motion
+    binary_sensor.kok_rorelsesensor:
+      friendly_name: Kök
+      device_class: motion
+    binary_sensor.tvrum_rorelsesensor:
+      friendly_name: TVrum
+      device_class: motion
+    binary_sensor.tvattstuga_rorelsesensor:
+      friendly_name: "Tvättstuga"
+      device_class: motion
+    cover.garageport:
+      device_class: garage
+      friendly_name: GaragePort
+    sensor.laddstation_pow_watt:
+      friendly_name: Laddstation
+    sensor.motorvarmare_pow_watt:
+      friendly_name: Motorvärmare
+    input_boolean.garage_motorvarmare:
+      icon: mdi:radiator
+    sensor.alarm_1_time:
+      icon: calendar-clock
+    switch.garage_motorvarmare:
+      icon: mdi:radiator
+  customize_glob:
+    light.*:
+      assumed_state: false
+      icon: mdi:lightbulb-on-outline

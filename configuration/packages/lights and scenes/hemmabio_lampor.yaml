@@ -1,0 +1,34 @@
+homeassistant:
+
+light:
+  - platform: group
+    name: 'Hemmabio_lights'
+    entities:
+      - light.hemmabio_bank
+      - light.hemmabio_spotlight
+      - light.vardagsrum_fonster
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.hemmabio_spotlight
+        - light.hemmabio_bank
+        - light.vardagsrum_fonster
+    entity_config:
+      light.hemmabio_spotlight:
+        name: Spotlights
+        room: Hemmabio
+        aliases:
+         - spottar
+         - spottarna
+         - väggen
+      light.hemmabio_bank:
+        name: Bänk
+        room: Hemmabio
+        aliases: 
+         - bänk
+         - bänken
+      light.vardagsrum_fonster:
+        name: Fönster
+        room: Hemmabio

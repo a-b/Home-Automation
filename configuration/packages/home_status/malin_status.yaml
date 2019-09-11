@@ -1,0 +1,38 @@
+homeassistant:
+
+input_select:
+  malin_status_dropdown:
+    name: malin
+    options:
+      - Hemma
+      - Away
+      - Stallet
+
+input_boolean:
+  malin_hemma:
+    name: "Malin Hemma"
+
+sensor:
+  - platform: template
+    sensors:
+      malin_status:
+        value_template: "{{ states('input_select.malin_status_dropdown') }}"
+        friendly_name: 'Malin'
+
+
+
+
+binary_sensor:
+  - platform: bayesian
+    prior: 0.5
+    name: malin_presence_home
+    probability_threshold: 0.9
+    observations:
+      - entity_id: 'device_tracker.malins_iphone'
+        prob_given_true: 0.9
+        platform: 'state'
+        to_state: 'home'
+      - entity_id: 'device_tracker.malins_iphone_2'
+        prob_given_true: 0.9
+        platform: 'state'
+        to_state: 'home'

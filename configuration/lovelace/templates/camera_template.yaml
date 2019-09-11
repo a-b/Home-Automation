@@ -1,0 +1,7 @@
+# lovelace_gen
+
+card:
+  type: picture-entity
+  entity: '[[entity]]'
+  camera_image: '[[entity]]'
+  camera_view: live

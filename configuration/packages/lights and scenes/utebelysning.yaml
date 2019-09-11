@@ -1,0 +1,27 @@
+homeassistant:
+
+light:
+
+  - platform: group
+    name: 'Utomhus'
+    entities:
+      - light.utebelysning
+      - light.uterum_golv
+      - light.altan_koksdorr
+      - light.balkong
+      - light.garage_uppfart
+
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.utebelysning
+    entity_config:
+      light.utebelysning:
+        name: Utebelysning
+        room: Ute
+        aliases: 
+         - Ute
+         - utomhus
+

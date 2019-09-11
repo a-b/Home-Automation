@@ -1,0 +1,58 @@
+homeassistant:
+
+alert:
+  water_sensor_garage:
+    name: "Vattenläcka i garaget"
+    done_message: "Vattenläckan åtgärdad i Garaget"
+    entity_id: binary_sensor.garage_vattensystem
+    state: 'on'
+    repeat:
+      - 0
+      - 10
+    can_acknowledge: True
+    skip_first: False
+    notifiers:
+      - mattiasgroup
+      - ios_malins_iphone
+
+  water_sensor_tvattstuga:
+    name: "Vattenläcka i tvättstuga, värmepanna"
+    done_message: "Vattenläckan åtgärdad i Tvättstugan"
+    entity_id: binary_sensor.tvattstuga_varmepanna
+    state: 'on'
+    repeat:
+      - 0
+      - 10
+    can_acknowledge: True
+    skip_first: False
+    notifiers:
+      - mattiasgroup
+      - ios_malins_iphone
+
+  water_sensor_tvattstuga2:
+    name: "Vattenläcka i tvättstuga, tvättmaskiner"
+    done_message: "Vattenläckan åtgärdad i Tvättstugan"
+    entity_id: binary_sensor.tvattstuga_vattensensor
+    state: 'on'
+    repeat:
+      - 0
+      - 10
+    can_acknowledge: True
+    skip_first: False
+    notifiers:
+      - mattiasgroup
+      - ios_malins_iphone
+
+  water_sensor_kok:
+    name: "Vattenläcka under diskbänken i köket"
+    done_message: "Vattenläckan åtgärdad i köket"
+    entity_id: binary_sensor.kok_diskbank
+    state: 'on'
+    repeat:
+      - 0
+      - 10
+    can_acknowledge: True
+    skip_first: False
+    notifiers:
+      - mattiasgroup
+      - ios_malins_iphone

@@ -1,0 +1,28 @@
+homeassistant:
+
+
+input_select:
+  diskmaskin_status:
+    name: "Diskmaskin Status"
+    options:
+      - Av
+      - Diskar
+      - Ren
+    initial: Av
+
+  tvattmaskin_status:
+    name: "Tvättmaskin Status"
+    options:
+      - Av
+      - Tvättar
+      - Ren
+    initial: Av
+
+
+  torktumlare_status:
+    name: "Torktumlare Status"
+    options:
+      - Av
+      - Tvättar
+      - Ren
+    initial: Av

@@ -1,0 +1,28 @@
+homeassistant:
+
+sensor:
+  - platform: rtorrent
+    url: !secret rtorrent_url
+    monitored_variables:
+      - 'current_status'
+      - 'download_speed'
+      - 'upload_speed'
+
+
+  - platform: template
+    sensors:
+      rtorrent_download:
+        value_template: "{{ ((states('sensor.rtorrent_down_speed')|default(0)) | float / 1000) | round(0) }}"
+        unit_of_measurement: 'MiB/s'
+
+
+  - platform: template
+    sensors:
+      rtorrent_upload:
+        value_template: "{{ ((states('sensor.rtorrent_up_speed')|default(0)) | float / 1000) | round(0) }}"
+        unit_of_measurement: 'MiB/s'
+
+binary_sensor:
+  - platform: command_line
+    name: rtorrent_log_status
+    command: 'if grep -i "Connection to rtorrent failed" home-assistant.log >/dev/null; then echo ON; else echo OFF; fi'

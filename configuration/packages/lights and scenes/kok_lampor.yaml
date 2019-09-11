@@ -1,0 +1,26 @@
+homeassistant:
+
+light:
+  - platform: group
+    name: 'Kök'
+    entities:
+      - light.kok_fonster
+      - light.koksbank_lightstrip
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.kok_fonster
+        - light.koksbank_lightstrip
+    entity_config:
+      light.kok_fonster:
+        name: Fönster
+        room: Kök
+        aliases: 
+         - Köksfönster
+         - kökslampa
+      light.koksbank_lightstrip:
+        name: köksbänk
+        room: Kök
+        aliases: bänk

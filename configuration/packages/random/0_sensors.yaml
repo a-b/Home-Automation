@@ -1,0 +1,330 @@
+homeassistant:
+  customize:
+    sensor.tvattstuga_status:
+      icon: mdi:washing-machine
+      friendly_name: Tvättstuga
+    sensor.hemmabio_status:
+      icon: mdi:projector
+      friendly_name: Hemmabio
+    sensor.sovrum_status:
+      icon: mdi:hotel
+      friendly_name: Sovrum
+    sensor.ovrigt_status:
+      icon: mdi:information-variant
+      friendly_name: Övrigt
+    sensor.kontor_status:
+      icon: mdi:office
+      friendly_name: Kontor
+    sensor.uterum_status:
+      icon: mdi:white-balance-sunny
+      friendly_name: Uterum
+    sensor.tvrum_status:
+      icon: mdi:television
+      friendly_name: TVrum
+    sensor.gastrum_hoger_status:
+      icon: mdi:hotel
+      friendly_name: Gästrum Höger
+    sensor.gastrum_vanster_status:
+      icon: mdi:hotel
+      friendly_name: Gästrum Vänster
+    sensor.kok_status:
+      icon: mdi:microwave
+      friendly_name: Kök
+    sensor.hall_status:
+      friendly_name: Hall
+      icon: mdi:stairs
+    sensor.badrum_status:
+      friendly_name: Badrum
+      icon: mdi:shower
+    sensor.garage_status:
+      friendly_name: Garage
+      icon: mdi:home-floor-g
+    sensor.battery_status:
+      friendly_name: Batterier
+      icon: mdi:battery-plus
+    sensor.updater_status:
+      friendly_name: Lovelace Card Tracker
+      icon: mdi:update
+
+input_boolean:
+  information_row_1_active:
+    name: information row 1 active
+    initial: false
+  information_row_2_active:
+    name: information row 2 active
+    initial: false
+
+input_text:
+  sovrum:
+    name: Sovrum
+    initial: Online
+  sovrum_details:
+    name: Sovrum
+    initial: Online
+  tvrum:
+    name: TVrum
+    initial: Online
+  tvrum_details:
+    name: TVrum
+    initial: Online
+  badrum:
+    name: Badrum
+    initial: Online
+  badrum_details:
+    name: Badrum
+    initial: Online
+  garage:
+    name: Garage
+  garage_details:
+    name: Garage
+    initial: Online
+  ovrigt:
+    name: Övrigt
+    initial: Online
+  ovrigt_details:
+    name: Övrigt
+    initial: Online
+  kok:
+    name: Kök
+    initial: Online
+  kok_details:
+    name: Kök
+    initial: Online
+  gastrum_hoger:
+    name: Gästrum Höger
+    initial: Online
+  gastrum_hoger_details:
+    name: Gästrum Höger
+    initial: Online
+  gastrum_vanster:
+    name: Gästrum Vänster
+    initial: Online
+  gastrum_vanster_details:
+    name: Gästrum Vänster
+    initial: Online
+  gastrum:
+    name: Gästrum
+    initial: Online
+  gastrum_details:
+    name: Gästrum
+    initial: Online
+  tvattstuga:
+    name: Tvättstuga
+    initial: Online
+  tvattstuga_details:
+    name: Tvättstuga
+    initial: Online
+  kontor:
+    name: Kontor
+    initial: Online
+  kontor_details:
+    name: Kontor Details
+    initial: Online
+  hall:
+    name: Hall
+    initial: Online
+  hall_details:
+    name: Hall Details
+    initial: Online
+  hemmabio:
+    name: Hemmabio
+    initial: Online
+  hemmabio_details:
+    name: Hemmabio Details
+    initial: Online
+  uterum:
+    name: Uterum
+    initial: Online
+  uterum_details:
+    name: Uterum details
+    initial: Online
+  information_sensor:
+    name: Information
+    initial: 'empty'
+  information_sensor_details:
+    name: Information
+  fake_entity_for_templates:
+    name: fake template
+    initial: 'off'
+  fake_cover_for_templates:
+    name: fake cover
+    initial: open
+  fake_house:
+    name: fake house
+    initial: Online
+  fake_washer:
+    name: fake washer
+    initial: Av
+  landroid:
+    name: Landroid
+  fake_binary_for_templates:
+    name: fake binary template
+    initial: 'False'
+
+sensor:
+  - platform: template
+    sensors:
+      information_sensor:
+        value_template: "{{ states('input_text.information_sensor') }}"
+        friendly_name: 'Information'
+
+      status_group_check:
+        value_template: >-
+          {{ is_state('input_select.diskmaskin_status', 'Diskar')
+             or is_state('input_select.diskmaskin_status', 'Ren')
+             or is_state('input_select.tvattmaskin_status', 'Tvättar')
+             or is_state('input_select.tvattmaskin_status', 'Ren')
+             or is_state('input_select.torktumlare_status', 'Tvättar')
+             or is_state('input_select.torktumlare_status', 'Ren')
+             or is_state('binary_sensor.am8_printing', 'on')
+             or is_state('input_text.landroid', 'Klipper')
+             or is_state('input_text.landroid', 'Fastnat')
+             or is_state('input_select.aircondition_status', 'Sovrummet För Varmt')
+             or is_state('input_boolean.information_row_1_active', 'on')
+             or is_state('vacuum.xiaomi_vacuum_cleaner', 'cleaning')
+             or is_state('vacuum.xiaomi_vacuum_cleaner', 'returning')
+             or is_state('vacuum.xiaomi_vacuum_cleaner', 'paused')
+             or is_state('vacuum.xiaomi_vacuum_cleaner', 'error')
+             or is_state('input_select.aircondition_status', 'På') }}
+        friendly_name: 'Status Group'
+
+      ytterdorr_lock_last_changed:
+        device_class: timestamp
+        value_template: "{{ as_timestamp(states.binary_sensor.ytterdorr_las.last_changed)|timestamp_custom('%H:%M') }}"
+
+      garagedorr_lock_last_changed:
+        device_class: timestamp
+        value_template: "{{ as_timestamp(states.binary_sensor.garage_dorr_las.last_changed)|timestamp_custom('%H:%M') }}"
+
+      alarm_last_changed:
+        device_class: timestamp
+        value_template: "{{ as_timestamp(states.alarm_control_panel.grave_alarm.last_changed)|timestamp_custom('%H:%M') }}"
+
+      laddstation_last_changed:
+        device_class: timestamp
+        value_template: "{{ as_timestamp(states.input_select.optima_phev.last_changed)|timestamp_custom('%H:%M') }}"
+
+      motorvarmare_last_changed:
+        device_class: timestamp
+        value_template: "{{ as_timestamp(states.input_boolean.motorvarmare.last_changed)|timestamp_custom('%H:%M') }}"
+
+      diskmaskin_last_changed:
+        device_class: timestamp
+        value_template: "{{ as_timestamp(states.input_select.diskmaskin_status.last_changed)|timestamp_custom('%H:%M') }}"
+
+      tvattmaskin_last_changed:
+        device_class: timestamp
+        value_template: "{{ as_timestamp(states.input_select.tvattmaskin_status.last_changed)|timestamp_custom('%H:%M') }}"
+
+      torktumlare_last_changed:
+        device_class: timestamp
+        value_template: "{{ as_timestamp(states.input_select.torktumlare_status.last_changed)|timestamp_custom('%H:%M') }}"
+
+      aircondition_last_changed:
+        device_class: timestamp
+        value_template: "{{ as_timestamp(states.input_select.aircondition_status.last_changed)|timestamp_custom('%H:%M') }}"
+
+
+      sovrum_status:
+        value_template: >
+          {% if is_state('input_text.sovrum', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      badrum_status:
+        value_template: >
+          {% if is_state('input_text.badrum', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      garage_status:
+        value_template: >
+          {% if is_state('input_text.garage', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      gastrum_hoger_status:
+        value_template: >
+          {% if is_state('input_text.gastrum_hoger', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      gastrum_vanster_status:
+        value_template: >
+          {% if is_state('input_text.gastrum_vanster', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      hall_status:
+        value_template: >
+          {% if is_state('input_text.hall', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      hemmabio_status:
+        value_template: >
+          {% if is_state('input_text.hemmabio', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      kontor_status:
+        value_template: >
+          {% if is_state('input_text.kontor', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      kok_status:
+        value_template: >
+          {% if is_state('input_text.kok', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      tvrum_status:
+        value_template: >
+          {% if is_state('input_text.tvrum', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      tvattstuga_status:
+        value_template: >
+          {% if is_state('input_text.tvattstuga', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      uterum_status:
+        value_template: >
+          {% if is_state('input_text.uterum', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}
+
+      ovrigt_status:
+        value_template: >
+          {% if is_state('input_text.ovrigt', 'Problem') %}
+              Problems
+          {% else %}
+              Online
+          {% endif %}

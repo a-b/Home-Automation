@@ -1,0 +1,19 @@
+homeassistant:
+
+light:
+  - platform: group
+    name: 'Tvättstuga'
+    entities:
+      - light.tvattstuga_taklampa
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.tvattstuga_taklampa
+
+    entity_config:
+      light.tvattstuga_taklampa:
+        name: Taklampa
+        room: Tvättstuga
+

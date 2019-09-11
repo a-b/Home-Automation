@@ -1,0 +1,14 @@
+homeassistant:
+
+
+media_player:
+  - platform: onkyo
+    name: Receiver
+    host: !secret onkyo_ip
+
+  - platform: spotify
+    client_id: !secret spotifyclient_id
+    client_secret: !secret spotifyclient_secret
+    aliases:
+        Onkyo: 'Hemmabio'
+        MARTIKAINENPC: 'Dator'

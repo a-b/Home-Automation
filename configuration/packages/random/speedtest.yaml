@@ -1,0 +1,24 @@
+homeassistant:
+
+# Example configuration.yaml entry
+speedtestdotnet:
+  scan_interval:
+    minutes: 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+    
+sensor:
+  - platform: template
+    sensors:
+      speedtest_download_mb:
+        value_template: "{{ ((states('sensor.speedtest_download')|default(0)) | float / 8) | round(0) }}"
+        unit_of_measurement: 'MiB/s'
+
+
+  - platform: template
+    sensors:
+      speedtest_upload_mb:
+        value_template: "{{ ((states('sensor.speedtest_upload')|default(0)) | float / 8) | round(0) }}"
+        unit_of_measurement: 'MiB/s'

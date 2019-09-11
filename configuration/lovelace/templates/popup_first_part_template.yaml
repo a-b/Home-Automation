@@ -1,0 +1,44 @@
+#lovelace_gen
+card:
+  type: vertical-stack
+  cards:
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          entity: '[[details]]'
+          show_icon: false
+          show_name: false
+          show_state: true
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          entity: '[[light]]'
+          show_icon: false
+          name: 'Av'
+          tap_action:
+            action: call-service
+            service: light.turn_off
+            service_data:
+              entity_id: '[[light]]'
+        - type: "custom:button-card"
+          entity: '[[light]]'
+          show_icon: false
+          name: 'Mys'
+          tap_action:
+            action: call-service
+            service: light.turn_on
+            service_data:
+              entity_id: '[[light]]'
+              color_temp: 370
+              brightness: 60
+        - type: "custom:button-card"
+          entity: '[[light]]'
+          show_icon: false
+          name: 'På'
+          tap_action:
+            action: call-service
+            service: light.turn_on
+            service_data:
+              entity_id: '[[light]]'
+              color_temp: 1
+              brightness: 254

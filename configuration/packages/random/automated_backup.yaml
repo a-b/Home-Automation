@@ -1,0 +1,12 @@
+homeassistant:
+
+automation:
+- alias: Daily snapshot at 3 AM
+  initial_state: True
+  trigger:
+    platform: time
+    at: '3:00:00'
+  action:
+  - service: hassio.snapshot_full
+    data_template:
+      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}

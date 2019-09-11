@@ -1,0 +1,160 @@
+homeassistant:
+  customize:
+    sensor.inomhus_temperatur:
+      friendly_name: Inomhus
+
+sensor:
+  - platform: min_max
+    name: inomhus_temperatur
+    round_digits: 1
+    type: mean
+    entity_ids:
+      - sensor.gastrum_hoger_temperatur
+      - sensor.gastrum_vanster_temperatur
+      - sensor.hemmabio_temperatur
+      - sensor.kontor_temperatur
+      - sensor.badrum_temperatur
+      - sensor.kok_temperatur
+      - sensor.hall_temperatur
+      - sensor.sovrum_temperatur
+
+  - platform: yr
+    forecast: 24
+    monitored_conditions:
+      - temperature
+      - symbol
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api
+
+
+climate:
+  - platform: generic_thermostat
+    name: kontor
+    heater: switch.fake
+    target_sensor: sensor.kontor_temperatur
+
+  - platform: generic_thermostat
+    name: 3D printer
+    heater: switch.fake
+    target_sensor: sensor.3dprinter_temperatur
+
+  - platform: generic_thermostat
+    name: Badrum
+    heater: switch.fake
+    target_sensor: sensor.badrum_temperatur
+
+  - platform: generic_thermostat
+    name: Garage
+    heater: switch.fake
+    target_sensor: sensor.garage_temp_aqara
+
+  - platform: generic_thermostat
+    name: Gästrum höger
+    heater: switch.fake
+    target_sensor: sensor.gastrum_hoger_temperatur
+
+  - platform: generic_thermostat
+    name: kaminen
+    heater: switch.fake
+    target_sensor: sensor.fireplace_temperatur
+
+  - platform: generic_thermostat
+    name: Gästrum Vänster
+    heater: switch.fake
+    target_sensor: sensor.gastrum_vanster_temperatur
+
+  - platform: generic_thermostat
+    name: Hemmabio
+    heater: switch.fake
+    target_sensor: sensor.hemmabio_temperatur
+
+  - platform: generic_thermostat
+    name: Inomhus
+    heater: switch.fake
+    target_sensor: sensor.inomhus_temperatur
+
+  - platform: generic_thermostat
+    name: Kök
+    heater: switch.fake
+    target_sensor: sensor.kok_temperatur
+
+  - platform: generic_thermostat
+    name: Server
+    heater: switch.fake
+    target_sensor: sensor.server_chassi_temperatur
+
+  - platform: generic_thermostat
+    name: Tvättstuga
+    heater: switch.fake
+    target_sensor: sensor.tvattstuga_temperatur
+
+  - platform: generic_thermostat
+    name: Uterum
+    heater: switch.fake
+    target_sensor: sensor.uterum_temperatur
+
+  - platform: generic_thermostat
+    name: Dator
+    heater: switch.fake
+    target_sensor: sensor.workstation_temperatur
+
+  - platform: generic_thermostat
+    name: tvrum
+    heater: switch.fake
+    target_sensor: sensor.tvrum_temperatur
+
+  - platform: generic_thermostat
+    name: Utomhus
+    heater: switch.fake
+    target_sensor: sensor.yr_temperature
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - climate.kok
+        - climate.gastrum_vanster
+        - climate.gastrum_hoger
+        - climate.hemmabio
+        - climate.hall
+        - climate.garage
+        - climate.tvattstuga
+        - climate.tvrum
+        - climate.uterum
+        - climate.kontor
+        - climate.utomhus
+    entity_config:
+      climate.kok:
+        name: Temperatur
+        room: Kök
+      climate.gastrum_vanster:
+        name: Temperatur
+        room: Gästrum Vänster
+      climate.gastrum_hoger:
+        name: Temperatur
+        room: Gästrum Höger
+      climate.hemmabio:
+        name: Temperatur
+        room: Hemmabio
+      climate.hall:
+        name: Temperatur
+        room: Hall
+      climate.garage:
+        name: Temperatur
+        room: Garage
+      climate.tvattstuga:
+        name: Temperatur
+        room: Tvättstuga
+      climate.uterum:
+        name: temperatur
+        room: Uterum
+      climate.kontor:
+        name: Temperatur
+        room: Kontor
+      climate.utomhus:
+        name: Temperatur
+      climate.tvrum:
+        name: Temperatur
+        room: tvrum

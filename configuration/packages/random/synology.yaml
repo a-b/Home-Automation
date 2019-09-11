@@ -1,0 +1,28 @@
+homeassistant:
+
+sensor:
+  - platform: synologydsm
+    host: !secret synology_host
+    username: !secret synology_username
+    password: !secret synology_password
+    monitored_conditions:
+      - cpu_total_load
+      - memory_real_usage
+      - network_up
+      - network_down
+      - disk_smart_status
+      - disk_status
+      - disk_temp
+      - volume_size_total
+      - volume_size_used
+      - volume_percentage_used
+
+  - platform: template
+    sensors:
+      synology_download:
+        value_template: "{{ ((states('sensor.network_down')|default(0)) | float / 1000) | round(0) }}"
+        unit_of_measurement: 'MiB/s'
+
+      synology_upload:
+        value_template: "{{ ((states('sensor.network_up')|default(0)) | float / 1000) | round(0) }}"
+        unit_of_measurement: 'MiB/s'

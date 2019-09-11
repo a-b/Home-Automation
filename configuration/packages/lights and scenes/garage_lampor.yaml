@@ -1,0 +1,19 @@
+homeassistant:
+light:
+
+  - platform: group
+    name: 'garage'
+    entities:
+      - light.garage_takbelysning
+      - light.shelly_forrad_takbelysning
+      - light.garage_bankbelysning
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.garage
+    entity_config:
+      light.garage:
+        name: Garage
+        room: Garage

@@ -1,0 +1,21 @@
+homeassistant:
+
+light:
+  - platform: group
+    name: 'Gästrum Vänster'
+    entities:
+      - light.gastrum_vanster_fonster
+      - light.gastrum_vanster_tak
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.gastrum_vanster_fonster
+    entity_config:
+      light.gastrum_vanster_fonster:
+        name: Fönster
+        room: Gästrum Vänster
+      light.gastrum_vanster_tak:
+        name: Tak
+        room: Gästrum Vänster

@@ -1,0 +1,26 @@
+homeassistant:
+light:
+  - platform: group
+    name: 'Kontor'
+    entities:
+      - light.kontor_taklampa
+      - light.kontor_fonster
+
+cloud:
+  google_actions:
+    filter:
+      include_entities:
+        - light.kontor_fonster
+        - light.kontor_taklampa
+    entity_config:
+      light.kontor:
+        name: Lampor
+        room: Kontor
+      light.kontor_fonster:
+        name: Fönster
+        room: Kontor
+        aliases:
+         - kontorsfönster
+      light.kontor_taklampa:
+        name: Taklampa
+        room: Kontor

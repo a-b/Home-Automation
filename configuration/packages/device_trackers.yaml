@@ -1,0 +1,21 @@
+homeassistant:
+
+
+device_tracker:
+  - platform: nmap_tracker
+    home_interval: 10
+    interval_seconds: 30
+    hosts:
+      - !secret local_subnet
+      - !secret dns_address
+
+  - platform: unifi
+    host: !secret unifi_host
+    port: !secret unifi_port
+    username: !secret unifi_username
+    password: !secret unifi_password
+    verify_ssl: false
+
+  - platform: google_maps
+    username: !secret gmail_1
+    max_gps_accuracy: 150
