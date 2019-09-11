@@ -1,7 +1,0 @@
-  sovrum_power_card:
-    name: sovrum
-    entities:
-      - sensor.sovrum_power_10_8
-      - sensor.sovrum_energy_10_0
-      - sensor.sovrum_power_cost
-      - sensor.sovrum_energy_cost

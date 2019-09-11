@@ -1,7 +1,0 @@
-  kyl_power_card:
-    name: Fridge
-    entities:
-      - sensor.kyl_power_8_8
-      - sensor.kyl_energy_8_0
-      - sensor.fridge_power_cost
-      - sensor.fridge_energy_cost

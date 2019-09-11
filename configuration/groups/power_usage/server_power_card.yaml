@@ -1,7 +1,0 @@
-  server_power_card:
-    name: Server
-    entities:
-      - sensor.server_power_3_4
-      - sensor.server_energy_3_0
-      - sensor.server_power_cost
-      - sensor.server_energy_cost

@@ -1,8 +1,0 @@
-alias: "hallway bench button off"
-trigger:
-  platform: state
-  entity_id: switch.hallway_bench_button
-  to: 'off'
-action:
-  service: homeassistant.turn_off
-  entity_id: switch.sonoff1

@@ -1,6 +1,0 @@
-platform: template
-sensors:
-  server_energy_cost:
-    value_template: '{{ ((states.sensor.server_energy_3_0.state | float * 1.885)) | round(0) }}'
-    friendly_name: 'Total cost'
-    unit_of_measurement: 'kr'

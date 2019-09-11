@@ -1,7 +1,0 @@
-  Living_room_card:
-    name: Vardagsrum
-    entities:
-    - switch.sonoff_3
-    - switch.livingroom_tvbench
-    - switch.livingroom_window
-    - sensor.huwaeibattery

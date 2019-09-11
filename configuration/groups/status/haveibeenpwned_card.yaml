@@ -1,7 +1,0 @@
-  haveibeenpwned_card:
-    name: Password Breaches
-    entities:
-      - sensor.breaches_mallutta86gmailcom
-      - sensor.breaches_martikainen87gmailcom
-      - sensor.breaches_martikainenlivese
-      - sensor.breaches_mattiasmartikainenevrycom

@@ -1,3 +1,0 @@
-onkyo_turn_on:
-  sequence:
-    - service: shell_command.onkyo_power_on

@@ -1,8 +1,0 @@
-alias: "kitchen window button on"
-trigger:
-  platform: state
-  entity_id: switch.kitchen_window_button
-  to: 'on'
-action:
-  service: homeassistant.turn_on
-  entity_id: switch.sonoff12

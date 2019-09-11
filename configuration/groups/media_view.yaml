@@ -1,8 +1,0 @@
-  media_view:
-    name: Media
-    view: yes
-    entities: 
-      - group.living_room_card
-      - group.media_equipment_card
-      - media_player.vardagsrum
-      - media_player.receiver

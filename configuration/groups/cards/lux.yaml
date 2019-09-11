@@ -1,9 +1,0 @@
-  lux_card:
-    name: lux
-    entities:
-      - sensor.hall_luminance_4_3
-      - sensor.kitchen_luminance_25_3
-      - sensor.toalett_luminance_24_3
-      - sensor.walkincloset_luminance_21_3
-      - sensor.sovrum_luminance_28_3
-      - sensor.vardagsrum_luminance_27_3

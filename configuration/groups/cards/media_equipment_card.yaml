@@ -1,7 +1,0 @@
-  media_equipment_card:
-    name: Media Equipment
-    entities:
-    - script.home_theatre_on
-    - script.home_theatre_off
-    - switch.sonoff7
-    - switch.sonoff9

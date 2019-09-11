@@ -1,6 +1,0 @@
-  network_card:
-    name: Network
-    entities:
-      - sensor.speedtest_download
-      - sensor.speedtest_upload
-      - sensor.speedtest_ping

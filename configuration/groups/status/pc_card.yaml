@@ -1,5 +1,0 @@
-  pc_card:
-    name: PC status
-    entities:
-      - sensor.pc_power_2_4
-      - sensor.pc_energy_2_0

@@ -1,6 +1,0 @@
-platform: template
-sensors:
-  hallway_power_cost:
-    value_template: '{{ ((states.sensor.hall_power_11_8.state | float * 1 / 1000 *1.885)) | round(2) }}'
-    friendly_name: 'Current cost per hour'
-    unit_of_measurement: 'kr'

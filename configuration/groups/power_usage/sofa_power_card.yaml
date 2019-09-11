@@ -1,7 +1,0 @@
-  sofa_power_card:
-    name: Projector
-    entities:
-      - sensor.soffa_power_6_8
-      - sensor.soffa_energy_6_0
-      - sensor.projector_power_cost
-      - sensor.projector_energy_cost

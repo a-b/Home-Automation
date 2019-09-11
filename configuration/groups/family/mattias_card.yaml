@@ -1,5 +1,0 @@
-  mattias_card:
-    name: Mattias
-    entities:
-      - device_tracker.mqtt_mattias
-      - camera.mattias

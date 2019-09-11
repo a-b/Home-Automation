@@ -1,7 +1,0 @@
-  plex_card:
-    name: Plex Server
-    entities:
-      - sensor.plex
-      - sensor.plexserver_cpu_load
-      - sensor.plexserver_disk_use_2
-      - sensor.plexserver_ram_use

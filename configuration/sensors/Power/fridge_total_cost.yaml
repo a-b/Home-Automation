@@ -1,6 +1,0 @@
-platform: template
-sensors:
-  fridge_energy_cost:
-    value_template: '{{ ((states.sensor.kyl_energy_8_0.state | float * 1.885)) | round(0) }}'
-    friendly_name: 'Total cost per hour'
-    unit_of_measurement: 'kr'

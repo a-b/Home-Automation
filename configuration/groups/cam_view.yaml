@@ -1,5 +1,0 @@
-  camera_view:
-    name: Cameras
-    view: yes
-    entities:
-      - camera.parking

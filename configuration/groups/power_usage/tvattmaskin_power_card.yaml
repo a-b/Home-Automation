@@ -1,7 +1,0 @@
-  tvattmaskin_power_card:
-    name: Washing Machine
-    entities:
-      - sensor.tvattmaskin_power_9_8
-      - sensor.tvattmaskin_energy_9_0
-      - sensor.washer_power_cost
-      - sensor.washer_energy_cost

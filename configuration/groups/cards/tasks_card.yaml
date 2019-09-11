@@ -1,7 +1,0 @@
-  tasks_card:
-    name: tasks
-    entities:
-      - script.good_morning
-      - script.good_night
-      - script.home_theatre_on
-      - script.home_theatre_off

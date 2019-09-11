@@ -1,7 +1,0 @@
-  unused2_power_card:
-    name: Hallway
-    entities:
-      - sensor.hall_power_11_8
-      - sensor.hall_energy_11_0
-      - sensor.hallway_power_cost
-      - sensor.hallway_energy_cost

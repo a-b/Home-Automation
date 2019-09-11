@@ -1,7 +1,0 @@
-alias: "cosy lights off 40min after sunruse"
-trigger:
-  platform: time
-  after: '08:00:00'
-action:
-  service: homeassistant.turn_off
-  entity_id: group.cosy_lights_card
